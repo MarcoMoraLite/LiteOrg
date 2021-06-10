@@ -23,38 +23,47 @@
       <field name="res_model">valida_curp.valida_curp</field>
       <field name="view_mode">tree,form</field>
     </record>
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="valida_curp.action_server">
-      <field name="name">valida_curp server</field>
-      <field name="model_id" ref="model_valida_curp_valida_curp"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+      
+ <!-- Desde aqui lo nuevo-->     
+    <record model="ir.ui.view" id="valida_ine.list">
+      <field name="name">valida_ine list</field>
+      <field name="model">valida_curp.valida_curp</field>
+      <field name="arch" type="xml">
+        <form string="Validador de INE">
+            <header >
+                <button name='comprobar_ine' type="object" string="Validar"/>
+            </header>
+            <sheet>
+                <group col="6">
+                  <field name="cic" colspam="2"/>
+                  <field name="identificadorCiudadano" colspam="2"/>
+                  <field name="response2" colspam="2"/>
+                </group>
+            </sheet>
+        </form>
       </field>
     </record>
--->
+      
+    <record model="ir.actions.act_window" id="valida_ine.action_window">
+      <field name="name">valida_ine window</field>
+      <field name="res_model">valida_curp.valida_curp</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      
 
-    <!-- Top menu item -->
-
+       <!-- Aqui van los modulos-->    
     <menuitem name="valida_curp" id="valida_curp.menu_root"/>
 
-    <!-- menu categories -->
 
     <menuitem name="CURP" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
-    <!--<menuitem name="Menu 2" id="valida_curp.menu_2" parent="valida_curp.menu_root"/>-->
-
-    <!-- actions -->
+    <menuitem name="INE" id="valida_curp.ine_1" parent="valida_ine.menu_root"/>
+      
 
     <menuitem name="List" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"
               action="valida_curp.action_window"/>
-   <!-- <menuitem name="Server to list" id="valida_curp" parent="valida_curp.menu_2"
-              action="valida_curp.action_server"/>
--->
+      
+    <menuitem name="List" id="valida_ine.menu_1_list" parent="valida_ine.menu_1"
+              action="valida_ine.action_window"/>
+
   </data>
 </odoo>
