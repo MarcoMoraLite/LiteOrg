@@ -25,7 +25,7 @@
     </record>
       
  <!-- Desde aqui lo nuevo-->     
-    <record model="ir.ui.view" id="valida_ine.list">
+    <record model="ir.ui.view2" id="valida_ine.list">
       <field name="name">valida_ine list</field>
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
@@ -44,7 +44,7 @@
       </field>
     </record>
       
-    <record model="ir.actions.act_window" id="valida_ine.action_window">
+    <record model="ir.actions.act_window2" id="valida_ine.action_window">
       <field name="name">valida_ine window</field>
       <field name="res_model">valida_curp.valida_curp</field>
       <field name="view_mode">tree,form</field>
