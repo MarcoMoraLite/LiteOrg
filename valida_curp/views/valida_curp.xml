@@ -1,28 +1,26 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
     <record model="ir.ui.view" id="valida_curp.list">
       <field name="name">valida_curp list</field>
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <form string="Validador de CURP">
+            <header >
+                <button name='comprobar' type="object" string="Validar"/>
+            </header>
+            <sheet>
+              <field name="curp"/>
+              <field name="response"/>
+            </sheet>
+        </form>
       </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
+      
     <record model="ir.actions.act_window" id="valida_curp.action_window">
       <field name="name">valida_curp window</field>
       <field name="res_model">valida_curp.valida_curp</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
     <!-- server action to the one above -->
 <!--

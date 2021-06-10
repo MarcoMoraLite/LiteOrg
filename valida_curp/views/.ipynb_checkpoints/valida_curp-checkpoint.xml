@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="valida_curp.list">
+      <field name="name">valida_curp list</field>
+      <field name="model">valida_curp.valida_curp</field>
+      <field name="arch" type="xml">
+        <form string="Validador de CURP">
+            <header >
+                <button name='comprobar' type="object" string="Validar"/>
+            </header>
+            <sheet>
+              <field name="curp"/>
+              <field name="response"/>
+            </sheet>
+        </form>
+      </field>
+    </record>
+      
+    <record model="ir.actions.act_window" id="valida_curp.action_window">
+      <field name="name">valida_curp window</field>
+      <field name="res_model">valida_curp.valida_curp</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="valida_curp.action_server">
+      <field name="name">valida_curp server</field>
+      <field name="model_id" ref="model_valida_curp_valida_curp"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="valida_curp" id="valida_curp.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
+    <menuitem name="Menu 2" id="valida_curp.menu_2" parent="valida_curp.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"
+              action="valida_curp.action_window"/>
+    <menuitem name="Server to list" id="valida_curp" parent="valida_curp.menu_2"
+              action="valida_curp.action_server"/>
+-->
+  </data>
+</odoo>
