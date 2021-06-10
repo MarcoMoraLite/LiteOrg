@@ -25,11 +25,3 @@ class ValidaCurp(models.Model):
             #mapa=json.loads(aux)
             #estatus=mapa["estatus"]
             record.response = r.content
-            
-    def comprobar_ine(self):
-        for record2 in self:
-            cic = record2.cic
-            identificadorCiudadano = record.identificadorCiudadano
-            payload2 ={"cic":cic,"identificadorCiudadano":identificadorCiudadano}
-            r2=requests.post("https://ine.nubarium.com/ine/v2/valida_ine",headers=header,data=json.dumps(payload2))
-            record2.response2 = r2.content

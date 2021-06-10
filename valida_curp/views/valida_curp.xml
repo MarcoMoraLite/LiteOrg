@@ -25,7 +25,7 @@
     </record>
       
  <!-- Desde aqui lo nuevo-->     
-    <record model="ir.ui.view2" id="valida_ine.list">
+    <record model="ir.ui.view" id="valida_ine.list">
       <field name="name">valida_ine list</field>
       <field name="model">valida_ine.valida_ine</field>
       <field name="arch" type="xml">
