@@ -27,7 +27,7 @@
  <!-- Desde aqui lo nuevo-->     
     <record model="ir.ui.view2" id="valida_ine.list">
       <field name="name">valida_ine list</field>
-      <field name="model">valida_curp.valida_curp</field>
+      <field name="model">valida_ine.valida_ine</field>
       <field name="arch" type="xml">
         <form string="Validador de INE">
             <header >
@@ -46,7 +46,7 @@
       
     <record model="ir.actions.act_window2" id="valida_ine.action_window">
       <field name="name">valida_ine window</field>
-      <field name="res_model">valida_curp.valida_curp</field>
+      <field name="res_model">valida_ine.valida_ine</field>
       <field name="view_mode">tree,form</field>
     </record>
       
