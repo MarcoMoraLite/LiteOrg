@@ -8,8 +8,8 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
 
-    curp = fields.Char()
-    response = fields.Text()
+    curp = fields.Char("CURP")
+    response = fields.Text("RESPONSE")
     
     def comprobar(self):
         curp_usuario = self.curp
