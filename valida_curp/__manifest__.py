@@ -25,7 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/valida_cedula.xml',
+        'views/valida_curp.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
