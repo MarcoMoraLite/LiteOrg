@@ -4,19 +4,16 @@ from odoo import models, fields, api
 import requests
 import json
 
-class ValidaCurp(models.Model):
-    _name = 'valida_curp.valida_curp'
-    _description = 'valida_curp.valida_curp'
+class ValidaCedula(models.Model):
+    _name = 'valida_cedula.valida_cedula'
+    _description = 'valida_cedula.valida_cedula'
 
-    curp = fields.Char("CURP")
-    response = fields.Text("RESPONSE")
-    cic = fields.Char("cic")
-    identificadorCiudadano = fields.Char("Identificador Ciudadano")
-    response2 = fields.Text("RESPONSE2")
+    cedula = fields.Char("CURP")
+    response = fields.Text("RESPUESTA")
     
     def comprobar(self):
         for record in self:
-            curp_usuario = record.curp
+            cedula_usuario = record.cedula
             header = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
             payload = {"documento":"0","curp":curp_usuario}
             r=requests.post("https://curp.nubarium.com/renapo/valida_curp",headers=header,data=json.dumps(payload))
