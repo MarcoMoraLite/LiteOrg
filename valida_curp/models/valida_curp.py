@@ -15,8 +15,8 @@ class ValidaCurp(models.Model):
         for record in self:
             cedula_usuario = record.cedula
             header = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
-            payload = {"documento":"0","curp":cedula_usuario}
-            r=requests.post("https://curp.nubarium.com/renapo/valida_curp",headers=header,data=json.dumps(payload))
+            payload = {"numeroCedula":cedula_usuario}
+            r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             #json_response = r.json()
             #aux=json.dumps(json_response)
             #mapa=json.loads(aux)
