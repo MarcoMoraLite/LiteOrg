@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "valida_curp",
+    'name': "valida_cedula",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -25,7 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/valida_curp.xml',
+        'views/valida_cedula.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
