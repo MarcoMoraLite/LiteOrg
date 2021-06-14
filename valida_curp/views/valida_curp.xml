@@ -7,11 +7,15 @@
         <form string="Validador de cedula">
             <header >
                 <button name='comprobar' type="object" string="Validar"/>
+                <button name='comprobar2' type="object" string="Validar INE" position="after"/>
             </header>
             <sheet>
-                <group col="4">
+                <group col="10">
                   <field name="cedula" colspam="2"/>
                   <field name="response" colspam="2"/>
+                  <field name="ine" colspam="2"/>
+                  <field name="ine_atras" colspam="2"/>
+                  <field name="response2" colspam="2"/>
                 </group>
             </sheet>
         </form>
