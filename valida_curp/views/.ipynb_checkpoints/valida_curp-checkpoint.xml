@@ -7,7 +7,6 @@
         <form string="Validador de cedula">
             <header >
                 <button name='comprobar' type="object" string="Validar"/>
-                <button name='comprobar2' type="object" string="Validar INE" position="after"/>
             </header>
             <sheet>
                 <group col="4">
