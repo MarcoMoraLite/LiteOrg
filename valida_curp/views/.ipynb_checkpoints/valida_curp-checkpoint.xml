@@ -15,13 +15,6 @@
                   <field name="response" colspam="2"/>
                 </group>
             </sheet>
-            <sheet>
-                <group col="6">
-                  <field name="ine" colspam="2"/>
-                  <field name="ine_atras" colspam="2"/>
-                  <field name="response2" colspam="2"/>
-                </group>
-            </sheet>
         </form>
       </field>
     </record>
