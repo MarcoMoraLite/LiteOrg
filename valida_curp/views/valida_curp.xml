@@ -6,8 +6,8 @@
       <field name="arch" type="xml">
         <form string="Validador de cedula">
             <header >
-                <button name="comprobar" type="object" states="ine" string="Validar"/>
-                <button name="comprobar2" type="object" states="cedula" string="Validar INE"/>
+                <button name="comprobar" type="object" states="cedula" string="Validar"/>
+                <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
                 <field name="state" widget="statusbar" statusbar_visible="ine,cedula"/>
             </header>
             <sheet>
