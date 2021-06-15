@@ -29,7 +29,10 @@ class ValidaCurp(models.Model):
     def comprobar2(self):
         for record2 in self:
             ine = record2.ine
-            ine64 = base64.b64encode(ine)
+            image = open(ine,'rb')
+            image_read = image.read()
+            ine64 = base64.encodebytes(image_read)
+            #ine64 = base64.b64encode(ine)
             #ine2 = record2.ine_atras
             #ine264 = base64.b64encode(ine2)
             payload2 = {"id":ine64}
