@@ -12,7 +12,7 @@
             </header>
             <sheet>
                 <group col="4">
-                  <field name="cedula" modifiers="{'readonly':[['state','=','ine']]}" colspam="2"/>
+                  <field name="cedula" states="ine" colspam="2"/>
                   <field name="response" colspam="2"/>
                   <field name="response2" colspam="2"/>
                   <field name="ine" colspam="2"/>
