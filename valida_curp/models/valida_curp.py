@@ -9,7 +9,7 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
 
-    status = fields.Selection([('ine','INE'),('cedula','CEDULA')],'estatus', default='ine')
+    state = fields.Selection([('ine','INE'),('cedula','CEDULA')],'estatus', default='ine')
     cedula = fields.Char("CURP")
     response = fields.Text("RESPUESTA")
     ine = fields.Image("INE parte delantera")
@@ -23,7 +23,7 @@ class ValidaCurp(models.Model):
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             record.response = r.content
-            record.write({'status': 'cedula'})
+            record.write({'state': 'cedula'})
             
             
     def comprobar2(self):
