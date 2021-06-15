@@ -29,8 +29,7 @@ class ValidaCurp(models.Model):
     def comprobar2(self):
         for record2 in self:
             ine = record2.ine
-            image = open(ine,'rb')
-            image_read = image.read()
+            image_read = ine.read()
             ine64 = base64.encodebytes(image_read)
             #ine64 = base64.b64encode(ine)
             #ine2 = record2.ine_atras
