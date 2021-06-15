@@ -8,6 +8,7 @@
             <header >
                 <button name='comprobar' type="object" string="Validar"/>
                 <button name='comprobar2' type="object" string="Validar INE"/>
+                <field name='status' widget='statusbar'/>
             </header>
             <sheet>
                 <group col="4">

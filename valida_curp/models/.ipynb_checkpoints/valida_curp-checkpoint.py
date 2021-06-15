@@ -9,6 +9,7 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
 
+    status = fields.Selection[('ine','INE'),('cedula','CEDULA')]
     cedula = fields.Char("CURP")
     response = fields.Text("RESPUESTA")
     ine = fields.Image("INE parte delantera")
