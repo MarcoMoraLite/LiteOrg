@@ -8,14 +8,11 @@ import base64
 class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
-
-    READONLY_STATES = {
-        "ine": [("readonly", True)]}
     
     state = fields.Selection([('ine','INE'),('cedula','CEDULA')],'estatus', default='ine')
     cedula = fields.Char("CEDULA")
     response = fields.Text("RESPUESTA")
-    ine = fields.Image("INE parte delantera",state=READONLY_STATES)
+    ine = fields.Image("INE parte delantera")
     ine_atras = fields.Image("INE parte de atras")
     response2 = fields.Text("RESPUESTA INE")
     
