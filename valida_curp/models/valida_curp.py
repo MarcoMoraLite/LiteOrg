@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 import requests
 import json
+import base64
 
 class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
@@ -29,7 +30,11 @@ class ValidaCurp(models.Model):
     def comprobar2(self):
         for record2 in self:
             ine = record2.ine
+            ine_bytes = ine.encode('utf-8')
+            ine64 = base64.b64encode(ine_bytes)
             ine2 = record2.ine_atras
-            payload2 = {"id":ine,"idReverso":ine2}
+            ine2_bytes = ine2.encode('utf-8')
+            ine264 = base64.b64encode(ine2_bytes)
+            payload2 = {"id":ine64,"idReverso":ine264}
             r2=request.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header,data=json.dumps(payload2))
             record.response2 = r2.content
