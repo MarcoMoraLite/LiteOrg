@@ -35,6 +35,6 @@ class ValidaCurp(models.Model):
             #ine264 = base64.b64encode(ine2)
             #payload2 = {"id":ine64}
             header2 = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
-            r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,data={"id":ine64})
+            r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,data={"id":ine})
             record2.response2 = r2.content
-            record2.response = ine64
+            record2.response = ine
