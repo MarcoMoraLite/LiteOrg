@@ -6,16 +6,18 @@
       <field name="arch" type="xml">
         <form string="Validador de cedula">
             <header >
-                <button name="comprobar" type="object" states="cedula" string="Validar"/>
+                <button name="comprobar" type="object" states="cedula" string="Validar Cedula"/>
+                <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
+                <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
                 <field name="state" widget="statusbar" statusbar_visible="ine,cedula"/>
             </header>
             <sheet>
                 <group col="4">
-                  <field name="ine" attrs="{'readonly':[['state','not in',['ine']]]}" colspam="2"/>
-                  <field name="response2" attrs="{'readonly':[['state','not in',['ine']]]}" colspam="2"/>
-                  <field name="cedula" attrs="{'readonly':[['state','not in',['cedula']]]}" colspam="2"/>
-                  <field name="response" attrs="{'readonly':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
                 </group>
             </sheet>
         </form>
