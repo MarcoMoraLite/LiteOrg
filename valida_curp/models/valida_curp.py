@@ -32,6 +32,12 @@ class ValidaCurp(models.Model):
             record2.response2 = r2.content
             record2.write({'state': 'cedula'})
             
+    def confirmarCed(self)
+        return "magia"
+    
+    def confirmarIne(self)
+        return "magia"
+            
             '''
             "tipo": "INE",
             DATOS CREDENCIAL----------------------
