@@ -18,7 +18,7 @@ class ValidaCurp(models.Model):
     def comprobar(self):
         for record in self:
             cedula_usuario = record.cedula
-            header = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
+            header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             record.response = r.content
@@ -27,7 +27,7 @@ class ValidaCurp(models.Model):
             
     def comprobar2(self):
         for record2 in self:
-            header2 = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
+            header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine})
             record2.response2 = r2.content
             record2.write({'state': 'cedula'})
