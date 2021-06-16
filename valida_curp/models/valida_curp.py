@@ -28,8 +28,7 @@ class ValidaCurp(models.Model):
             
     def comprobar2(self):
         for record2 in self:
-            ine = record2.ine
-            ine64 = base64.encodebytes(ine)
+            ine64 = base64.encodebytes(record2.ine)
             #ine64 = base64.b64encode(ine)
             #ine2 = record2.ine_atras
             #ine264 = base64.b64encode(ine2)
@@ -37,4 +36,3 @@ class ValidaCurp(models.Model):
             header2 = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
             r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,data={"id":ine})
             record2.response2 = r2.content
-            record2.response = ine
