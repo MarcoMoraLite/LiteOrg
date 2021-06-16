@@ -12,8 +12,8 @@ class ValidaCurp(models.Model):
     state = fields.Selection([('ine','INE'),('cedula','CEDULA')],'estatus', default='ine')
     cedula = fields.Char("CEDULA")
     response = fields.Text("RESPUESTA")
-    ine = fields.Image("INE parte delantera")
-    ine_atras = fields.Image("INE parte de atras")
+    ine = fields.Binary("INE parte delantera")
+    ine_atras = fields.Binary("INE parte de atras")
     response2 = fields.Text("RESPUESTA INE")
     
     def comprobar(self):
