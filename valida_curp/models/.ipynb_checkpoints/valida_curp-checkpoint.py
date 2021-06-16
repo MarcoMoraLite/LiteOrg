@@ -13,7 +13,6 @@ class ValidaCurp(models.Model):
     cedula = fields.Char("CEDULA")
     response = fields.Text("RESPUESTA")
     ine = fields.Binary("INE parte delantera")
-    ine_atras = fields.Binary("INE parte de atras")
     response2 = fields.Text("RESPUESTA INE")
     
     def comprobar(self):
@@ -23,13 +22,13 @@ class ValidaCurp(models.Model):
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             record.response = r.content
-            record.write({'state': 'cedula'})
+            #record.write({'state': 'cedula'})
             
             
     def comprobar2(self):
         for record2 in self:
-            #ine64 = base64.b64encode(record2.ine)
             header2 = {"Authorization": "Basic bXVsdGlwbGljYTprR19NeC4yeUI5","Content-Type":"application/json"}
             r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine})
             record2.response2 = r2.content
+            record.write({'state': 'cedula'})
             
