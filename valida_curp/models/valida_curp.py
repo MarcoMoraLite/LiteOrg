@@ -14,6 +14,8 @@ class ValidaCurp(models.Model):
     response = fields.Text("RESPUESTA")
     ine = fields.Binary("INE parte delantera")
     response2 = fields.Text("RESPUESTA INE")
+    name = fields.Char("Nombre")
+    apellido = fields.Char("Apellido")
     
     def comprobar(self):
         for record in self:
@@ -32,32 +34,12 @@ class ValidaCurp(models.Model):
             record2.response2 = r2.content
             record2.write({'state': 'cedula'})
             
-    def confirmarCed(self)
-        return "magia"
+    def confirmarCed(self):
+        for record3 in self:
+            record3.name = "magia"
     
-    def confirmarIne(self)
-        return "magia"
+    def confirmarIne(self):
+        for record4 in self:
+            record4.apellido = "Ya jalo"
+       
             
-            '''
-            "tipo": "INE",
-            DATOS CREDENCIAL----------------------
-    "subTipo": "E",
-    "claveElector": "MRCLMR98041615H300",
-    "registro": "2016 00",
-    "estado": "15",
-    "municipio": "052",
-    "seccion": "2417",
-    "localidad": "0005",
-    "emision": "2016",
-    "vigencia": "2026",
-    DATOS PERSONALES-------------------------------
-    "curp": "MOCM980416HMCRLR09",
-    "fechaNacimiento": "16/04/1998",
-    "primerApellido": "MORA",
-    "segundoApellido": "COLIN",
-    "nombres": "MARCO ANTONIO",
-    "sexo": "H",
-    "calle": "C 3 DE MAYO 122",
-    "colonia": "- SANTA MARIA ATARASQUILLO 52044",
-    "ciudad": "LERMA , MEX",
-    "codigoValidacion": "gd1623881943.7599058"'''

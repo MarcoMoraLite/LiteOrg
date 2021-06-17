@@ -14,10 +14,12 @@
             </header>
             <sheet>
                 <group col="4">
-                  <field name="ine" attrs="{'readonly':[['state','not in',['ine']]]}" colspam="2"/>
-                  <field name="response2" attrs="{'readonly':[['state','not in',['ine']]]}" colspam="2"/>
-                  <field name="cedula" attrs="{'readonly':[['state','not in',['cedula']]]}" colspam="2"/>
-                  <field name="response" attrs="{'readonly':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="name" colspam="2"/>
+                  <field name="apellido" colspam="2"/>
                 </group>
             </sheet>
         </form>
