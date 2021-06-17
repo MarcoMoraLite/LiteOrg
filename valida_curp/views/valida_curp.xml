@@ -38,6 +38,7 @@
             <field name="response"/>
             <field name="name"/>
             <field name="apellido"/>
+            <field name="state"/>
         </tree>
       </field>
     </record>
