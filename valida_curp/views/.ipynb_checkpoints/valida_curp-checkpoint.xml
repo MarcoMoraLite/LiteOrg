@@ -22,7 +22,23 @@
                   <field name="apellido" colspam="2"/>
                 </group>
             </sheet>
+            
         </form>
+      </field>
+    </record>
+      
+    <record model="ir.ui.view" id="valida_curp.tree">
+      <field name="name">valida_curp tree</field>
+      <field name="model">valida_curp.valida_curp</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="ine"/>
+            <field name="response2"/>
+            <field name="cedula"/>
+            <field name="response"/>
+            <field name="name"/>
+            <field name="apellido"/>
+        </tree>
       </field>
     </record>
       
