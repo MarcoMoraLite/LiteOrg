@@ -9,11 +9,13 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
     
-    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO')],'estatus', default='ine')
+    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('guardar','GUARDAR')],'estatus', default='ine')
     cedula = fields.Char("CEDULA")
     response = fields.Text("RESPUESTA")
     ine = fields.Binary("INE parte delantera")
     response2 = fields.Text("RESPUESTA INE")
+    ine_foto = ine = fields.Binary("Foto")
+    response3 = fields.Text("RESPUESTA FOTO")
     name = fields.Char("Nombre")
     apellido = fields.Char("Apellido")
     
@@ -41,5 +43,15 @@ class ValidaCurp(models.Model):
         for record4 in self:
             record4.apellido = "Mora"
             record4.write({'state': 'cedula'})
+    
+    def selfie(self):
+        for record5 in self:
+            record5.response3 = "Aqui se comprueba la foto del INE y la selfie en la API"
+    
+    def confirmarSelfie(self):
+        for record6 in self:
+            record6.response3 = "Aqui se confirma la foto del INE y la selfie"
+            record6.write({'state': 'guardar'})
+            
        
             

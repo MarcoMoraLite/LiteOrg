@@ -10,7 +10,9 @@
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
                 <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
-                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto"/>
+                <button name="selfie" type="object" states="foto" string="Validar Foto"/>
+                <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
+                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
             </header>
             <sheet>
                 <group col="4">
@@ -18,6 +20,8 @@
                   <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
                   <field name="cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="cedula" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
+                  <field name="response" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="name" colspam="2"/>
                   <field name="apellido" colspam="2"/>
                 </group>
