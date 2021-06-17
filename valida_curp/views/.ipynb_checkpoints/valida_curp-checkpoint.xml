@@ -10,7 +10,7 @@
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
                 <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
-                <field name="state" widget="statusbar" statusbar_visible="ine,cedula"/>
+                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto"/>
             </header>
             <sheet>
                 <group col="4">
