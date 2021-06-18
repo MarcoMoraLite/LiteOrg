@@ -53,5 +53,8 @@ class ValidaCurp(models.Model):
             record6.response3 = "Aqui se confirma la foto del INE y la selfie"
             record6.write({'state': 'guardar'})
             
+    def guardaContacto(self):
+        
+            
        
             
