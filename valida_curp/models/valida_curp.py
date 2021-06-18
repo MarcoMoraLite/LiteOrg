@@ -33,7 +33,7 @@ class ValidaCurp(models.Model):
     seccion = fields.Char("Sección")
     localidad = fields.Char("Localidad")
     emision = fields.Char("Emisión")
-    vigencia = fields.Char("vigencia")
+    vigencia = fields.Char("Vigencia")
     
     def comprobar(self):
         for record in self:
