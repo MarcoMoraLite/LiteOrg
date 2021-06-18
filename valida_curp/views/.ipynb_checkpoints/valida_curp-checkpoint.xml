@@ -23,6 +23,15 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
                   <field name="cedula" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
+                  <field name="curp" colspam="2"/>
+                  <field name="fechaNacimiento" colspam="2"/>
+                  <field name="primerApellido" colspam="2"/>
+                  <field name="segundoApellido" colspam="2"/>
+                  <field name="nombres" colspam="2"/>
+                  <field name="sexo" colspam="2"/>
+                  <field name="calle" colspam="2"/>
+                  <field name="colonia" colspam="2"/>
+                  <field name="ciudad" colspam="2"/>
                 </group>
             </sheet>
             
@@ -39,8 +48,6 @@
             <field name="response2"/>
             <field name="cedula"/>
             <field name="response"/>
-            <field name="name"/>
-            <field name="apellido"/>
             <field name="state"/>
         </tree>
       </field>
