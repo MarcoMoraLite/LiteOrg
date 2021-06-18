@@ -34,6 +34,10 @@ class ValidaCurp(models.Model):
     localidad = fields.Char("Localidad")
     emision = fields.Char("Emisión")
     vigencia = fields.Char("Vigencia")
+    primerApellidoCedula = fields.Char("Primer Apellido Cedula")
+    segundoApellidoCedula = fields.Char("Segundo Apellido Cedula")
+    nombresCedula = fields.Char("Nombres Cedula")
+    institucion = fields.Char("Institución")
     
     def comprobar(self):
         for record in self:

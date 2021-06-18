@@ -41,6 +41,10 @@
                   <field name="localidad" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
                   <field name="emision" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
                   <field name="vigencia" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="primerApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="segundoApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="nombresCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="institucion" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
                 </group>
             </sheet>
             
