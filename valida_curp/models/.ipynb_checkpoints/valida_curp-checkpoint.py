@@ -54,7 +54,9 @@ class ValidaCurp(models.Model):
             record6.write({'state': 'guardar'})
             
     def guardaContacto(self):
-        
+        for record7 in self:
+            record7.response3 = "Aqui guarda el contacto"
+            
             
        
             
