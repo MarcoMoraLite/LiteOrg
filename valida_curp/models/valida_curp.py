@@ -16,8 +16,15 @@ class ValidaCurp(models.Model):
     response2 = fields.Text("RESPUESTA INE")
     ine_foto = ine = fields.Binary("Foto")
     response3 = fields.Text("RESPUESTA FOTO")
-    name = fields.Char("Nombre")
-    apellido = fields.Char("Apellido")
+    curp = fields.Char("Curp")
+    fechaNacimiento = fields.Char("Fecha de Nacimiento")
+    primerApellido = fields.Char("Primer Apellido")
+    segundoApellido = fields.Char("Segundo Apellido")
+    nombres = fields.Char("Nombres")
+    sexo = fields.Char("Sexo")
+    calle = fields.Char("Calle")
+    colonia = fields.Char("Colonia")
+    ciudad = fields.Char("Ciudad")
     
     def comprobar(self):
         for record in self:
@@ -36,12 +43,10 @@ class ValidaCurp(models.Model):
             
     def confirmarCed(self):
         for record3 in self:
-            record3.name = "Marco"
             record3.write({'state': 'foto'})
     
     def confirmarIne(self):
         for record4 in self:
-            record4.apellido = "Mora"
             record4.write({'state': 'cedula'})
     
     def selfie(self):

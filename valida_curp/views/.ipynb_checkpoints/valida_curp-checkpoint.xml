@@ -23,8 +23,6 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
                   <field name="cedula" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
-                  <field name="name" colspam="2"/>
-                  <field name="apellido" colspam="2"/>
                 </group>
             </sheet>
             
