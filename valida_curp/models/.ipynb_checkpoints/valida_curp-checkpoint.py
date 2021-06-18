@@ -25,6 +25,15 @@ class ValidaCurp(models.Model):
     calle = fields.Char("Calle")
     colonia = fields.Char("Colonia")
     ciudad = fields.Char("Ciudad")
+    subTipo = fields.Char("Sub Tipo")
+    claveElector = fields.Char("Clave Elector")
+    registro = fields.Char("Registro")
+    estado = fields.Char("Estado")
+    municipio = fields.Char("Municipio")
+    seccion = fields.Char("Sección")
+    localidad = fields.Char("Localidad")
+    emision = fields.Char("Emisión")
+    vigencia = fields.Char("vigencia")
     
     def comprobar(self):
         for record in self:
