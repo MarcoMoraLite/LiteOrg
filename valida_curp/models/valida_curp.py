@@ -38,6 +38,8 @@ class ValidaCurp(models.Model):
     segundoApellidoCedula = fields.Char("Segundo Apellido Cedula")
     nombresCedula = fields.Char("Nombres Cedula")
     institucion = fields.Char("Institución")
+    tipo_cedula = fields.Char("Tipo")
+    titulo = fields.Char("titulo")
     
     def comprobar(self):
         for record in self:
@@ -46,6 +48,15 @@ class ValidaCurp(models.Model):
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             record.response = r.content
+            json_cedula = r2.json()
+            b=json.dumps(json_cedula)
+            cedu=json.loads(b)
+            record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
+            record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
+            record.nombresCedula = cedu['cedulas'][0]['nombres']
+            record.institucion = cedu['cedulas'][0]['institucion']
+            record.tipo_cedula = cedu['cedulas'][0]['tipo']
+            record.titulo = cedu['cedulas'][0]['titulo']
             
             
     def comprobar2(self):
@@ -72,6 +83,7 @@ class ValidaCurp(models.Model):
             record2.municipio = res['municipio']
             record2.seccion = res['seccion']
             record2.localidad = res['localidad']
+            record2.emision = res['emision']
             record2.vigencia = res['vigencia']
             
     def confirmarCed(self):
