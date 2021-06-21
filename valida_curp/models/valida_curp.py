@@ -57,6 +57,22 @@ class ValidaCurp(models.Model):
             a=json.dumps(json_response)
             res=json.loads(a)
             record2.curp = res['curp']
+            record2.fechaNacimiento = res['fechaNacimiento']
+            record2.primerApellido = res['primerApellido']
+            record2.segundoApellido = res['segundoApellido']
+            record2.nombres = res['nombres']
+            record2.sexo = res['sexo']
+            record2.calle = res['calle']
+            record2.colonia = res['colonia']
+            record2.ciudad = res['ciudad']
+            record2.subTipo = res['subTipo']
+            record2.claveElector = res['claveElector']
+            record2.registro = res['registro']
+            record2.estado = res['estado']
+            record2.municipio = res['municipio']
+            record2.seccion = res['seccion']
+            record2.localidad = res['localidad']
+            record2.vigencia = res['vigencia']
             
     def confirmarCed(self):
         for record3 in self:
