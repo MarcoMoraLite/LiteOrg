@@ -53,7 +53,10 @@ class ValidaCurp(models.Model):
             header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine})
             record2.response2 = r2.content
-            record2.curp = r2['curp']
+            json_response = r2.json()
+            a=json.dumps(json_response)
+            res=json.loads(a)
+            record2.curp = res['curp']
             
     def confirmarCed(self):
         for record3 in self:
