@@ -98,7 +98,7 @@ class ValidaCurp(models.Model):
         for record5 in self:
             header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
-            record5.response2 = r3.content
+            record5.response3 = r3.content
     
     def confirmarSelfie(self):
         for record6 in self:
