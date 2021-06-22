@@ -48,7 +48,7 @@ class ValidaCurp(models.Model):
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
             record.response = r.content
-            json_cedula = r2.json()
+            json_cedula = r.json()
             b=json.dumps(json_cedula)
             cedu=json.loads(b)
             record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
