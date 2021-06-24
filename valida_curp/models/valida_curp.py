@@ -109,7 +109,7 @@ class ValidaCurp(models.Model):
             status = res3['estatus']
             if(status=='OK'):
                 men = res3['mensaje']
-                por = res3['Similitud']
+                por = res3['similitud']
                 mensaje = men + ' ' + por
                 record5.response3 = mensaje
             elif(status == 'ERROR'):
