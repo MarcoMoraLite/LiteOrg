@@ -60,7 +60,7 @@ class ValidaCurp(models.Model):
                 record.institucion = cedu['cedulas'][0]['institucion']
                 record.tipo_cedula = cedu['cedulas'][0]['tipo']
                 record.titulo = cedu['cedulas'][0]['titulo']
-                if((record.primerApellidoCedula == record.primerApellido) && (record.segundoApellidoCedula == record.segundoApellido) && (record.nombresCedula == record.nombres):
+                if((record.primerApellidoCedula == record.primerApellido) && (record.segundoApellidoCedula == record.segundoApellido) && (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
