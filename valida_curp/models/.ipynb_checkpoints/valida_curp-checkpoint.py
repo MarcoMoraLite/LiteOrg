@@ -4,6 +4,7 @@ from odoo import models, fields, api
 import requests
 import json
 import base64, os
+import str
 
 class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
@@ -110,7 +111,7 @@ class ValidaCurp(models.Model):
             if(status=='OK'):
                 men = res3['mensaje']
                 por = res3['similitud']
-                mensaje = men + ' ' + por
+                mensaje = str(men) + str(' ') + str(por)
                 record5.response3 = mensaje
             elif(status == 'ERROR'):
                 record5.response3 = res3['mensaje']
