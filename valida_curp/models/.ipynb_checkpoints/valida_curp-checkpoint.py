@@ -11,7 +11,7 @@ class ValidaCurp(models.Model):
     
     state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('guardar','GUARDAR')],'estatus', default='ine')
     cedula = fields.Char("CEDULA")
-    response = fields.Text("RESPUESTA")
+    response = fields.Char("RESPUESTA")
     ine = fields.Binary("INE parte delantera")
     response2 = fields.Text("RESPUESTA INE")
     ine_foto = ine = fields.Binary("Foto")
@@ -40,6 +40,7 @@ class ValidaCurp(models.Model):
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
     titulo = fields.Char("Titulo")
+    estatus_cedula = fields.Char("Estatus")
     
     def comprobar(self):
         for record in self:
@@ -60,6 +61,12 @@ class ValidaCurp(models.Model):
                 record.institucion = cedu['cedulas'][0]['institucion']
                 record.tipo_cedula = cedu['cedulas'][0]['tipo']
                 record.titulo = cedu['cedulas'][0]['titulo']
+                titulo_lower = record.titulo.lower()
+                if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
+                    record.estatus_cedula = "Cédula relacionada"
+                else:
+                    record.estatus_cedula = "Cédula no relacionada"
+                    
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:

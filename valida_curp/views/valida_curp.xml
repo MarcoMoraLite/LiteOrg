@@ -47,6 +47,7 @@
                   <field name="institucion" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2"/>
                   <field name="tipo_cedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2"/>
                   <field name="titulo" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2"/>
+                  <field name="estatus_cedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2"/>
                 </group>
             </sheet>
             
