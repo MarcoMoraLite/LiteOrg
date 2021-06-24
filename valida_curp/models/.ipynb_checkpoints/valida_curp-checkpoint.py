@@ -39,7 +39,7 @@ class ValidaCurp(models.Model):
     nombresCedula = fields.Char("Nombres Cedula")
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
-    titulo = fields.Char("titulo")
+    titulo = fields.Char("Titulo")
     
     def comprobar(self):
         for record in self:

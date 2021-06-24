@@ -39,7 +39,7 @@ class ValidaCurp(models.Model):
     nombresCedula = fields.Char("Nombres Cedula")
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
-    titulo = fields.Char("titulo")
+    titulo = fields.Char("Titulo")
     
     def comprobar(self):
         for record in self:
@@ -98,7 +98,10 @@ class ValidaCurp(models.Model):
         for record5 in self:
             header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
-            record5.response3 = r3.content
+            json_r3 = r3.json()
+            c=json.dumps(json_r3)
+            res3=json.loads(c)
+            record5.response3 = res3['mensaje']
     
     def confirmarSelfie(self):
         for record6 in self:
