@@ -10,12 +10,12 @@ class ValidaCurp(models.Model):
     _description = 'valida_curp.valida_curp'
     
     state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('guardar','GUARDAR')],'estatus', default='ine')
-    cedula = fields.Char("CEDULA")
-    response = fields.Char("RESPUESTA")
+    cedula = fields.Char("Cédula")
+    response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
-    response2 = fields.Text("RESPUESTA INE")
+    response2 = fields.Text("Respuesta INE")
     ine_foto = ine = fields.Binary("Foto")
-    response3 = fields.Text("RESPUESTA FOTO")
+    response3 = fields.Text("Respuesta foto")
     curp = fields.Char("Curp")
     fechaNacimiento = fields.Char("Fecha de Nacimiento")
     primerApellido = fields.Char("Primer Apellido")
