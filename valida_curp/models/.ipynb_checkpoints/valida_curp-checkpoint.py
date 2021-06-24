@@ -47,44 +47,50 @@ class ValidaCurp(models.Model):
             header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             payload = {"numeroCedula":cedula_usuario}
             r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
-            record.response = r.content
             json_cedula = r.json()
             b=json.dumps(json_cedula)
             cedu=json.loads(b)
-            record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
-            record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
-            record.nombresCedula = cedu['cedulas'][0]['nombres']
-            record.institucion = cedu['cedulas'][0]['institucion']
-            record.tipo_cedula = cedu['cedulas'][0]['tipo']
-            record.titulo = cedu['cedulas'][0]['titulo']
-            
+            status = cedu['estatus']
+            if(status == 'ERROR'):
+                record.response = cedu['mensaje']
+            else:
+                record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
+                record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
+                record.nombresCedula = cedu['cedulas'][0]['nombres']
+                record.institucion = cedu['cedulas'][0]['institucion']
+                record.tipo_cedula = cedu['cedulas'][0]['tipo']
+                record.titulo = cedu['cedulas'][0]['titulo']
             
     def comprobar2(self):
         for record2 in self:
             header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine})
-            record2.response2 = r2.content
             json_response = r2.json()
             a=json.dumps(json_response)
             res=json.loads(a)
-            record2.curp = res['curp']
-            record2.fechaNacimiento = res['fechaNacimiento']
-            record2.primerApellido = res['primerApellido']
-            record2.segundoApellido = res['segundoApellido']
-            record2.nombres = res['nombres']
-            record2.sexo = res['sexo']
-            record2.calle = res['calle']
-            record2.colonia = res['colonia']
-            record2.ciudad = res['ciudad']
-            record2.subTipo = res['subTipo']
-            record2.claveElector = res['claveElector']
-            record2.registro = res['registro']
-            record2.estado = res['estado']
-            record2.municipio = res['municipio']
-            record2.seccion = res['seccion']
-            record2.localidad = res['localidad']
-            record2.emision = res['emision']
-            record2.vigencia = res['vigencia']
+            status = res['estatus']
+            if(status == 'ERROR'):
+                record2.response2 = res['mensaje']
+            else:
+                record2.curp = res['curp']
+                record2.fechaNacimiento = res['fechaNacimiento']
+                record2.primerApellido = res['primerApellido']
+                record2.segundoApellido = res['segundoApellido']
+                record2.nombres = res['nombres']
+                record2.sexo = res['sexo']
+                record2.calle = res['calle']
+                record2.colonia = res['colonia']
+                record2.ciudad = res['ciudad']
+                record2.subTipo = res['subTipo']
+                record2.claveElector = res['claveElector']
+                record2.registro = res['registro']
+                record2.estado = res['estado']
+                record2.municipio = res['municipio']
+                record2.seccion = res['seccion']
+                record2.localidad = res['localidad']
+                record2.emision = res['emision']
+                record2.vigencia = res['vigencia']
+                record2.response2 = 'OK'
             
     def confirmarCed(self):
         for record3 in self:
@@ -98,7 +104,17 @@ class ValidaCurp(models.Model):
         for record5 in self:
             header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
-            record5.response3 = r3.content
+            json_r3 = r3.json()
+            c=json.dumps(json_r3)
+            res3=json.loads(c)
+            status = res3['estatus']
+            if(status=='OK'):
+                men = res3['mensaje']
+                por = res3['Similitud']
+                mensaje = men + ' ' + por
+                record5.response3 = mensaje
+            elif(status == 'ERROR'):
+                record5.response3 = res3['mensaje']
     
     def confirmarSelfie(self):
         for record6 in self:
