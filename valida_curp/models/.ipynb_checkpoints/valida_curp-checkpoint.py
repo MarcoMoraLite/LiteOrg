@@ -68,7 +68,9 @@ class ValidaCurp(models.Model):
             json_response = r2.json()
             a=json.dumps(json_response)
             res=json.loads(a)
-            if res['estatus'] is None:
+            if "estatus" in json_response:
+                record2.response2 = res['mensaje']
+            else:
                 record2.curp = res['curp']
                 record2.fechaNacimiento = res['fechaNacimiento']
                 record2.primerApellido = res['primerApellido']
@@ -88,8 +90,6 @@ class ValidaCurp(models.Model):
                 record2.emision = res['emision']
                 record2.vigencia = res['vigencia']
                 record2.response2 = 'OK'
-            else:
-                record2.response2 = res['mensaje']
             
     def confirmarCed(self):
         for record3 in self:
