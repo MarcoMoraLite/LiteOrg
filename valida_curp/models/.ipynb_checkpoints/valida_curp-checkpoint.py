@@ -4,7 +4,6 @@ from odoo import models, fields, api
 import requests
 import json
 import base64, os
-import str
 
 class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
