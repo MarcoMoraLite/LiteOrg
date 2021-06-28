@@ -43,7 +43,7 @@ odoo.define('web_image_webcam.webcam_widget', function(require) {
 
             self.$el.find('.o_form_binary_file_web_cam').removeClass('col-md-offset-5');
 
-/*            new Model('ir.config_parameter').call('get_param', ['web_widget_image_webcam.flash_fallback_mode', false]).
+            new Model('ir.config_parameter').call('get_param', ['web_widget_image_webcam.flash_fallback_mode', false]).
             then(function(default_flash_fallback_mode) {
                 if (default_flash_fallback_mode == 1) {
                     Webcam.set({
@@ -54,7 +54,7 @@ odoo.define('web_image_webcam.webcam_widget', function(require) {
                         force_flash: true,
                     });
                 }
-            });*/
+            });
 
             self.$el.find('.o_form_binary_file_web_cam').off().on('click', function(){
                 // Init Webcam
