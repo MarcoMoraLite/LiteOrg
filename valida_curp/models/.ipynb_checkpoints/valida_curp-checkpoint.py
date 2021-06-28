@@ -41,6 +41,7 @@ class ValidaCurp(models.Model):
     tipo_cedula = fields.Char("Tipo")
     titulo = fields.Char("Titulo")
     estatus_cedula = fields.Char("Estatus")
+    imagen_camara = fields.Binary("Tomar foto")
     
     def comprobar(self):
         for record in self:
