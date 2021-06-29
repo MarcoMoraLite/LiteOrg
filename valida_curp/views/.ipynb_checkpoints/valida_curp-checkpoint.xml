@@ -17,7 +17,6 @@
             </header>
             <sheet>
                 <group col="4">
-                  <field name="imagen_camara" widget="image" />
                   <field name="ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
                   <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
                   <field name="cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
