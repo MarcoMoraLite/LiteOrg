@@ -41,6 +41,7 @@ class ValidaCurp(models.Model):
     tipo_cedula = fields.Char("Tipo")
     titulo = fields.Char("Titulo")
     estatus_cedula = fields.Char("Estatus")
+    codigo_postal = fields.Char("Codigo Postal")
     
     def comprobar(self):
         for record in self:
@@ -101,6 +102,8 @@ class ValidaCurp(models.Model):
                 record2.emision = res['emision']
                 record2.vigencia = res['vigencia']
                 record2.response2 = 'OK'
+                longitud = len(record2.colonia)
+                record2.codigo_postal = record2.colonia[longitud-5:]
             
     def confirmarCed(self):
         for record3 in self:

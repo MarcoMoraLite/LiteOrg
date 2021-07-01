@@ -31,6 +31,7 @@
                   <field name="sexo" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="calle" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="colonia" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
+                  <field name="codigo_postal" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="ciudad" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="subTipo" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="claveElector" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
