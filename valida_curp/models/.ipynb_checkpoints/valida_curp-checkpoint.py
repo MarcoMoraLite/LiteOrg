@@ -42,6 +42,10 @@ class ValidaCurp(models.Model):
     titulo = fields.Char("Titulo")
     estatus_cedula = fields.Char("Estatus")
     codigo_postal = fields.Char("Codigo Postal")
+    id_contacto = fields.Char("ID contacto",compute="getid")
+    
+    def getid(self):
+        return self.env.user.id.partner_id
     
     def comprobar(self):
         for record in self:
