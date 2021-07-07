@@ -45,7 +45,7 @@ class ValidaCurp(models.Model):
     id_contacto = fields.Char("ID contacto",compute="getid")
     
     def getid(self):
-        return self.env.user.id.partner_id
+        return self.env.user.partner_id
     
     def comprobar(self):
         for record in self:
