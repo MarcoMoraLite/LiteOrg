@@ -42,12 +42,7 @@ class ValidaCurp(models.Model):
     titulo = fields.Char("Titulo")
     estatus_cedula = fields.Char("Estatus")
     codigo_postal = fields.Char("Codigo Postal")
-    
-    @api.model
-    def _get_id(self):
-        return self.env.uid
-    
-    id_contacto = fields.Many2one("ID contacto",'res.users','Current User',default=_get_id)
+    id_contacto = fields.Many2one('res.users','Current User', default=lambda self: self.env.user)
     
     def comprobar(self):
         for record in self:
