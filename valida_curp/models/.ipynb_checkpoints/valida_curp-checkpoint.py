@@ -45,7 +45,7 @@ class ValidaCurp(models.Model):
     
     @api.model
     def _get_id(self):
-        return self.env.user.id
+        return self.env.user.partner_id
     
     id_contacto = fields.Many2one("ID contacto",default=_get_id)
     
