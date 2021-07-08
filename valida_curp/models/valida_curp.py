@@ -47,7 +47,7 @@ class ValidaCurp(models.Model):
     def _get_id(self):
         return self.env.user.partner_id
     
-    id_contacto = fields.Many2one("ID contacto",default=_get_id)
+    id_contacto = fields.Text("ID contacto",default=_get_id)
     
     def comprobar(self):
         for record in self:
