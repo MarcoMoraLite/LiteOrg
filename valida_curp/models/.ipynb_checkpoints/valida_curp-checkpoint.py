@@ -56,11 +56,6 @@ class ValidaCurp(models.Model):
             status = cedu['estatus']
             if(status == 'ERROR'):
                 record.response = cedu['mensaje']
-                res = {}
-                res = {'warning': {
-                'title': _('Warning'),
-                'message': _('Prueba')}}
-                return res
             
             else:
                 record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
@@ -89,6 +84,7 @@ class ValidaCurp(models.Model):
             res=json.loads(a)
             if "estatus" in json_response:
                 record2.response2 = res['mensaje']
+                raise UserError("Prueba xd")
             else:
                 record2.curp = res['curp']
                 record2.fechaNacimiento = res['fechaNacimiento']
