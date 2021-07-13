@@ -18,12 +18,13 @@
             <sheet>
                 <group col="4">
                   <field name="ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
-                  <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"/>
+                  <field name="response2" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2"
+                         readonly="1"/>
                   <field name="cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
-                  <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2"/>
+                  <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="ine_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
-                  <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
-                  <field name="curp" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
+                  <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
+                  <field name="curp" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
                   <field name="fechaNacimiento" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="primerApellido" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
                   <field name="segundoApellido" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2"/>
