@@ -56,6 +56,12 @@ class ValidaCurp(models.Model):
             status = cedu['estatus']
             if(status == 'ERROR'):
                 record.response = cedu['mensaje']
+                res = {}
+                res = {'warning': {
+                'title': _('Warning'),
+                'message': _('Prueba')}}
+                return res
+            
             else:
                 record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
                 record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
