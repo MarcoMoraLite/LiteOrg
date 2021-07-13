@@ -57,6 +57,7 @@ class ValidaCurp(models.Model):
             status = cedu['estatus']
             if(status == 'ERROR'):
                 record.response = cedu['mensaje']
+                raise UserError("El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
             
             else:
                 record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
@@ -70,11 +71,13 @@ class ValidaCurp(models.Model):
                     record.estatus_cedula = "Cédula relacionada"
                 else:
                     record.estatus_cedula = "Cédula no relacionada"
+                    raise UserError("La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
                     
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
+                   raise UserError("Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE")
                    
     def comprobar2(self):
         for record2 in self:
