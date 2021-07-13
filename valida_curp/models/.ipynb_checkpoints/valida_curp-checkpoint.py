@@ -85,7 +85,7 @@ class ValidaCurp(models.Model):
             res=json.loads(a)
             if "estatus" in json_response:
                 record2.response2 = res['mensaje']
-                raise UserError("Prueba xd")
+                raise UserError("Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx")
             else:
                 record2.curp = res['curp']
                 record2.fechaNacimiento = res['fechaNacimiento']
@@ -115,7 +115,10 @@ class ValidaCurp(models.Model):
     
     def confirmarIne(self):
         for record4 in self:
-            record4.write({'state': 'cedula'})
+            if(record4.response2 == "OK"):
+                record4.write({'state': 'cedula'})
+            else:
+                 raise UserError("Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx")
     
     def selfie(self):
         for record5 in self:
