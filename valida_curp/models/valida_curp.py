@@ -126,6 +126,7 @@ class ValidaCurp(models.Model):
     
     def selfie(self):
         for record5 in self:
+            record5.intentos = 3;
             header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
             json_r3 = r3.json()
