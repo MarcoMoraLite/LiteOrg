@@ -77,7 +77,7 @@ class ValidaCurp(models.Model):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-                   raise UserError("Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE")
+                   raise UserError("Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
                    
     def comprobar2(self):
         for record2 in self:
