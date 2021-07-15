@@ -98,17 +98,17 @@ class ValidaCurp(models.Model):
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
-                   record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-                   notification = {
-                       'type': 'ir.actions.client',
-                       'tag': 'display_notification',
-                       'params': {
-                           'title': ('Warning!'),
-                           'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                           'type': 'warning',
-                           'sticky': True,
-                       }
-                   }
+                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
+                    notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': ('Warning!'),
+                            'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'type': 'warning',
+                            'sticky': True,
+                        }
+                    }
                     return notification
                    
     def comprobar2(self):
