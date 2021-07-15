@@ -159,7 +159,7 @@ class ValidaCurp(models.Model):
             'params': {
                 'title': 'Warning!',
                 'message': 'You cannot do this action now',
-                'type': 'warning'
+                'type': 'warning',
                 'sticky': True,
             }
         }
