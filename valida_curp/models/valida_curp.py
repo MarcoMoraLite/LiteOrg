@@ -82,34 +82,12 @@ class ValidaCurp(models.Model):
                     record.estatus_cedula = "Cédula relacionada"
                 else:
                     record.estatus_cedula = "Cédula no relacionada"
-                    notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Warning!',
-                        'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-                    return notification
-                    
                     
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
                     record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-                    notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Warning!',
-                            'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                            'type': 'info',
-                            'sticky': False,
-                        }
-                    }
-                    return notification
+    
                    
     def comprobar2(self):
         for record2 in self:
@@ -156,7 +134,45 @@ class ValidaCurp(models.Model):
             
     def confirmarCed(self):
         for record3 in self:
-            record3.write({'state': 'foto'})
+            if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
+                record3.write({'state': 'foto'})
+            elif(record3.estatus_cedula == "Cédula no relacionada"):
+                notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Warning!',
+                        'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                        'type': 'info',
+                        'sticky': False,
+                        }
+                    }
+                return notification
+            elif(record3.response == "Cédula encontrada pero no existe coincidencia en nombre"):
+                notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': 'Warning!',
+                            'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'type': 'info',
+                            'sticky': False,
+                        }
+                    }
+                return notification
+            else:
+                notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': 'Warning!',
+                            'message': 'Debes de ingresar tu cédula antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'type': 'info',
+                            'sticky': False,
+                        }
+                    }
+                return notification
+                
     
     def confirmarIne(self):
         for record4 in self:
