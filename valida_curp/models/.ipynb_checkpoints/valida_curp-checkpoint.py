@@ -58,7 +58,17 @@ class ValidaCurp(models.Model):
             status = cedu['estatus']
             if(status == 'ERROR'):
                 record.response = cedu['mensaje']
-                raise UserError("El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
+                notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': ('Warning!'),
+                        'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                        'type': 'warning',
+                        'sticky': True,
+                        }
+                    }
+                return notification
             
             else:
                 record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
@@ -72,14 +82,34 @@ class ValidaCurp(models.Model):
                     record.estatus_cedula = "Cédula relacionada"
                 else:
                     record.estatus_cedula = "Cédula no relacionada"
-                    self.create_notification()
-                    #raise UserError("La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
+                    notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': ('Warning!'),
+                        'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                        'type': 'warning',
+                        'sticky': True,
+                        }
+                    }
+                    return notification
+                    
                     
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
                 else:
                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-                   raise UserError("Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
+                   notification = {
+                       'type': 'ir.actions.client',
+                       'tag': 'display_notification',
+                       'params': {
+                           'title': ('Warning!'),
+                           'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                           'type': 'warning',
+                           'sticky': True,
+                       }
+                   }
+                    return notification
                    
     def comprobar2(self):
         for record2 in self:
@@ -90,7 +120,17 @@ class ValidaCurp(models.Model):
             res=json.loads(a)
             if "estatus" in json_response:
                 record2.response2 = res['mensaje']
-                raise UserError("Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx")
+                notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': ('Warning!'),
+                        'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
+                        'type': 'warning',
+                        'sticky': True,
+                        }
+                    }
+                return notification
             else:
                 record2.curp = res['curp']
                 record2.fechaNacimiento = res['fechaNacimiento']
@@ -128,14 +168,12 @@ class ValidaCurp(models.Model):
                     'tag': 'display_notification',
                     'params': {
                         'title': ('Warning!'),
-                        'message': 'You cannot do this action now',
+                        'message': 'Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
                         'type': 'warning',
                         'sticky': True,
                         }
                     }
                 return notification
-                
-                #raise UserError("Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx")
     
     def selfie(self):
         for record5 in self:
@@ -162,19 +200,7 @@ class ValidaCurp(models.Model):
         for record7 in self:
             record7.response3 = "Aqui guarda el contacto"
             
-            
-    def create_notification(self):
-        notification = {
-            'type': 'ir.actions.client',
-            'tag': 'display_notification',
-            'params': {
-                'title': ('Warning!'),
-                'message': 'You cannot do this action now',
-                'type': 'warning',
-                'sticky': True,
-            }
-        }
-        return notification
+    
             
             
        
