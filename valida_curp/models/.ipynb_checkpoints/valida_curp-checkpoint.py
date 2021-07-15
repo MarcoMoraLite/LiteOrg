@@ -64,7 +64,7 @@ class ValidaCurp(models.Model):
                     'params': {
                         'title': ('Warning!'),
                         'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'warning',
+                        'type': 'info',
                         'sticky': True,
                         }
                     }
@@ -88,7 +88,7 @@ class ValidaCurp(models.Model):
                     'params': {
                         'title': ('Warning!'),
                         'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'warning',
+                        'type': 'info',
                         'sticky': True,
                         }
                     }
@@ -105,7 +105,7 @@ class ValidaCurp(models.Model):
                         'params': {
                             'title': ('Warning!'),
                             'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                            'type': 'warning',
+                            'type': 'info',
                             'sticky': True,
                         }
                     }
@@ -126,7 +126,7 @@ class ValidaCurp(models.Model):
                     'params': {
                         'title': ('Warning!'),
                         'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'warning',
+                        'type': 'info',
                         'sticky': True,
                         }
                     }
@@ -169,11 +169,11 @@ class ValidaCurp(models.Model):
                     'params': {
                         'title': ('Warning!'),
                         'message': 'Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'warning',
+                        'type': 'info',
                         'sticky': True,
                         }
                     }
-                
+                return notification
     
     def selfie(self):
         for record5 in self:
