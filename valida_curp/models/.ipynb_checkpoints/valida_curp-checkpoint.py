@@ -72,7 +72,7 @@ class ValidaCurp(models.Model):
                     record.estatus_cedula = "Cédula relacionada"
                 else:
                     record.estatus_cedula = "Cédula no relacionada"
-                    create_notification
+                    self.create_notification
                     #raise UserError("La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
                     
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
