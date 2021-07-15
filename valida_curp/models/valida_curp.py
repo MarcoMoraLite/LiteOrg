@@ -173,7 +173,7 @@ class ValidaCurp(models.Model):
                         'sticky': True,
                         }
                     }
-                return notification
+                
     
     def selfie(self):
         for record5 in self:
