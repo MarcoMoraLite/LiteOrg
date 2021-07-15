@@ -72,7 +72,8 @@ class ValidaCurp(models.Model):
                     record.estatus_cedula = "Cédula relacionada"
                 else:
                     record.estatus_cedula = "Cédula no relacionada"
-                    raise UserError("La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
+                    create_notification
+                    #raise UserError("La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx")
                     
                 if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                    record.response = "Cédula encontrada y coincidencia en nombre"
@@ -148,6 +149,19 @@ class ValidaCurp(models.Model):
     def guardaContacto(self):
         for record7 in self:
             record7.response3 = "Aqui guarda el contacto"
+            
+            
+    def create_notification(self):
+        message = {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': _('Warning!'),
+                'message': 'You cannot do this action now',
+                'sticky': False,
+            }
+        }
+        return message
             
             
        
