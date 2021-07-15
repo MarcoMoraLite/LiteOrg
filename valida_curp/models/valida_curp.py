@@ -123,7 +123,7 @@ class ValidaCurp(models.Model):
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
             else:
-                record4.create_notification()
+                self.create_notification()
                 #raise UserError("Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx")
     
     def selfie(self):
