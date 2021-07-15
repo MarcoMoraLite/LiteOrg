@@ -157,7 +157,7 @@ class ValidaCurp(models.Model):
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'title': _('Warning!'),
+                'title': 'Warning!',
                 'message': 'You cannot do this action now',
                 'sticky': False,
             }
