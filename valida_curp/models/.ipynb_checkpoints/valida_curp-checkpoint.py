@@ -154,7 +154,7 @@ class ValidaCurp(models.Model):
                         'tag': 'display_notification',
                         'params': {
                             'title': 'Warning!',
-                            'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'message': 'Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
                             'type': 'info',
                             'sticky': False,
                         }
