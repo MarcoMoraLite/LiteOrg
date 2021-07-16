@@ -48,7 +48,6 @@ class ValidaCurp(models.Model):
     
     def comprobar(self):
         for record in self:
-            record.intentos=3
             cedula_usuario = record.cedula
             header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
             payload = {"numeroCedula":cedula_usuario}
@@ -135,6 +134,7 @@ class ValidaCurp(models.Model):
             
     def confirmarCed(self):
         for record3 in self:
+            record.intentos=3
             record3.write({'state': 'foto'})
             '''if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 record3.write({'state': 'foto'})
