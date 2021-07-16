@@ -257,7 +257,7 @@ class ValidaCurp(models.Model):
                         'sticky': False,
                         }
                     }
-                return notification
+            return notification
             
     
             
