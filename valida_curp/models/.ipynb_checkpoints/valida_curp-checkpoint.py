@@ -44,7 +44,7 @@ class ValidaCurp(models.Model):
     estatus_cedula = fields.Char("Estatus")
     codigo_postal = fields.Char("Codigo Postal")
     intentos = fields.Integer("Intentos")
-    id_contacto = fields.Many2one('res.users','Current User', default=lambda self: self.env.user)
+    id_contacto = fields.Many2one("Current User")
     
     def comprobar(self):
         for record in self:
@@ -136,6 +136,11 @@ class ValidaCurp(models.Model):
         for record3 in self:
             record3.intentos=3
             record3.write({'state': 'foto'})
+            nuevo_contacto = self.env['res.users'].create( {
+                "name": record3.nombres
+            })
+            #record3.id_contacto = nuevo_contacto.id
+                
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 record3.write({'state': 'foto'})
             elif(record3.estatus_cedula == "Cédula no relacionada"):
