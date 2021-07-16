@@ -64,11 +64,12 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="ine"/>
-            <field name="response2"/>
-            <field name="cedula"/>
-            <field name="response"/>
             <field name="state"/>
+            <field name="primerApellido"/>
+            <field name="segundoApellido"/>
+            <field name="nombres"/>
+            <field name="titulo"/>
+            <field name="estatus_cedula"/>
         </tree>
       </field>
     </record>
