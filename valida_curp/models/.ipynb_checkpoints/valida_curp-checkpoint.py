@@ -135,7 +135,7 @@ class ValidaCurp(models.Model):
             
     def confirmarCed(self):
         for record3 in self:
-        record3.write({'state': 'foto'})
+            record3.write({'state': 'foto'})
             ''''if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 record3.write({'state': 'foto'})
             elif(record3.estatus_cedula == "Cédula no relacionada"):
