@@ -247,7 +247,17 @@ class ValidaCurp(models.Model):
                 
     def guardaContacto(self):
         for record7 in self:
-            record7.response3 = "Aqui guarda el contacto"
+            notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Warning!',
+                        'message': 'Contacto guardado, da clic en el botón de "Guardar" para terminar con el proceso. Cualquier pregunta o comentario, favor de contactar a soporte.comercial@zele.mx',
+                        'type': 'info',
+                        'sticky': False,
+                        }
+                    }
+                return notification
             
     
             
