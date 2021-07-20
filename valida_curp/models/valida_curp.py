@@ -92,8 +92,7 @@ class ValidaCurp(models.Model):
     def comprobar2(self):
         for record2 in self:
             header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-            payload2 = {"id":record2.ine}
-            r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,data=json.dumps(payload2))
+            r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine})
             json_response = r2.json()
             a=json.dumps(json_response)
             res=json.loads(a)
