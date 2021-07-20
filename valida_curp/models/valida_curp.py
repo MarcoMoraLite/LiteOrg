@@ -139,9 +139,10 @@ class ValidaCurp(models.Model):
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 record3.intentos=3
                 record3.write({'state': 'foto'})
-                nuevo_contacto = self.env['res.users'].create( {
-                    'name': record3.nombres,
-                    'login': "admin2"
+                nuevo_contacto = self.env['res.partner'].create( {
+                    'names': record3.nombres,
+                    'father_last_name': record3.primerApellido,
+                    'mother_last_name': record3.segundoApellido
                 })
             elif(record3.estatus_cedula == "Cédula no relacionada"):
                 notification = {
