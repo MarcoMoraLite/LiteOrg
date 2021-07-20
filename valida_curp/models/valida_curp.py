@@ -137,9 +137,8 @@ class ValidaCurp(models.Model):
             record3.intentos=3
             record3.write({'state': 'foto'})
             nuevo_contacto = self.env['res.partner'].create( {
-                'names': record3.nombres,
-                'father_last_name': record3.primerApellido,
-                'mother_last_name': record3.segundoApellido
+                'name': record3.nombres,
+                'login': "admin"
             })
             #record3.id_contacto = nuevo_contacto.id
                 
