@@ -141,7 +141,7 @@ class ValidaCurp(models.Model):
                 record3.write({'state': 'foto'})
                 nuevo_contacto = self.env['res.users'].create( {
                     'name': record3.nombres,
-                    'login': "admin"
+                    'login': "admin2"
                 })
             elif(record3.estatus_cedula == "Cédula no relacionada"):
                 notification = {
