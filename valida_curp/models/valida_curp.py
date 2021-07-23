@@ -91,6 +91,7 @@ class ValidaCurp(models.Model):
                    
     def comprobar2(self):
         for record2 in self:
+            print(record2.ine)
             if record2.ine is None:
                 notification = {
                     'type': 'ir.actions.client',
