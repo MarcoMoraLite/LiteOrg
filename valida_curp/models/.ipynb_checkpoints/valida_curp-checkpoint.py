@@ -91,46 +91,59 @@ class ValidaCurp(models.Model):
                    
     def comprobar2(self):
         for record2 in self:
-            header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-            r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine.decode('utf-8')})
-            json_response = r2.json()
-            a=json.dumps(json_response)
-            res=json.loads(a)
-            if "estatus" in json_response:
-                record2.response2 = res['mensaje']
+            if record2.ine is None:
                 notification = {
                     'type': 'ir.actions.client',
                     'tag': 'display_notification',
                     'params': {
                         'title': ('Atención!'),
-                        'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
+                        'message': 'Antes de validar debes subir tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
                         'type': 'info',
                         'sticky': True,
                         }
                     }
                 return notification
             else:
-                record2.curp = res['curp']
-                record2.fechaNacimiento = res['fechaNacimiento']
-                record2.primerApellido = res['primerApellido']
-                record2.segundoApellido = res['segundoApellido']
-                record2.nombres = res['nombres']
-                record2.sexo = res['sexo']
-                record2.calle = res['calle']
-                record2.colonia = res['colonia']
-                record2.ciudad = res['ciudad']
-                record2.subTipo = res['subTipo']
-                record2.claveElector = res['claveElector']
-                record2.registro = res['registro']
-                record2.estado = res['estado']
-                record2.municipio = res['municipio']
-                record2.seccion = res['seccion']
-                record2.localidad = res['localidad']
-                record2.emision = res['emision']
-                record2.vigencia = res['vigencia']
-                record2.response2 = 'OK'
-                longitud = len(record2.colonia)
-                record2.codigo_postal = record2.colonia[longitud-5:]
+                header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine.decode('utf-8')})
+                json_response = r2.json()
+                a=json.dumps(json_response)
+                res=json.loads(a)
+                if "estatus" in json_response:
+                    record2.response2 = res['mensaje']
+                    notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': ('Atención!'),
+                            'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
+                            'type': 'info',
+                            'sticky': True,
+                            }
+                        }
+                    return notification
+                else:
+                    record2.curp = res['curp']
+                    record2.fechaNacimiento = res['fechaNacimiento']
+                    record2.primerApellido = res['primerApellido']
+                    record2.segundoApellido = res['segundoApellido']
+                    record2.nombres = res['nombres']
+                    record2.sexo = res['sexo']
+                    record2.calle = res['calle']
+                    record2.colonia = res['colonia']
+                    record2.ciudad = res['ciudad']
+                    record2.subTipo = res['subTipo']
+                    record2.claveElector = res['claveElector']
+                    record2.registro = res['registro']
+                    record2.estado = res['estado']
+                    record2.municipio = res['municipio']
+                    record2.seccion = res['seccion']
+                    record2.localidad = res['localidad']
+                    record2.emision = res['emision']
+                    record2.vigencia = res['vigencia']
+                    record2.response2 = 'OK'
+                    longitud = len(record2.colonia)
+                    record2.codigo_postal = record2.colonia[longitud-5:]
             
     def confirmarCed(self):
         for record3 in self:
@@ -138,7 +151,7 @@ class ValidaCurp(models.Model):
                 
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 record3.intentos=3
-                nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(record3.segundoApellido)
+                nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + + str(' ') + str(record3.segundoApellido)
                 record3.write({'state': 'foto'})
                 nuevo_contacto = self.env['res.partner'].create( {
                     'name': nombre_completo,
@@ -147,7 +160,10 @@ class ValidaCurp(models.Model):
                     'mother_last_name': record3.segundoApellido,
                     'registration_type': record3.tipo_cedula,
                     'education_title': record3.titulo,
-                    'education_institute': record3.institucion
+                    'education_institute': record3.institucion,
+                    'nombrecomercial': nombre_completo,
+                    'sel_mode': 'id_nr',
+                    'id_nr': record3.cedula
                 })
             elif(record3.estatus_cedula == "Cédula no relacionada"):
                 notification = {
