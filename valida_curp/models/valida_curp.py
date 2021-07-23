@@ -246,36 +246,50 @@ class ValidaCurp(models.Model):
     
     def selfie(self):
         for record5 in self:
-            if(record5.intentos > 0):
-                header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-                r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
-                json_r3 = r3.json()
-                c=json.dumps(json_r3)
-                res3=json.loads(c)
-                status = res3['estatus']
-                if(status=='OK'):
-                    men = res3['mensaje']
-                    por = res3['similitud']
-                    mensaje = str(men) + str(' ') + str(por)
-                    record5.response3 = mensaje
-                    record5.intentos = record5.intentos - 1
-                elif(status == 'ERROR'):
-                    record5.response3 = res3['mensaje']
-                    record5.intentos = record5.intentos - 1
-                    
-            elif(record5.intentos == 0):
+            if record5.ine_foto is False:
                 notification = {
                     'type': 'ir.actions.client',
                     'tag': 'display_notification',
                     'params': {
-                        'title': 'Atención!',
-                        'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. Por lo pronto podrás hacer uso de la tienda Zélé y en el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
+                        'title': ('Atención!'),
+                        'message': 'Antes de validar debes subir tu foto/selfie. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
                         'type': 'info',
-                        'sticky': False,
+                        'sticky': True,
                         }
                     }
                 return notification
+            else:
                 
+                if(record5.intentos > 0):
+                    header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
+                    json_r3 = r3.json()
+                    c=json.dumps(json_r3)
+                    res3=json.loads(c)
+                    status = res3['estatus']
+                    if(status=='OK'):
+                        men = res3['mensaje']
+                        por = res3['similitud']
+                        mensaje = str(men) + str(' ') + str(por)
+                        record5.response3 = mensaje
+                        record5.intentos = record5.intentos - 1
+                    elif(status == 'ERROR'):
+                        record5.response3 = res3['mensaje']
+                        record5.intentos = record5.intentos - 1
+
+                elif(record5.intentos == 0):
+                    notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': 'Atención!',
+                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. Por lo pronto podrás hacer uso de la tienda Zélé y en el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
+                            'type': 'info',
+                            'sticky': False,
+                            }
+                        }
+                    return notification
+
     
     def confirmarSelfie(self):
         for record6 in self:
