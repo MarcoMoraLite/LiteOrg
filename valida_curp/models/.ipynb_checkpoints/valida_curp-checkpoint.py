@@ -140,7 +140,7 @@ class ValidaCurp(models.Model):
                     nombre = "record2."
                     for i in lista:
                         if i in json_response:
-                            nombre + i = res[i]
+                            str(nombre)+str(i) = res[i]
                     record2.response2 = 'OK'
                     longitud = len(record2.colonia)
                     record2.codigo_postal = record2.colonia[longitud-5:]
