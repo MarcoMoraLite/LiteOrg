@@ -48,50 +48,62 @@ class ValidaCurp(models.Model):
     
     def comprobar(self):
         for record in self:
-            cedula_usuario = record.cedula
-            header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-            payload = {"numeroCedula":cedula_usuario}
-            r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
-            json_cedula = r.json()
-            b=json.dumps(json_cedula)
-            cedu=json.loads(b)
-            status = cedu['estatus']
-            if(status == 'ERROR'):
-                record.response = cedu['mensaje']
+            if record.cedula is False:
                 notification = {
                     'type': 'ir.actions.client',
                     'tag': 'display_notification',
                     'params': {
-                        'title': 'Atención!',
-                        'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                        'title': ('Atención!'),
+                        'message': 'Antes de validar debes subir tu cédula. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
                         'type': 'info',
-                        'sticky': False,
+                        'sticky': True,
                         }
                     }
                 return notification
-            
             else:
-                record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
-                record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
-                record.nombresCedula = cedu['cedulas'][0]['nombres']
-                record.institucion = cedu['cedulas'][0]['institucion']
-                record.tipo_cedula = cedu['cedulas'][0]['tipo']
-                record.titulo = cedu['cedulas'][0]['titulo']
-                titulo_lower = record.titulo.lower()
-                if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
-                    record.estatus_cedula = "Cédula relacionada"
+                cedula_usuario = record.cedula
+                header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                payload = {"numeroCedula":cedula_usuario}
+                r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
+                json_cedula = r.json()
+                b=json.dumps(json_cedula)
+                cedu=json.loads(b)
+                status = cedu['estatus']
+                if(status == 'ERROR'):
+                    record.response = cedu['mensaje']
+                    notification = {
+                        'type': 'ir.actions.client',
+                        'tag': 'display_notification',
+                        'params': {
+                            'title': 'Atención!',
+                            'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'type': 'info',
+                            'sticky': False,
+                            }
+                        }
+                    return notification
+
                 else:
-                    record.estatus_cedula = "Cédula no relacionada"
-                    
-                if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
-                   record.response = "Cédula encontrada y coincidencia en nombre"
-                else:
-                    record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-    
+                    record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
+                    record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
+                    record.nombresCedula = cedu['cedulas'][0]['nombres']
+                    record.institucion = cedu['cedulas'][0]['institucion']
+                    record.tipo_cedula = cedu['cedulas'][0]['tipo']
+                    record.titulo = cedu['cedulas'][0]['titulo']
+                    titulo_lower = record.titulo.lower()
+                    if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
+                        record.estatus_cedula = "Cédula relacionada"
+                    else:
+                        record.estatus_cedula = "Cédula no relacionada"
+
+                    if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
+                       record.response = "Cédula encontrada y coincidencia en nombre"
+                    else:
+                        record.response = "Cédula encontrada pero no existe coincidencia en nombre"
+
                    
     def comprobar2(self):
         for record2 in self:
-            print(record2.ine)
             if record2.ine is False:
                 notification = {
                     'type': 'ir.actions.client',
@@ -164,7 +176,17 @@ class ValidaCurp(models.Model):
                     'education_institute': record3.institucion,
                     'nombrecomercial': nombre_completo,
                     'sel_mode': 'id_nr',
-                    'id_nr': record3.cedula
+                    'id_nr': record3.cedula,
+                    'type': 'contact',
+                    'street_name': record3.calle,
+                    'zip': record3.codigo_postal,
+                    'state_id': record3.estado,
+                    'birthdate': record3.fechaNacimiento,
+                    '|10n_mx_edi_curp': record3.curp,
+                    'cedula': True,
+                    'ine': True,
+                    'client_type': 'specialist',
+                    'is_specialist': True
                 })
             elif(record3.estatus_cedula == "Cédula no relacionada"):
                 notification = {
