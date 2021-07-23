@@ -136,24 +136,11 @@ class ValidaCurp(models.Model):
                         }
                     return notification
                 else:
-                    record2.curp = res['curp']
-                    record2.fechaNacimiento = res['fechaNacimiento']
-                    record2.primerApellido = res['primerApellido']
-                    record2.segundoApellido = res['segundoApellido']
-                    record2.nombres = res['nombres']
-                    record2.sexo = res['sexo']
-                    record2.calle = res['calle']
-                    record2.colonia = res['colonia']
-                    record2.ciudad = res['ciudad']
-                    record2.subTipo = res['subTipo']
-                    record2.claveElector = res['claveElector']
-                    record2.registro = res['registro']
-                    record2.estado = res['estado']
-                    record2.municipio = res['municipio']
-                    record2.seccion = res['seccion']
-                    record2.localidad = res['localidad']
-                    record2.emision = res['emision']
-                    record2.vigencia = res['vigencia']
+                    lista = ['curp','fechaNacimiento','primerApellido','segundoApellido','nombres','sexo','calle','colonia','ciudad','subTipo','claveElector','registro','estado','municipio','seccion','localidad','emision','vigencia']
+                    nombre = "record2."
+                    for i in lista:
+                        if i in json_response:
+                            nombre + i = res[i]
                     record2.response2 = 'OK'
                     longitud = len(record2.colonia)
                     record2.codigo_postal = record2.colonia[longitud-5:]
