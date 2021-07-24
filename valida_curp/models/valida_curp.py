@@ -139,42 +139,42 @@ class ValidaCurp(models.Model):
                     for key in json_response:
                         if key in json_response:
                             record2.curp = res['curp']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.fechaNacimiento = res['fechaNacimiento']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.primerApellido = res['primerApellido']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.segundoApellido = res['segundoApellido']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.nombres = res['nombres']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.sexo = res['sexo']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.calle = res['calle']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.colonia = res['colonia']
                             longitud = len(record2.colonia)
                             record2.codigo_postal = record2.colonia[longitud-5:]
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.ciudad = res['ciudad']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.subTipo = res['subTipo']
                             record2.response2 = 'OK'
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.claveElector = res['claveElector']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.registro = res['registro']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.estado = res['estado']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.municipio = res['municipio']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.seccion = res['seccion']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.localidad = res['localidad']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.emision = res['emision']
-                        else if key in json_response:
+                        elif key in json_response:
                             record2.vigencia = res['vigencia']
                         else:
                             record2.response2 = "Faltan datos"
