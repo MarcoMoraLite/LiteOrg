@@ -139,78 +139,96 @@ class ValidaCurp(models.Model):
                     if 'curp' in json_response:
                         record2.curp = res['curp']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'fechaNacimiento' in json_response:
                         record2.fechaNacimiento = res['fechaNacimiento']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'primerApellido' in json_response:
                         record2.primerApellido = res['primerApellido']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'segundoApellido' in json_response:
                         record2.segundoApellido = res['segundoApellido']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'nombres' in json_response:
                         record2.nombres = res['nombres']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'sexo' in json_response:
                         record2.sexo = res['sexo']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'calle' in json_response:
                         record2.calle = res['calle']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'colonia' in json_response:
                         record2.colonia = res['colonia']
                         longitud = len(record2.colonia)
                         record2.codigo_postal = record2.colonia[longitud-5:]
                     else:
-                        record2.response = "Faltan datos"
-                    if 'calle' in json_response:
+                        record2.response2 = "Faltan datos"
+                        
+                    if 'ciudad' in json_response:
                         record2.ciudad = res['ciudad']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'subTipo' in json_response:
                         record2.subTipo = res['subTipo']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'claveElector' in json_response:
                         record2.claveElector = res['claveElector']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'registro' in json_response:
                         record2.registro = res['registro']
                     else:
-                        record2.response = "Faltan datos"
-                    if 'registro' in json_response:
-                        record2.estado = res['registro']
+                        record2.response2 = "Faltan datos"
+                        
+                    if 'estado' in json_response:
+                        record2.estado = res['estado']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'municipio' in json_response:    
                         record2.municipio = res['municipio']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'seccion' in json_response:    
                         record2.seccion = res['seccion']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'localidad' in json_response:     
                         record2.localidad = res['localidad']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'emision' in json_response:     
                         record2.emision = res['emision']
                     else:
-                        record2.response = "Faltan datos"
+                        record2.response2 = "Faltan datos"
+                        
                     if 'vigencia' in json_response:     
                         record2.vigencia = res['vigencia']
                     else:
-                        record2.response = "Faltan datos"
-                    if record2.response != "Faltan datos":
+                        record2.response2 = "Faltan datos"
+                        
+                    if record2.response2 != "Faltan datos":
                         record2.response2 = 'OK'
                     
             
