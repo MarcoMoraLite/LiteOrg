@@ -136,14 +136,49 @@ class ValidaCurp(models.Model):
                         }
                     return notification
                 else:
-                    lista = {'curp':"record2.curp",'fechaNacimiento':"record2.fechaNacimiento",'primerApellido':"record2.primerApellido",'segundoApellido':"record2.segundoApellido",'nombres':"record2.nombres",'sexo':"record2.sexo",'calle':"record2.calle",'colonia':"record2.colonia",'ciudad':"record2.ciudad",'subTipo':"record2.subTipo",'claveElector':"record2.claveElector",'registro':"record2.registro",'estado':"record2.estado",'municipio':"record2.municipio",'seccion':"record2.seccion",'localidad':"record2.localidad",'emision':"record2.emision",'vigencia':"record2.vigencia"}
-                    for key in lista:
-                        magia = lista[key]
+                    for key in json_response:
                         if key in json_response:
-                            magia = res[key]
-                    record2.response2 = 'OK'
-                            
-
+                            record2.curp = res['curp']
+                        else if key in json_response:
+                            record2.fechaNacimiento = res['fechaNacimiento']
+                        else if key in json_response:
+                            record2.primerApellido = res['primerApellido']
+                        else if key in json_response:
+                            record2.segundoApellido = res['segundoApellido']
+                        else if key in json_response:
+                            record2.nombres = res['nombres']
+                        else if key in json_response:
+                            record2.sexo = res['sexo']
+                        else if key in json_response:
+                            record2.calle = res['calle']
+                        else if key in json_response:
+                            record2.colonia = res['colonia']
+                            longitud = len(record2.colonia)
+                            record2.codigo_postal = record2.colonia[longitud-5:]
+                        else if key in json_response:
+                            record2.ciudad = res['ciudad']
+                        else if key in json_response:
+                            record2.subTipo = res['subTipo']
+                            record2.response2 = 'OK'
+                        else if key in json_response:
+                            record2.claveElector = res['claveElector']
+                        else if key in json_response:
+                            record2.registro = res['registro']
+                        else if key in json_response:
+                            record2.estado = res['estado']
+                        else if key in json_response:
+                            record2.municipio = res['municipio']
+                        else if key in json_response:
+                            record2.seccion = res['seccion']
+                        else if key in json_response:
+                            record2.localidad = res['localidad']
+                        else if key in json_response:
+                            record2.emision = res['emision']
+                        else if key in json_response:
+                            record2.vigencia = res['vigencia']
+                        else:
+                            record2.response2 = "Faltan datos"
+            
     def confirmarCed(self):
         for record3 in self:
             #record3.id_contacto = nuevo_contacto.id
@@ -214,7 +249,6 @@ class ValidaCurp(models.Model):
     
     def confirmarIne(self):
         for record4 in self:
-            record4.write({'state': 'cedula'})
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
             else:
