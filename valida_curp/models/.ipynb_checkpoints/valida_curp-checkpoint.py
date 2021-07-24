@@ -136,7 +136,7 @@ class ValidaCurp(models.Model):
                         }
                     return notification
                 else:
-                    lista = ['curp':'record2.curp','fechaNacimiento':'record2.fechaNacimiento','primerApellido':' record2.primerApellido','segundoApellido':'record2.segundoApellido','nombres':'record2.nombres','sexo':'record2.sexo','calle':'record2.calle','colonia':'record2.colonia','ciudad':'record2.ciudad','subTipo':'record2.subTipo','claveElector':'record2.claveElector','registro':'record2.registro','estado':'record2.estado','municipio':'record2.municipio','seccion':'record2.seccion','localidad':'record2.localidad','emision':'record2.emision','vigencia':'record2.vigencia']
+                    lista = {'curp':"record2.curp",'fechaNacimiento':"record2.fechaNacimiento",'primerApellido':"record2.primerApellido",'segundoApellido':"record2.segundoApellido",'nombres':"record2.nombres",'sexo':"record2.sexo",'calle':"record2.calle",'colonia':"record2.colonia",'ciudad':"record2.ciudad",'subTipo':"record2.subTipo",'claveElector':"record2.claveElector",'registro':"record2.registro",'estado':"record2.estado",'municipio':"record2.municipio",'seccion':"record2.seccion",'localidad':"record2.localidad",'emision':"record2.emision",'vigencia':"record2.vigencia"}
                     for key in lista:
                         magia = lista[key]
                         if key in json_response:
