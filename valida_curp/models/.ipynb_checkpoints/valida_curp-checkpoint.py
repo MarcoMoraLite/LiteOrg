@@ -136,8 +136,9 @@ class ValidaCurp(models.Model):
                         }
                     return notification
                 else:
-                    for key in json_response:
-                        if key in json_response:
+                    lista = ['curp','fechaNacimiento','primerApellido','segundoApellido','nombres','sexo','calle','colonia','ciudad','subTipo','claveElector','registro','estado','municipio','seccion','localidad','emision','vigencia']
+                    for i in lista:
+                        if i in json_response:
                             record2.curp = res['curp']
                         elif key in json_response:
                             record2.fechaNacimiento = res['fechaNacimiento']
