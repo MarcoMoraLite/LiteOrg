@@ -136,28 +136,14 @@ class ValidaCurp(models.Model):
                         }
                     return notification
                 else:
-                    record2.curp = res['curp']
-                    record2.fechaNacimiento = res['fechaNacimiento']
-                    record2.primerApellido = res['primerApellido']
-                    record2.segundoApellido = res['segundoApellido']
-                    record2.nombres = res['nombres']
-                    record2.sexo = res['sexo']
-                    record2.calle = res['calle']
-                    record2.colonia = res['colonia']
-                    record2.ciudad = res['ciudad']
-                    record2.subTipo = res['subTipo']
-                    record2.claveElector = res['claveElector']
-                    record2.registro = res['registro']
-                    record2.estado = res['estado']
-                    record2.municipio = res['municipio']
-                    record2.seccion = res['seccion']
-                    record2.localidad = res['localidad']
-                    record2.emision = res['emision']
-                    record2.vigencia = res['vigencia']
+                    lista = ['curp':'record2.curp','fechaNacimiento':'record2.fechaNacimiento','primerApellido':' record2.primerApellido','segundoApellido':'record2.segundoApellido','nombres':'record2.nombres','sexo':'record2.sexo','calle':'record2.calle','colonia':'record2.colonia','ciudad':'record2.ciudad','subTipo':'record2.subTipo','claveElector':'record2.claveElector','registro':'record2.registro','estado':'record2.estado','municipio':'record2.municipio','seccion':'record2.seccion','localidad':'record2.localidad','emision':'record2.emision','vigencia':'record2.vigencia']
+                    for key in lista:
+                        magia = lista[key]
+                        if key in json_response:
+                            magia = res[key]
                     record2.response2 = 'OK'
-                    longitud = len(record2.colonia)
-                    record2.codigo_postal = record2.colonia[longitud-5:]
-            
+                            
+
     def confirmarCed(self):
         for record3 in self:
             #record3.id_contacto = nuevo_contacto.id
@@ -182,7 +168,7 @@ class ValidaCurp(models.Model):
                     'zip': record3.codigo_postal,
                     'state_id': record3.estado,
                     'birthdate': record3.fechaNacimiento,
-                    '|10n_mx_edi_curp': record3.curp,
+                    'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
                     'ine': True,
                     'client_type': 'specialist',
