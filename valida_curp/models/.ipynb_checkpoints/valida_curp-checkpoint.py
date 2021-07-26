@@ -86,6 +86,25 @@ class ValidaCurp(models.Model):
                                 }
                             }
                         return notification
+
+                    else:
+                        record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
+                        record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
+                        record.nombresCedula = cedu['cedulas'][0]['nombres']
+                        record.institucion = cedu['cedulas'][0]['institucion']
+                        record.tipo_cedula = cedu['cedulas'][0]['tipo']
+                        record.titulo = cedu['cedulas'][0]['titulo']
+                        titulo_lower = record.titulo.lower()
+                        if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
+                            record.estatus_cedula = "Cédula relacionada"
+                        else:
+                            record.estatus_cedula = "Cédula no relacionada"
+
+                        if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
+                           record.response = "Cédula encontrada y coincidencia en nombre"
+                        else:
+                            record.response = "Cédula encontrada pero no existe coincidencia en nombre"
+
                 elif(record.intentos_cedula == 0):
                     notification = {
                         'type': 'ir.actions.client',
@@ -98,26 +117,7 @@ class ValidaCurp(models.Model):
                             }
                         }
                     return notification
-
-                else:
-                    record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
-                    record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
-                    record.nombresCedula = cedu['cedulas'][0]['nombres']
-                    record.institucion = cedu['cedulas'][0]['institucion']
-                    record.tipo_cedula = cedu['cedulas'][0]['tipo']
-                    record.titulo = cedu['cedulas'][0]['titulo']
-                    titulo_lower = record.titulo.lower()
-                    if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
-                        record.estatus_cedula = "Cédula relacionada"
-                    else:
-                        record.estatus_cedula = "Cédula no relacionada"
-
-                    if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
-                       record.response = "Cédula encontrada y coincidencia en nombre"
-                    else:
-                        record.response = "Cédula encontrada pero no existe coincidencia en nombre"
-
-                   
+                
     def comprobar2(self):
         for record2 in self:
             if record2.ine is False:
