@@ -63,22 +63,36 @@ class ValidaCurp(models.Model):
                     }
                 return notification
             else:
-                cedula_usuario = record.cedula
-                header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-                payload = {"numeroCedula":cedula_usuario}
-                r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
-                json_cedula = r.json()
-                b=json.dumps(json_cedula)
-                cedu=json.loads(b)
-                status = cedu['estatus']
-                if(status == 'ERROR'):
-                    record.response = cedu['mensaje']
+                if(record.intentos_cedula > 0):
+                    record.intentos_cedula = record.intentos_cedula - 1
+                    cedula_usuario = record.cedula
+                    header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    payload = {"numeroCedula":cedula_usuario}
+                    r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
+                    json_cedula = r.json()
+                    b=json.dumps(json_cedula)
+                    cedu=json.loads(b)
+                    status = cedu['estatus']
+                    if(status == 'ERROR'):
+                        record.response = cedu['mensaje']
+                        notification = {
+                            'type': 'ir.actions.client',
+                            'tag': 'display_notification',
+                            'params': {
+                                'title': 'Atención!',
+                                'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                                'type': 'info',
+                                'sticky': False,
+                                }
+                            }
+                        return notification
+                elif(record.intentos_cedula == 0):
                     notification = {
                         'type': 'ir.actions.client',
                         'tag': 'display_notification',
                         'params': {
                             'title': 'Atención!',
-                            'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
+                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
                             'type': 'info',
                             'sticky': False,
                             }
@@ -306,6 +320,7 @@ class ValidaCurp(models.Model):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
+                record.intentos_cedula = 3
             else:
                 notification = {
                     'type': 'ir.actions.client',
