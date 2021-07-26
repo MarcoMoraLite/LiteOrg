@@ -43,9 +43,9 @@ class ValidaCurp(models.Model):
     titulo = fields.Char("Titulo")
     estatus_cedula = fields.Char("Estatus")
     codigo_postal = fields.Char("Codigo Postal")
-    intentos = fields.Integer("Intentos")
+    intentos = fields.Integer("Intentos",default=3)
     intentos_ine = fields.Integer("Intentos INE",default=3)
-    intentos_cedula = fields.Integer("Intentos cédula")
+    intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
     
     def comprobar(self):
@@ -133,127 +133,141 @@ class ValidaCurp(models.Model):
                     }
                 return notification
             else:
-                header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-                r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine.decode('utf-8')})
-                json_response = r2.json()
-                a=json.dumps(json_response)
-                res=json.loads(a)
-                if "estatus" in json_response:
-                    record2.response2 = res['mensaje']
+                if(record2.intentos_ine > 0):
+                    record2.intentos_ine = record2.intentos_ine - 1
+                    header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine.decode('utf-8')})
+                    json_response = r2.json()
+                    a=json.dumps(json_response)
+                    res=json.loads(a)
+                    if "estatus" in json_response:
+                        record2.response2 = res['mensaje']
+                        notification = {
+                            'type': 'ir.actions.client',
+                            'tag': 'display_notification',
+                            'params': {
+                                'title': ('Atención!'),
+                                'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
+                                'type': 'info',
+                                'sticky': True,
+                                }
+                            }
+                        return notification
+                    else:
+                        if 'curp' in json_response:
+                            record2.curp = res['curp']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'fechaNacimiento' in json_response:
+                            record2.fechaNacimiento = res['fechaNacimiento']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'primerApellido' in json_response:
+                            record2.primerApellido = res['primerApellido']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'segundoApellido' in json_response:
+                            record2.segundoApellido = res['segundoApellido']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'nombres' in json_response:
+                            record2.nombres = res['nombres']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'sexo' in json_response:
+                            record2.sexo = res['sexo']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'calle' in json_response:
+                            record2.calle = res['calle']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'colonia' in json_response:
+                            record2.colonia = res['colonia']
+                            longitud = len(record2.colonia)
+                            record2.codigo_postal = record2.colonia[longitud-5:]
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'ciudad' in json_response:
+                            record2.ciudad = res['ciudad']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'subTipo' in json_response:
+                            record2.subTipo = res['subTipo']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'claveElector' in json_response:
+                            record2.claveElector = res['claveElector']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'registro' in json_response:
+                            record2.registro = res['registro']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'estado' in json_response:
+                            record2.estado = res['estado']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'municipio' in json_response:    
+                            record2.municipio = res['municipio']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'seccion' in json_response:    
+                            record2.seccion = res['seccion']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'localidad' in json_response:     
+                            record2.localidad = res['localidad']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'emision' in json_response:     
+                            record2.emision = res['emision']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if 'vigencia' in json_response:     
+                            record2.vigencia = res['vigencia']
+                        else:
+                            record2.response2 = "Faltan datos"
+
+                        if record2.response2 != "Faltan datos":
+                            record2.response2 = 'OK'
+                            
+                elif(record2.intentos_ine == 0):
                     notification = {
                         'type': 'ir.actions.client',
                         'tag': 'display_notification',
                         'params': {
-                            'title': ('Atención!'),
-                            'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
+                            'title': 'Atención!',
+                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
                             'type': 'info',
-                            'sticky': True,
+                            'sticky': False,
                             }
                         }
-                    return notification
-                else:
-                    if 'curp' in json_response:
-                        record2.curp = res['curp']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'fechaNacimiento' in json_response:
-                        record2.fechaNacimiento = res['fechaNacimiento']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'primerApellido' in json_response:
-                        record2.primerApellido = res['primerApellido']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'segundoApellido' in json_response:
-                        record2.segundoApellido = res['segundoApellido']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'nombres' in json_response:
-                        record2.nombres = res['nombres']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'sexo' in json_response:
-                        record2.sexo = res['sexo']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'calle' in json_response:
-                        record2.calle = res['calle']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'colonia' in json_response:
-                        record2.colonia = res['colonia']
-                        longitud = len(record2.colonia)
-                        record2.codigo_postal = record2.colonia[longitud-5:]
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'ciudad' in json_response:
-                        record2.ciudad = res['ciudad']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'subTipo' in json_response:
-                        record2.subTipo = res['subTipo']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'claveElector' in json_response:
-                        record2.claveElector = res['claveElector']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'registro' in json_response:
-                        record2.registro = res['registro']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'estado' in json_response:
-                        record2.estado = res['estado']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'municipio' in json_response:    
-                        record2.municipio = res['municipio']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'seccion' in json_response:    
-                        record2.seccion = res['seccion']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'localidad' in json_response:     
-                        record2.localidad = res['localidad']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'emision' in json_response:     
-                        record2.emision = res['emision']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if 'vigencia' in json_response:     
-                        record2.vigencia = res['vigencia']
-                    else:
-                        record2.response2 = "Faltan datos"
-                        
-                    if record2.response2 != "Faltan datos":
-                        record2.response2 = 'OK'
-                    
+                    return notification               
+
             
     def confirmarCed(self):
         for record3 in self:
             #record3.id_contacto = nuevo_contacto.id
                 
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
-                record3.intentos=3
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
                 record3.write({'state': 'foto'})
                 nuevo_contacto = self.env['res.partner'].create( {
@@ -320,7 +334,6 @@ class ValidaCurp(models.Model):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
-                record.intentos_cedula = 3
             else:
                 notification = {
                     'type': 'ir.actions.client',
