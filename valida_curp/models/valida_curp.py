@@ -203,6 +203,7 @@ class ValidaCurp(models.Model):
 
                         if 'subTipo' in json_response:
                             record2.subTipo = res['subTipo']
+                            record2.response2 = 'OK'
                         else:
                             record2.response2 = "Faltan datos"
 
