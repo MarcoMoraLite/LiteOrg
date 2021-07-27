@@ -53,6 +53,7 @@
                   <field name="id_contacto" colspam="2" readonly="1"/>
                   <field name="intentos" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                   <field name="intentos_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="fecha" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                   <field name="intentos_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>

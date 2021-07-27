@@ -47,6 +47,7 @@ class ValidaCurp(models.Model):
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
+    fecha = fields.Date("Fecha prueba")
     
     def comprobar(self):
         for record in self:
@@ -335,6 +336,7 @@ class ValidaCurp(models.Model):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
+                record4.fecha = record4.fechaNacimiento
             else:
                 notification = {
                     'type': 'ir.actions.client',
