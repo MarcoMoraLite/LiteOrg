@@ -336,7 +336,7 @@ class ValidaCurp(models.Model):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
-                record4.fecha = record4.fechaNacimiento
+                record4.fecha = "2010-7-5"
             else:
                 notification = {
                     'type': 'ir.actions.client',
