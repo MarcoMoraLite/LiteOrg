@@ -341,7 +341,7 @@ class ValidaCurp(models.Model):
                 dia = lista_date[0].replace("0","")
                 mes = lista_date[1].replace("0","")
                 ano = lista_date[2].replace("0","")
-                fecha_full = str(ano) + str('/') + str(mes) + str('/') + str(dia)
+                fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 record4.fecha = fecha_full
                 
             else:
