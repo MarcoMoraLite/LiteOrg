@@ -338,9 +338,9 @@ class ValidaCurp(models.Model):
                 record4.write({'state': 'cedula'})
                 fecha = record4.fechaNacimiento
                 lista_date = fecha.split("/")
-                dia = lista[0]
-                mes = lista[1]
-                ano = lista[2]
+                dia = lista_date[0]
+                mes = lista_date[1]
+                ano = lista_date[2]
                 fecha_full = str(ano) + str('/') + str(mes) + str('/') + str(dia)
                 record4.fecha = fecha_full
                 
