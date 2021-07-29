@@ -47,7 +47,6 @@ class ValidaCurp(models.Model):
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
-    fecha = fields.Date("Fecha prueba")
     
     def comprobar(self):
         for record in self:
@@ -270,6 +269,12 @@ class ValidaCurp(models.Model):
             #record3.id_contacto = nuevo_contacto.id
                 
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
+                fecha = record4.fechaNacimiento
+                lista_date = fecha.split("/")
+                dia = lista_date[0].replace("0","")
+                mes = lista_date[1].replace("0","")
+                ano = lista_date[2].replace("0","")
+                fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
                 record3.write({'state': 'foto'})
                 nuevo_contacto = self.env['res.partner'].create( {
@@ -287,7 +292,7 @@ class ValidaCurp(models.Model):
                     'street_name': record3.calle,
                     'zip': record3.codigo_postal,
                     'state_id': record3.estado,
-                    'birthdate': record3.fechaNacimiento,
+                    'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
                     'ine': True,
@@ -336,13 +341,6 @@ class ValidaCurp(models.Model):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
-                fecha = record4.fechaNacimiento
-                lista_date = fecha.split("/")
-                dia = lista_date[0].replace("0","")
-                mes = lista_date[1].replace("0","")
-                ano = lista_date[2].replace("0","")
-                fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
-                record4.fecha = fecha_full
                 
             else:
                 notification = {

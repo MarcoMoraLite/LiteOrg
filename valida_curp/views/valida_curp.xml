@@ -53,7 +53,6 @@
                   <field name="id_contacto" colspam="2" readonly="1"/>
                   <field name="intentos" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                   <field name="intentos_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="fecha" colspam="2"/>
                   <field name="intentos_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>
@@ -64,6 +63,21 @@
       
     <record model="ir.ui.view" id="valida_curp.tree">
       <field name="name">valida_curp tree</field>
+      <field name="model">valida_curp.valida_curp</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="state"/>
+            <field name="primerApellido"/>
+            <field name="segundoApellido"/>
+            <field name="nombres"/>
+            <field name="titulo"/>
+            <field name="estatus_cedula"/>
+        </tree>
+      </field>
+    </record>
+      
+     <record model="ir.ui.view" id="valida_curp.tree">
+      <field name="name">valida_curp datos</field>
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
@@ -91,7 +105,10 @@
     <menuitem name="CEDULA" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
       
 
-    <menuitem name="List" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"
+    <menuitem name="Datos" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"
+              action="valida_curp.action_window"/>
+      
+    <menuitem name="Estatus" id="valida_curp.menu_2_list" parent="valida_curp.menu_1"
               action="valida_curp.action_window"/>
 
   </data>
