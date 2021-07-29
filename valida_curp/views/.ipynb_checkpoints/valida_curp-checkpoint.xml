@@ -94,6 +94,7 @@
       <field name="name">Datos de especialistas</field>
       <field name="res_model">valida_curp.valida_curp</field>
       <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="valida_curp.tree"/>
     </record>
       
     <record model="ir.actions.act_window" id="valida_curp.action_window2">
