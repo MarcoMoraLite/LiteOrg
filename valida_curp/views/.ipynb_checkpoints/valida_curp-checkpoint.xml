@@ -81,7 +81,6 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="state"/>
             <field name="primerApellido"/>
             <field name="segundoApellido"/>
             <field name="nombres"/>
