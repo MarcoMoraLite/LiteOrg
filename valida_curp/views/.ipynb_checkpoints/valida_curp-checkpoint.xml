@@ -76,7 +76,7 @@
       </field>
     </record>
       
-     <record model="ir.ui.view" id="valida_curp.tree">
+     <record model="ir.ui.view" id="valida_curp.tree2">
       <field name="name">valida_curp datos</field>
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
@@ -96,6 +96,13 @@
       <field name="view_mode">tree,form</field>
     </record>
       
+    <record model="ir.actions.act_window" id="valida_curp.action_window2">
+      <field name="name">Datos de especialistas</field>
+      <field name="res_model">valida_curp.valida_curp</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="valida_curp.tree2"/>
+    </record>
+      
 
        <!-- Aqui van los modulos-->    
     <menuitem name="valida_curp" id="valida_curp.menu_root"/>
@@ -108,7 +115,7 @@
               action="valida_curp.action_window"/>
       
     <menuitem name="Estatus" id="valida_curp.menu_2_list" parent="valida_curp.menu_1"
-              action="valida_curp.action_window"/>
+              action="valida_curp.action_window2"/>
 
   </data>
 </odoo>
