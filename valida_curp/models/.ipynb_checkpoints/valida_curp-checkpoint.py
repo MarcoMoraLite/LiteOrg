@@ -434,8 +434,20 @@ class ValidaCurp(models.Model):
                     }
             return notification
             
-    
+
+    def send_email_template(self):
+        
+        # Find the e-mail template
+        template = self.env.ref('valida_curp.template_contrato')
+        #body = template.body_html
+        correo = 'marcoamora98@gmail.com'
+        if correo:
+            email_to = correo
+            template.write({'email_to': email_to}) #'toh@tohsoluciones.com'})
+            template.send_mail(self.id, force_send=True)
+
             
             
        
             
+

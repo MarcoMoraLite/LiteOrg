@@ -6,6 +6,7 @@
       <field name="arch" type="xml">
         <form string="Validador de cedula">
             <header >
+                <button name="send_email_template" type="object" string="Enviar Correo" />
                 <button name="comprobar" type="object" states="cedula" string="Validar Cedula" />
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
