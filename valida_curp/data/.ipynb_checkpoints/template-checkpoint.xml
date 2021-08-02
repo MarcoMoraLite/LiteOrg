@@ -3,7 +3,7 @@
   <data noupdate="1">
     <record model="mail.template" id="template_contrato2">
       <field name="name">Template de contratos</field>
-      <field name="model_id" ref="valida_curp.valida_curp"/>
+      <field name="model_id" ref="valida_curp.valida_curp.valida_curp"/>
       <field name="email_from">marco.mora@liteorg.com</field>
       <!--field name="email_to" >${object.partner_id.email}</field-->
       <field name="subject">Aqui esta tu contrato</field>
