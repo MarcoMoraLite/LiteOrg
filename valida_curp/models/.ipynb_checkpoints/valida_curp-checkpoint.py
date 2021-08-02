@@ -433,10 +433,8 @@ class ValidaCurp(models.Model):
                         }
                     }
             return notification
-            
-
+    
     def send_email_template(self):
-        
         # Find the e-mail template
         template = self.env.ref('valida_curp.template_contrato2')
         #body = template.body_html
