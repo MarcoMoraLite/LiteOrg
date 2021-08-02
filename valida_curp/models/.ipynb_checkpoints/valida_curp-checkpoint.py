@@ -438,7 +438,7 @@ class ValidaCurp(models.Model):
     def send_email_template(self):
         
         # Find the e-mail template
-        template = self.env.ref('valida_curp.template_contrato')
+        template = self.env.ref('valida_curp.template_contrato2')
         #body = template.body_html
         correo = 'marcoamora98@gmail.com'
         if correo:
