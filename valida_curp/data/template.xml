@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <record model="mail.template" id="template_contrato">
+    <record id="template_contrato" model="mail.template">
       <field name="name">Template de contratos</field>
       <field name="model_id" ref="valida_curp.valida_curp.valida_curp"/>
       <field name="email_from">marco.mora@liteorg.com</field>
