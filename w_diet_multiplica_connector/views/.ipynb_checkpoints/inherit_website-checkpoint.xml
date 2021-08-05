@@ -17,5 +17,14 @@
         <xpath expr="//div[@id='address-div']" position="replace"/>
 <!--        <xpath expr="//div[@id='zip-div']" position="replace"/>-->
         <xpath expr="//div[@id='zip-div']" position="replace"/>
+        <xpath expr="//div[@id='password-div']" position="after">
+            <input id="ine_document" class="o_input_file form-control" type="file" accept="application/pdf" style="padding-top: 15px; padding-bottom: 6px; height: auto;" required="required"/>
+            <button type="submit" class="btn btn-primary btn-block">Validar INE</button>
+            <input id="number_cedula" class="o_input_file form-control" type="file" accept="application/pdf" style="padding-top: 15px; padding-bottom: 6px; height: auto;" required="required"/>
+            <button type="submit" class="btn btn-primary btn-block">Validar Cédula</button>
+            <input id="selfie_file" class="o_input_file form-control" type="file" accept="application/pdf" style="padding-top: 15px; padding-bottom: 6px; height: auto;" required="required"/>
+            <button type="submit" class="btn btn-primary btn-block">Validar Foto</button>    
+        </xpath>
     </template>
 </odoo>
+
