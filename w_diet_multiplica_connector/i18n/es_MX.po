@@ -1,0 +1,546 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* w_zele_holly
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-20 15:37+0000\n"
+"PO-Revision-Date: 2021-07-20 11:40-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: w_zele_holly
+#: model:ir.model.fields.selection,name:w_zele_holly.selection__res_partner__priority_holly__10
+msgid "10"
+msgstr "10"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<b class=\"font-24-holly\">Consulta en Línea - Agenda tu cita online aquí –</"
+"b>"
+msgstr ""
+"<b class=\"font-24-holly\">Consulta en Línea - Agenda tu cita online aquí –</"
+"b>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<b class=\"font-24-holly\">Contrata nuestro servicio de Asistente Virtual</b>"
+msgstr ""
+"<b class=\"font-24-holly\">Contrata nuestro servicio de Asistente Virtual</b>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<b class=\"font-24-holly\">Si prefieres tomar consultas presenciales...</b>"
+msgstr ""
+"<b class=\"font-24-holly\">Si prefieres tomar consultas presenciales...</b>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<b class=\"font-24-holly\">¿Eres un profesional de la salud dedicado a la "
+"nutrición?</b>"
+msgstr ""
+"<b class=\"font-24-holly\">¿Eres un profesional de la salud dedicado a la "
+"nutrición?</b>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<b>Para agendar tu consulta debes seguir sólo 2 sencillos pasos y con la "
+"ayuda de un asistente virtual lo podrás hacer vía whatsapp</b>"
+msgstr ""
+"<b>Para agendar tu consulta debes seguir sólo 2 sencillos pasos y con la "
+"ayuda de un asistente virtual lo podrás hacer vía whatsapp</b>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<font style=\"font-size: 1.5rem;\">\n"
+"                      <b>Disponible para toda la república mexicana</b>\n"
+"                    </font>"
+msgstr ""
+"<font style=\"font-size: 1.5rem;\">\n"
+"                      <b>Disponible para toda la república mexicana</b>\n"
+"                    </font>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<font style=\"font-size: 48px;\"><br/><b>Agenda tu consulta a distancia</b></"
+"font>"
+msgstr ""
+"<font style=\"font-size: 48px;\"><br/><b>Agenda tu consulta a distancia</b></"
+"font>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid ""
+"<span class=\"o_form_label\">Commercial Team number\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">Número de Equipo Comercial\n"
+"                            </span>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid ""
+"<span class=\"o_form_label\">Customer service number\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">Número de atención a clientes\n"
+"                            </span>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Token Holly Access</span>"
+msgstr "<span class=\"o_form_label\">clave de acceso a Holly</span>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<span style=\"font-size: 24px;\">\n"
+"                          <b>Agenda a través de whatsapp 24/7</b>\n"
+"                        </span>"
+msgstr ""
+"<span style=\"font-size: 24px;\">\n"
+"                          <b>Agenda a través de whatsapp 24/7</b>\n"
+"                        </span>"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"<span style=\"font-weight: bolder; font-size: 24px;\">Reserva tu consulta</"
+"span>"
+msgstr ""
+"<span style=\"font-weight: bolder; font-size: 24px;\">Reserva tu consulta</"
+"span>"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__active_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__active_holly
+msgid "Active Holly"
+msgstr "Holly Activo"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Agenda citas de primera vez o de seguimiento."
+msgstr "Agenda citas de primera vez o de seguimiento."
+
+#. module: w_zele_holly
+#: model:website.menu,name:w_zele_holly.zele_holly_menu
+msgid "Agenda una consulta"
+msgstr "Agenda una consulta"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Agendar"
+msgstr "Agendar"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Agendar consulta presencial"
+msgstr "Agendar consulta presencial"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.specialist_partner_view_with_holly
+msgid "City"
+msgstr "Ciudad"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_company__client_attention_number
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_config_settings__client_attention_number
+msgid "Client Attention Number"
+msgstr "Número de atención a clientes"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_company__client_attention_text
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_config_settings__client_attention_text
+msgid "Client Attention Text"
+msgstr "Mensaje"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Commercial Team Number"
+msgstr "Número de equipo comercial"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Commercial Team number."
+msgstr "Número de equipo comercial."
+
+#. module: w_zele_holly
+#: model:ir.model,name:w_zele_holly.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: w_zele_holly
+#: model:ir.model,name:w_zele_holly.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: w_zele_holly
+#: model:ir.model,name:w_zele_holly.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.specialist_partner_view_custom_fields_inherit_holly
+msgid "Contact to Recommend"
+msgstr "Contacto a Recomendar"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Contrátalo"
+msgstr "Contrátalo"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Customer service number."
+msgstr "Número de atención a clientes."
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"El enlace dirige a una conversación por whatsapp con tu asistente virtual "
+"que trabaja 24/7 para que los interesados puedan agendar directamente una "
+"consulta."
+msgstr ""
+"El enlace dirige a una conversación por whatsapp con tu asistente virtual "
+"que trabaja 24/7 para que los interesados puedan agendar directamente una "
+"consulta."
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__email_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__email_holly
+msgid "Email Holly"
+msgstr "Correo de Holly"
+
+#. module: w_zele_holly
+#. openerp-web
+#: code:addons/w_zele_holly/static/src/js/w_zele_holly.js:0
+#, python-format
+msgid "Error"
+msgstr "Error"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Genera un enlace que se vincula a tus redes sociales o sitio web."
+msgstr "Genera un enlace que se vincula a tus redes sociales o sitio web."
+
+#. module: w_zele_holly
+#: code:addons/w_zele_holly/controllers/controllers.py:0
+#, python-format
+msgid "Hello"
+msgstr "Hola"
+
+#. module: w_zele_holly
+#: model:ir.model.fields.selection,name:w_zele_holly.selection__res_partner_recommendation__recommendation_type__holly
+msgid "Holly"
+msgstr "Holly"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_company__holly_token
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_config_settings__holly_token
+msgid "Holly Token"
+msgstr "Clave Holly"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"Holly&amp;nbsp; te brindará una liga de pago para que puedas reservar tu "
+"consulta a distancia. ¡Y listo comenzarás a vivir el Método Zélé!"
+msgstr ""
+"Holly&amp;nbsp; te brindará una liga de pago para que puedas reservar tu "
+"consulta a distancia. ¡Y listo comenzarás a vivir el Método Zélé!"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"Identifica tus horarios disponibles para consulta <br/>(pre-establecidos por "
+"ti)"
+msgstr ""
+"Identifica tus horarios disponibles para consulta <br/>(pre-establecidos por "
+"ti)"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"La asistente virtual te ayudará para agendar tu consulta a distancia, te "
+"dará la información con costos y horarios disponibles"
+msgstr ""
+"La asistente virtual te ayudará para agendar tu consulta a distancia, te "
+"dará la información con costos y horarios disponibles"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "La herramienta hace el cobro de las consultas automáticamente."
+msgstr "La herramienta hace el cobro de las consultas automáticamente."
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__main_contact
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__main_contact
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.specialist_partner_view_with_holly
+msgid "Main Contact"
+msgstr "Contacto Principal"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: w_zele_holly
+#: model:ir.ui.view,website_meta_title:w_zele_holly.zele_holly_scheduler_consultation
+#: model:website.page,website_meta_title:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Método Zélé I Consulta a Distancia"
+msgstr "Método Zélé I Consulta a Distancia"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.specialist_partner_view_custom_fields_inherit_holly
+msgid "Operational data"
+msgstr "Datos operacionales"
+
+#. module: w_zele_holly
+#: model:ir.model.fields.selection,name:w_zele_holly.selection__res_partner_recommendation__recommendation_type__phisical
+msgid "Phisical"
+msgstr "Física"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#. module: w_zele_holly
+#: code:addons/w_zele_holly/models/inherit_res_partner.py:0
+#, python-format
+msgid "Physical Recommendations"
+msgstr "Recomendaciones físicas"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__priority_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__priority_holly
+msgid "Priority Holly"
+msgstr "Prioridad en Holly"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__recommend_in_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__recommend_in_holly
+msgid "Recommend In Holly"
+msgstr "Recomendaciones en holly"
+
+#. module: w_zele_holly
+#: code:addons/w_zele_holly/models/inherit_res_partner.py:0
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.view_res_partner_recommendation_list
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.view_res_partner_recommendation_report_pivot
+#, python-format
+msgid "Recommendations"
+msgstr "Recomendaciones"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__recommend_phisical_count
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__recommend_phisical_count
+msgid "Recommended Physically"
+msgstr "Recomendado Físicamente"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_company__sale_team_number
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_config_settings__sale_team_number
+msgid "Sale Team Number"
+msgstr "Número de euipo de ventas"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_company__sale_team_text
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_config_settings__sale_team_text
+msgid "Sale Team Text"
+msgstr "Mensaje"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Se comunica directo con tus pacientes para confirmar citas."
+msgstr "Se comunica directo con tus pacientes para confirmar citas."
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.view_specialists_holly_filter
+msgid "Search Specialist"
+msgstr "Buscar Especialistas"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__specialist_id
+msgid "Specialist"
+msgstr "Especialista"
+
+#. module: w_zele_holly
+#: model:ir.actions.act_window,name:w_zele_holly.action_partner_holly_recommendations_list
+#: model:ir.ui.menu,name:w_zele_holly.menu_partner_specialist_holly_recommendations
+msgid "Specialists Recommendations"
+msgstr "Recomendaciones Especialistas"
+
+#. module: w_zele_holly
+#: model:ir.model,name:w_zele_holly.model_res_partner_recommendation
+msgid "Specialists recommendations"
+msgstr "Recomendaciones Especialistas"
+
+#. module: w_zele_holly
+#: model:ir.actions.act_window,name:w_zele_holly.action_partner_holly_list
+#: model:ir.ui.menu,name:w_zele_holly.menu_partner_specialist_holly
+msgid "Specialists to recommend"
+msgstr "Especialistas a recomendar"
+
+#. module: w_zele_holly
+#: model:ir.ui.view,website_meta_description:w_zele_holly.zele_holly_scheduler_consultation
+#: model:website.page,website_meta_description:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"Te ayudamos y guiamos en la pérdida de peso eficiente y constante, con un "
+"plan de alimentación que te dará la energía necesaria para las funciones "
+"principales del cuerpo. Te ayudamos a mantener tu peso ideal. "
+msgstr ""
+"Te ayudamos y guiamos en la pérdida de peso eficiente y constante, con un "
+"plan de alimentación que te dará la energía necesaria para las funciones "
+"principales del cuerpo. Te ayudamos a mantener tu peso ideal. "
+
+#. module: w_zele_holly
+#: model:ir.model.fields,help:w_zele_holly.field_res_partner__priority_holly
+#: model:ir.model.fields,help:w_zele_holly.field_res_users__priority_holly
+msgid "The highest value is the highest priority."
+msgstr "El mayor valor es la mayor prioridad."
+
+#. module: w_zele_holly
+#: code:addons/w_zele_holly/controllers/controllers.py:0
+#, python-format
+msgid "There are no specialists with the holly service activated"
+msgstr "No hay especialistas con el servicio de holly activado"
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner__active_phisical_recommend
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_users__active_phisical_recommend
+#: model:ir.ui.menu,name:w_zele_holly.res_partner_menu_holly
+msgid "To recommend"
+msgstr "A recomendar"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid "Toda la información es completamente personalizada."
+msgstr "Toda la información es completamente personalizada."
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_view_form
+msgid "Token Holly Access"
+msgstr "Clave de acceso a Holly"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_view_form
+msgid "Token Holly Access."
+msgstr "Clave de acceso a Holly."
+
+#. module: w_zele_holly
+#: model:ir.model.fields,field_description:w_zele_holly.field_res_partner_recommendation__recommendation_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.specialist_partner_view_with_holly
+msgid "View Recommendations"
+msgstr "Vista de Recomendaciones"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.res_config_settings_holly_view_form
+msgid "Whatapp numbers"
+msgstr "Números de Whatapp"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.view_specialists_holly_filter
+msgid "With Holly"
+msgstr "Con Holly"
+
+#. module: w_zele_holly
+#: model:ir.ui.view,website_meta_keywords:w_zele_holly.zele_holly_scheduler_consultation
+#: model:website.page,website_meta_keywords:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"perdida de peso, como perder peso, maneras para bajar de peso, alimento para "
+"perdida de peso, alimento para bajar de peso rá, como perder kilos, zélé, "
+"dieta, keto, como bajar kilos"
+msgstr ""
+"perdida de peso, como perder peso, maneras para bajar de peso, alimento para "
+"perdida de peso, alimento para bajar de peso rá, como perder kilos, zélé, "
+"dieta, keto, como bajar kilos"
+
+#. module: w_zele_holly
+#: model_terms:ir.ui.view,arch_db:w_zele_holly.zele_holly_scheduler_consultation
+#: model_terms:website.page,arch_db:w_zele_holly.zele_holly_scheduler_consultation_page
+msgid ""
+"también es muy fácil. Puedes agendar a través de nuestro whatsapp y te "
+"daremos el dato del Especialista Zélé más cercano a ti.&amp;nbsp;"
+msgstr ""
+"también es muy fácil. Puedes agendar a través de nuestro whatsapp y te "
+"daremos el dato del Especialista Zélé más cercano a ti.&amp;nbsp;"
