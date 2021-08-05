@@ -1,15 +1,13 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding='UTF-8'?>
 <odoo>
-
-    <record id="template_contrato" model="mail.template">
-        <field name="name">Template de contratos</field>
-        <field name="model_id" ref="valida_cedula.valida_curp.valida_curp"/>
-        <field name="email_from">marco.mora@liteorg.com</field>
-        <field name="subject">Aqui esta tu contrato</field>
-        <field name="auto_delete" eval="True"/>
-        <field name="lang">${object.partner_id.lang}</field>
-        <field name="body_html" type="html">
-            <div style="margin: 0px; padding: 0px;">
+    <data>
+        <record id="template_contrato" model="mail.template">
+            <field name="name">Template de contratos</field>
+            <field name="model_id" ref="valida_curp.valida_curp.valida_curp"/>
+            <field name="subject">Aqui esta tu contrato</field>
+            <field name="email_from">marco.mora@liteorg.com</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
                 <p>
                     Estimado:
                 </p>
@@ -20,8 +18,13 @@
                     Saludos
                 </p>
             </div>
-        </field>
-    </record>
-</odoo>
+                
+            </field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="False"/>
+        </record>
 
+    </data>
+</odoo>
 
