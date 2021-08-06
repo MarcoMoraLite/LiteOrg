@@ -22,7 +22,7 @@ Integration with Multiplica procedures.
         #'views/assets.xml',
         #'views/templates.xml',
         #'views/inherit_res_config_settings_view.xml',
-        'views/inherit_website.xml'
+        'views/inherit_website.xml',
     ],
     'demo': [],
     'qweb': [],
