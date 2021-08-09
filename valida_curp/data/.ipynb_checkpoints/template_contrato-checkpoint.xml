@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding='UTF-8'?>
 <odoo>
     <data>
-        <record id='email_template_contrato' model='mail.template'>
+        <record id="email_template_contrato" model="mail.template">
             <field name="name">Aqui esta tu contrato</field>
             <field name="model_id" ref="valida_curp.valida_curp.valida_curp"/>
             <field name="subject">Prueba de contrato</field>
