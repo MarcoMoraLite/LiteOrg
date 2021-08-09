@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding='UTF-8'?>
 <odoo>
-    <data>
-        <record id="email_template_contrato" model="mail.template">
-            <field name="name">Aqui esta tu contrato</field>
-            <field name="model_id" ref="valida_cedula.valida_curp.valida_curp"/>
-            <field name="subject">Prueba de contrato</field>
-            <field name="email_from">marco.mora@liteorg.com</field>
-            <field name="body_html" type="html">
+    <record id="email_template_contrato" model="mail.template">
+        <field name="name">Aqui esta tu contrato</field>
+        <field name="model_id" ref="valida_cedula.valida_curp.valida_curp"/>
+        <field name="subject">Prueba de contrato</field>
+        <field name="email_from">marco.mora@liteorg.com</field>
+        <field name="body_html" type="html">
 <![CDATA[
 <p>Dear Marco},
 <br/>
@@ -15,9 +14,8 @@ Good job, this is our first e-mail template!<br/>
 </p>
 Regards,<br/>
 Lite ]]></field>
-            <field name="lang">en_US</field>
-            <field name="auto_delete" eval="True"/>
-        </record>
-    </data>
+        <field name="lang">en_US</field>
+        <field name="auto_delete" eval="True"/>
+    </record>
 </odoo>
 
