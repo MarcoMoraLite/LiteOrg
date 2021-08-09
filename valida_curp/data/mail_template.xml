@@ -10,7 +10,7 @@
            <field name="model_id" ref="valida_curp.valida_curp.valida_curp"/>
            <field name="email_from">${(object.user_id.email_formatted or user.email_formatted) | safe}</field>
            <!--field name="email_to" >${object.partner_id.email}</field-->
-           <field name="subject">Stock faltante Venta Ref ${object.name or 'n/a' }</field>
+           <field name="subject">Stock faltante Venta Ref</field>
            <field name="auto_delete" eval="True"/>
            <field name="lang">${object.partner_id.lang}</field>
            <field name="body_html"><![CDATA[
