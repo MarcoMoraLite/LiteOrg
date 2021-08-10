@@ -8,6 +8,17 @@
             <field name="lang">${object.partner_id.lang}</field>
             <field name="auto_delete" eval="True"/>
             <field name="email_from">${(object.user_id.email_formatted or user.email_formatted) | safe}</field>
+            <!--field name="email_to" >${object.partner_id.email}</field-->
+            <field name="body_html" type="html">
+                <![CDATA[
+                <p>Dear Marco},
+<br/>
+<br/>
+Good job, this is our first e-mail template!<br/>
+</p>
+Regards,<br/>
+Lite ]]>
+            </field>
         </record>
     </data>
 </odoo>
