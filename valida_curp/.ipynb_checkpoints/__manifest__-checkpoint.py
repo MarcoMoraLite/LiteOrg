@@ -26,7 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/valida_curp.xml',
-        'data/mail_template.xml',
+        'data/template_contrato.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
