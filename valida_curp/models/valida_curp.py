@@ -436,12 +436,10 @@ class ValidaCurp(models.Model):
     
     def send_email_template(self):
         #template = self.env.ref('valida_curp.email_template_contrato')
-        template = self.env('mail.template').search([('id', '=', '15')])
+        template = self.env['mail.template'].search([('id', '=', '15')])
         correo = 'marcoamora98@gmail.com'
         template.write({'email_to': correo}) #'toh@tohsoluciones.com'})
         template.send_mail(self.id, force_send=True)
-
-            
             
        
             
