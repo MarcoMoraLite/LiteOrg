@@ -41,12 +41,13 @@ class ValidaCurp(models.Model):
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
     titulo = fields.Char("Titulo")
-    estatus_cedula = fields.Char("Estatus")
+    estatus_cedula = fields.Char("Estatus cedula")
     codigo_postal = fields.Char("Codigo Postal")
     intentos = fields.Integer("Intentos",default=3)
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
+    estatus_gen = fields.Char("Estatus general")
     
     def comprobar(self):
         for record in self:
@@ -435,11 +436,25 @@ class ValidaCurp(models.Model):
             return notification
     
     def send_email_template(self):
-        #template = self.env.ref('valida_curp.email_template_contrato')
-        template = self.env['mail.template'].search([('id', '=', '17')])
-        correo = 'marcoamora98@gmail.com'
-        template.write({'email_to': correo}) #'toh@tohsoluciones.com'})
-        template.send_mail(self.id, force_send=True)
+        for record7 in self:
+            if(record7.estatus_gen == "Completo"):
+                template = self.env['mail.template'].search([('id', '=', '17')])
+                correo = 'marcoamora98@gmail.com'
+                template.write({'email_to': correo}))
+                template.send_mail(self.id, force_send=True)
+            else:
+                notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Atención!',
+                        'message': 'Antes de enviar el contrato se deben validar los datos',
+                        'type': 'info',
+                        'sticky': False,
+                        }
+                    }
+                return notification
+                
             
        
             

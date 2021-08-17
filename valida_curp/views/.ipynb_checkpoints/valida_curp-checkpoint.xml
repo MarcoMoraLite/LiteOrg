@@ -6,7 +6,7 @@
       <field name="arch" type="xml">
         <form string="Validador de cedula">
             <header >
-                <button name="send_email_template" type="object" string="Enviar Correo" />
+                <button name="send_email_template" type="object" string="Enviar Contrato" />
                 <button name="comprobar" type="object" states="cedula" string="Validar Cedula" />
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
@@ -54,6 +54,7 @@
                   <field name="id_contacto" colspam="2" readonly="1"/>
                   <field name="intentos" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                   <field name="intentos_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="estatus_gen" colspam="2" readonly="1"/>
                   <field name="intentos_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>
