@@ -10,7 +10,7 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
     
-    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('guardar','GUARDAR')],'estatus', default='ine')
+    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('bancarios','DOC BANCARIOS')],'estatus', default='ine')
     cedula = fields.Char("Cédula")
     response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
@@ -48,6 +48,10 @@ class ValidaCurp(models.Model):
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
     estatus_gen = fields.Char("Estatus general")
+    banco = fields.Char("Banco")
+    cuenta = fields.Char("Cuenta bancaria")
+    clabe = fields.Char("CLABE")
+    rfc = fields.Char("RFC")
     
     def comprobar(self):
         for record in self:

@@ -13,8 +13,8 @@
                 <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
                 <button name="selfie" type="object" states="foto" string="Validar Foto"/>
                 <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
-                <button name="guardaContacto" type="object" states="guardar" string="Guardar Contacto"/>
-                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
+                <button name="guardaContacto" type="object" states="bancarios" string="Guardar datos"/>
+                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,bancarios"/>
             </header>
             <sheet>
                 <group col="4">
@@ -25,37 +25,41 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="ine_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
-                  <field name="curp" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="fechaNacimiento" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="primerApellido" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="segundoApellido" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="nombres" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="sexo" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="calle" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="colonia" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="codigo_postal" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="ciudad" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="subTipo" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="claveElector" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="registro" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="estado" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="municipio" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="seccion" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="localidad" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="emision" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="vigencia" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="primerApellidoCedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="segundoApellidoCedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="nombresCedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="institucion" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="tipo_cedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="titulo" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="estatus_cedula" attrs="{'invisible':[['state','not in',['cedula','guardar']]]}" colspam="2" readonly="1"/>
+                  <field name="curp" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="fechaNacimiento" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="primerApellido" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="segundoApellido" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="nombres" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="sexo" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="calle" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="colonia" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="codigo_postal" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="ciudad" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="subTipo" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="claveElector" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="registro" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="estado" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="municipio" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="seccion" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="localidad" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="emision" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="vigencia" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="primerApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="segundoApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="nombresCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="institucion" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="tipo_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="titulo" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="estatus_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="id_contacto" colspam="2" readonly="1"/>
                   <field name="intentos" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                   <field name="intentos_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                   <field name="estatus_gen" colspam="2" readonly="1"/>
                   <field name="intentos_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="banco" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
+                  <field name="cuenta" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
+                  <field name="clabe" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
+                  <field name="rfc" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>
             
