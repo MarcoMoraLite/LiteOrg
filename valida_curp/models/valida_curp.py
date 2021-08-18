@@ -440,7 +440,7 @@ class ValidaCurp(models.Model):
             if(record7.estatus_gen == "Completo"):
                 template = self.env['mail.template'].search([('id', '=', '17')])
                 correo = 'marcoamora98@gmail.com'
-                template.write({'email_to': correo}))
+                template.write({'email_to': correo})
                 template.send_mail(self.id, force_send=True)
             else:
                 notification = {
