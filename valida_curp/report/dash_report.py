@@ -5,9 +5,9 @@ class SaleReport(models.Model):
     _name = "valida_curp.report"
     _description = "Panel informativo"
 
-    @api.model
-    def _get_done_states(self):
-
+    #@api.model
+    #def _get_done_states(self):
+    
     ine_count = fields.Integer('Conteno INE', readonly=True)
     ced_count = fields.Integer('Conteno cédula', readonly=True)
     selfie_count = fields.Integer('Conteno Selfie', readonly=True)
