@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models
+from odoo import tools
 
 class SaleReport(models.Model):
     _name = "valida_curp.report"
