@@ -18,7 +18,6 @@ class SaleReport(models.Model):
 
     def _query(self, with_clause='', fields={}, groupby='', from_clause='valida_curp_valida_curp'):
         with_ = ("WITH %s" % with_clause) if with_clause else ""
-
         select_ = """
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
@@ -41,5 +40,5 @@ class SaleReport(models.Model):
     
     def init(self):
         # self._table = sale_report
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        #tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute("""CREATE or REPLACE VIEW %s as (%s)""" % (self._table, self._query()))
