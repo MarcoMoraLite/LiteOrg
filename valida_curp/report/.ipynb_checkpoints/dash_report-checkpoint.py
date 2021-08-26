@@ -20,8 +20,8 @@ class SaleReport(models.Model):
         with_ = ("WITH %s" % with_clause) if with_clause else ""
 
         select_ = """
-            count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count
-            count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count
+            count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
+            count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
             count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count
                 
         """
