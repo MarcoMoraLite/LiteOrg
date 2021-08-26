@@ -25,13 +25,17 @@ class SaleReport(models.Model):
         """
         for field in fields.values():
             select_ += field
-        from_ = """
-            valida_curp_valida_curp vc
-            %s
+        
+         from_ = """
+                valida_curp_valida_curp vc
+                %s
         """ % from_clause
+
+        
         groupby_ = """
             vc.state %s
         """ % (groupby)
+        
         return '%s (SELECT %s FROM %s WHERE vc.state IS NOT NULL GROUP BY %s)' % (with_, select_, from_, groupby_)
     
     def init(self):
