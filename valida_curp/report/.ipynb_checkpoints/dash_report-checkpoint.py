@@ -37,3 +37,8 @@ class SaleReport(models.Model):
         """ % (groupby)
 
         return '%s (SELECT %s FROM %s WHERE vc.state IS NOT NULL GROUP BY %s)' % (with_, select_, from_, groupby_)
+    
+    def init(self):
+        # self._table = sale_report
+        tools.drop_view_if_exists(self.env.cr, self._table)
+        self.env.cr.execute("""CREATE or REPLACE VIEW %s as (%s)""" % (self._table, self._query()))
