@@ -22,16 +22,15 @@ class SaleReport(models.Model):
         select_ = """
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
-            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count
-                
+            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count        
         """
 
         for field in fields.values():
             select_ += field
 
         from_ = """
-                valida_curp_valida_curp vc
-                %s
+            valida_curp_valida_curp vc
+            %s
         """ % from_clause
 
         groupby_ = """
@@ -42,5 +41,5 @@ class SaleReport(models.Model):
     
     def init(self):
         # self._table = sale_report
-        #tools.drop_view_if_exists(self.env.cr, self._table)
+        tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute("""CREATE or REPLACE VIEW %s as (%s)""" % (self._table, self._query()))
