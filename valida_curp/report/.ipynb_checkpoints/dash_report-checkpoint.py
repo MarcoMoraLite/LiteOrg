@@ -26,7 +26,7 @@ class SaleReport(models.Model):
         for field in fields.values():
             select_ += field
         
-         from_ = """
+        from_ = """
                 valida_curp_valida_curp vc
                 %s
         """ % from_clause
