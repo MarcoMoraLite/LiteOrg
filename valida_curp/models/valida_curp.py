@@ -47,6 +47,9 @@ class ValidaCurp(models.Model):
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
+    bool_ine = fields.Boolean("bool_ine")
+    bool_ced = fields.Boolean("bool_ced")
+    bool_foto = fields.Boolean("bool_foto")
     
     def comprobar(self):
         for record in self:
@@ -94,6 +97,7 @@ class ValidaCurp(models.Model):
                         record.institucion = cedu['cedulas'][0]['institucion']
                         record.tipo_cedula = cedu['cedulas'][0]['tipo']
                         record.titulo = cedu['cedulas'][0]['titulo']
+                         record.bool_ced = True
                         titulo_lower = record.titulo.lower()
                         if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
                             record.estatus_cedula = "Cédula relacionada"
@@ -249,6 +253,7 @@ class ValidaCurp(models.Model):
 
                         if record2.response2 != "Faltan datos":
                             record2.response2 = 'OK'
+                            record2.bool_ine = True
                             
                 elif(record2.intentos_ine == 0):
                     notification = {
@@ -381,6 +386,7 @@ class ValidaCurp(models.Model):
                     if(status=='OK'):
                         men = res3['mensaje']
                         por = res3['similitud']
+                        record5.bool_foto = True
                         mensaje = str(men) + str(' ') + str(por)
                         record5.response3 = mensaje
                         record5.intentos = record5.intentos - 1
