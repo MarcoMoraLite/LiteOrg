@@ -35,7 +35,8 @@ class SaleReport(models.Model):
 
         
         groupby_ = """
-            vc.state %s
+            vc.state, 
+            vc.id %s
         """ % (groupby)
         
         return '%s (SELECT %s FROM %s WHERE vc.state IS NOT NULL GROUP BY %s)' % (with_, select_, from_, groupby_)
