@@ -23,8 +23,7 @@
         <menuitem id="menu_report_dashboard"
         name="Report Teams"
         parent="valida_curp.menu_root"
-        sequence="5"
-        groups="sales_team.group_sale_manager"/>
+        sequence="5"/>
     
         <menuitem id="submenu_report_team_goals"
         name="Dashboard"
