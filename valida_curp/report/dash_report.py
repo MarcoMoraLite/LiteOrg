@@ -13,6 +13,7 @@ class SaleReport(models.Model):
     ine_count = fields.Integer('Conteno INE', readonly=True)
     ced_count = fields.Integer('Conteno cédula', readonly=True)
     selfie_count = fields.Integer('Conteno Selfie', readonly=True)
+    
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
 
