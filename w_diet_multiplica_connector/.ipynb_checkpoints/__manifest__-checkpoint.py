@@ -14,7 +14,7 @@ Integration with Multiplica procedures.
     """,
     'depends': [
         'base',
-        'w_custom_events_auth_signup'
+        #'w_custom_events_auth_signup'
     ],
     'installable': True,
     'data': [
