@@ -58,6 +58,9 @@
                   <field name="bool_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                   <field name="bool_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="bool_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
+                  <field name="noti_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="noti_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="noti_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>
             
