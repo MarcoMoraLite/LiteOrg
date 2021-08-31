@@ -52,9 +52,9 @@ class ValidaCurp(models.Model):
     cuenta = fields.Char("Cuenta bancaria")
     clabe = fields.Char("CLABE")
     rfc = fields.Char("RFC")
-    not_ine = fields.Char("Mensaje INE")
-    not_ced = fields.Char("Mensaje cédula")
-    not_foto = fields.Char("Mensaje foto")
+    noti_ine = fields.Char("Mensaje INE")
+    noti_ced = fields.Char("Mensaje cédula")
+    noti_foto = fields.Char("Mensaje foto")
     
     
     def comprobar(self):
