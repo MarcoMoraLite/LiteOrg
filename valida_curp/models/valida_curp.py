@@ -52,6 +52,10 @@ class ValidaCurp(models.Model):
     cuenta = fields.Char("Cuenta bancaria")
     clabe = fields.Char("CLABE")
     rfc = fields.Char("RFC")
+    not_ine = fields.Char("Mensaje INE")
+    not_ced = fields.Char("Mensaje cédula")
+    not_foto = fields.Char("Mensaje foto")
+    
     
     def comprobar(self):
         for record in self:
@@ -378,7 +382,7 @@ class ValidaCurp(models.Model):
                 
                 if(record5.intentos > 0):
                     header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
-                    r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine,"captura":record5.ine_foto,"tipo":"imagen"})
+                    r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine.decode('utf-8'),"captura":record5.ine_foto.decode('utf-8'),"tipo":"imagen"})
                     json_r3 = r3.json()
                     c=json.dumps(json_r3)
                     res3=json.loads(c)

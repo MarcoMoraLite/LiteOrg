@@ -60,6 +60,9 @@
                   <field name="cuenta" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
                   <field name="clabe" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
                   <field name="rfc" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
+                  <field name="not_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="not_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
+                  <field name="not_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                 </group>
             </sheet>
             
