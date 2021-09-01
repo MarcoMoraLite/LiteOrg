@@ -41,7 +41,6 @@ class SaleReport(models.Model):
         
         groupby_ = """
             vc.state,
-            vc.primerApellido,
             vc.curp,
             vc.id %s
         """ % (groupby)
