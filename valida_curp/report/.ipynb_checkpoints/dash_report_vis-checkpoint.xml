@@ -12,7 +12,7 @@
                  <field name="curp" type="col"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                            <div class="oe_kanban_card">
                                 <div class="row">
                                     <div class="col-4">
                                         <strong>
