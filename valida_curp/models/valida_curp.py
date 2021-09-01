@@ -129,7 +129,7 @@ class ValidaCurp(models.Model):
         for record2 in self:
             if record2.ine is False:
                 record2.noti_ine = "Antes de validar debes subir tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine}
+                return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine,"api":record2.response2}
             else:
                 if(record2.intentos_ine > 0):
                     record2.intentos_ine = record2.intentos_ine - 1
@@ -140,17 +140,8 @@ class ValidaCurp(models.Model):
                     res=json.loads(a)
                     if "estatus" in json_response:
                         record2.response2 = res['mensaje']
-                        notification = {
-                            'type': 'ir.actions.client',
-                            'tag': 'display_notification',
-                            'params': {
-                                'title': ('Atención!'),
-                                'message': 'Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
-                                'type': 'info',
-                                'sticky': True,
-                                }
-                            }
-                        return notification
+                        record2.noti_ine = "Documento no encontrado o no identificado, Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx"
+                        return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine,"api":record2.response2}
                     else:
                         if 'curp' in json_response:
                             record2.curp = res['curp']
@@ -250,17 +241,8 @@ class ValidaCurp(models.Model):
                             record2.bool_ine = True
                             
                 elif(record2.intentos_ine == 0):
-                    notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Atención!',
-                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
-                            'type': 'info',
-                            'sticky': False,
-                            }
-                        }
-                    return notification               
+                    record2.noti_ine = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
+                    return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine,"api":record2.response2}
 
             
     def confirmarCed(self):
