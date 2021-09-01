@@ -13,6 +13,8 @@ class SaleReport(models.Model):
     ine_count = fields.Integer('Conteno INE', readonly=True)
     ced_count = fields.Integer('Conteno cédula', readonly=True)
     selfie_count = fields.Integer('Conteno Selfie', readonly=True)
+    primerApellido = fields.Char('Primer apellido', readonly=True)
+    curp = fields.Char('Primer apellido', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
@@ -23,7 +25,9 @@ class SaleReport(models.Model):
             vc.id as id,
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
-            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count        
+            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count,
+            vc.primerApellido as primerApellido,
+            vc.curp as curp
         """
         for field in fields.values():
             select_ += field

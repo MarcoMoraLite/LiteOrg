@@ -11,11 +11,11 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <strong>
-                                            <field name="primerA"/>
+                                            <field name="primerApellido"/>
                                         </strong>
                                     </div>
                                     <div class="col-8">
-                                        <field name="curpDR"/>
+                                        <field name="curp"/>
                                     </div>
                                 </div>
                             </div>
