@@ -4,11 +4,25 @@
          <field name="name">dashboard.report</field>
          <field name="model">valida_curp.report</field>
          <field name="arch" type="xml">
-             <pivot string="Panel informativo" disable_linking="True">
-                 <field name="ine_count" type="col"/>
-                 <field name="ced_count" type="col"/>
-                 <field name="selfie_count" type="col"/>
-             </pivot>
+             <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <strong>
+                                            <field name="primerApellido"/>
+                                        </strong>
+                                    </div>
+                                    <div class="col-8">
+                                        <field name="curp"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+
          </field>
     </record>
     
