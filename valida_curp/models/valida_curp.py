@@ -57,17 +57,9 @@ class ValidaCurp(models.Model):
     def comprobar(self):
         for record in self:
             if record.cedula is False:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': ('Atención!'),
-                        'message': 'Antes de validar debes subir tu cédula. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
-                        'type': 'info',
-                        'sticky': True,
-                        }
-                    }
-                return notification
+                record.noti_ced = "Antes de validar debes subir tu cédula. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                
             else:
                 if(record.intentos_cedula > 0):
                     record.intentos_cedula = record.intentos_cedula - 1
@@ -81,18 +73,9 @@ class ValidaCurp(models.Model):
                     status = cedu['estatus']
                     if(status == 'ERROR'):
                         record.response = cedu['mensaje']
-                        notification = {
-                            'type': 'ir.actions.client',
-                            'tag': 'display_notification',
-                            'params': {
-                                'title': 'Atención!',
-                                'message': 'El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                                'type': 'info',
-                                'sticky': False,
-                                }
-                            }
-                        return notification
-
+                        record.noti_ced = "El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                        return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                        
                     else:
                         record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
                         record.segundoApellidoCedula = cedu['cedulas'][0]['apellidoMaterno']
@@ -113,17 +96,9 @@ class ValidaCurp(models.Model):
                             record.response = "Cédula encontrada pero no existe coincidencia en nombre"
 
                 elif(record.intentos_cedula == 0):
-                    notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Atención!',
-                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
-                            'type': 'info',
-                            'sticky': False,
-                            }
-                        }
-                    return notification
+                    record.noti_ced = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
+                    return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                
                 
     def comprobar2(self):
         for record2 in self:
