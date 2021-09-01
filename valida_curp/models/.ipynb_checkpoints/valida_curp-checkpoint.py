@@ -128,17 +128,8 @@ class ValidaCurp(models.Model):
     def comprobar2(self):
         for record2 in self:
             if record2.ine is False:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': ('Atención!'),
-                        'message': 'Antes de validar debes subir tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
-                        'type': 'info',
-                        'sticky': True,
-                        }
-                    }
-                return notification
+                record2.noti_ine = "Antes de validar debes subir tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":recor2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine}
             else:
                 if(record2.intentos_ine > 0):
                     record2.intentos_ine = record2.intentos_ine - 1
