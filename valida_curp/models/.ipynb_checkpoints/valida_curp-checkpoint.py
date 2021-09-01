@@ -94,6 +94,9 @@ class ValidaCurp(models.Model):
                            record.bool_ced = True
                         else:
                             record.response = "Cédula encontrada pero no existe coincidencia en nombre"
+                        
+                        if((record.response == "Cédula encontrada y coincidencia en nombre") and (record.estatus_cedula == "Cédula relacionada")):
+                            record.bool_ced = True
 
                 elif(record.intentos_cedula == 0):
                     record.noti_ced = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
