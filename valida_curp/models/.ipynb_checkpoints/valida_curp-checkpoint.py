@@ -100,7 +100,6 @@ class ValidaCurp(models.Model):
                         record.institucion = cedu['cedulas'][0]['institucion']
                         record.tipo_cedula = cedu['cedulas'][0]['tipo']
                         record.titulo = cedu['cedulas'][0]['titulo']
-                        record.bool_ced = True
                         titulo_lower = record.titulo.lower()
                         if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
                             record.estatus_cedula = "Cédula relacionada"
@@ -109,6 +108,7 @@ class ValidaCurp(models.Model):
 
                         if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                            record.response = "Cédula encontrada y coincidencia en nombre"
+                           record.bool_ced = True
                         else:
                             record.response = "Cédula encontrada pero no existe coincidencia en nombre"
 
