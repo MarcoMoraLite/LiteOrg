@@ -19,7 +19,9 @@ class SaleReport(models.Model):
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
 
+    
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
+        
         with_ = ("WITH %s" % with_clause) if with_clause else ""
         select_ = """
             vc.id as id,
@@ -39,7 +41,9 @@ class SaleReport(models.Model):
 
         
         groupby_ = """
-            vc.state, 
+            vc.state,
+            vc.primerApellido,
+            vc.curp,
             vc.id %s
         """ % (groupby)
         
