@@ -25,7 +25,6 @@ class SaleReport(models.Model):
         
         select_ = """
             vc.id as id,
-            vc.primerApellido as primerApellido,
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
             count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count,
