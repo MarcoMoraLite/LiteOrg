@@ -22,11 +22,14 @@ class SaleReport(models.Model):
     
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
         with_ = ("WITH %s" % with_clause) if with_clause else ""
+        
         select_ = """
             vc.id as id,
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
-            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count
+            count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count,
+            vc.primerApellido as primerApellido,
+            vc.curp as curp
         """
         for field in fields.values():
             select_ += field
@@ -39,6 +42,8 @@ class SaleReport(models.Model):
         
         groupby_ = """
             vc.state,
+            vc.primerApellido,
+            vc.curp,
             vc.id %s
         """ % (groupby)
         
