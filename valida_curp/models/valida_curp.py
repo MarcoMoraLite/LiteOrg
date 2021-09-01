@@ -129,7 +129,7 @@ class ValidaCurp(models.Model):
         for record2 in self:
             if record2.ine is False:
                 record2.noti_ine = "Antes de validar debes subir tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":recor2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine}
+                return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine}
             else:
                 if(record2.intentos_ine > 0):
                     record2.intentos_ine = record2.intentos_ine - 1
