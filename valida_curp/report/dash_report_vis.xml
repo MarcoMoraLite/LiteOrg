@@ -5,11 +5,11 @@
          <field name="model">valida_curp.report</field>
          <field name="arch" type="xml">
              <kanban>
-                 <field name="ine_count" type="col"/>
-                 <field name="ced_count" type="col"/>
-                 <field name="selfie_count" type="col"/>
-                 <field name="primerApellido" type="col"/>
-                 <field name="curp" type="col"/>
+                 <field name="ine_count"/>
+                 <field name="ced_count"/>
+                 <field name="selfie_count"/>
+                 <field name="primerApellido"/>
+                 <field name="curp"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_card">
@@ -27,7 +27,6 @@
                         </t>
                     </templates>
                 </kanban>
-
          </field>
     </record>
     
