@@ -256,61 +256,24 @@ class ValidaCurp(models.Model):
                     'is_specialist': True
                 })
             elif(record3.estatus_cedula == "Cédula no relacionada"):
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Atención!',
-                        'message': 'La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-                return notification
+                record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}
+            
             elif(record3.response == "Cédula encontrada pero no existe coincidencia en nombre"):
-                notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Atención!',
-                            'message': 'Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                            'type': 'info',
-                            'sticky': False,
-                        }
-                    }
-                return notification
+                record3.noti_ced = "Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}
             else:
-                notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Atención!',
-                            'message': 'Debes de ingresar tu cédula antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                            'type': 'info',
-                            'sticky': False,
-                        }
-                    }
-                return notification
-                
-    
+                record3.noti_ced = "Debes de ingresar tu cédula antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}           
     def confirmarIne(self):
         for record4 in self:
             if(record4.response2 == "OK"):
                 record4.write({'state': 'cedula'})
                 
             else:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Atención!',
-                        'message': 'Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-                return notification
-    
+                record4.noti_ine = "Antes de pasar al siguiente paso debes subir de manera correcta tu INE/IFE. Te invitamos a hacer el proceso desde tu dispositivo móvil, donde podrás tomar la foto de tu INE/IFE de forma directa. Si el problema persiste favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record4.intentos_ine,"respuesta":record4.noti_ine,"bool_ine":record4.bool_ine,"api":record4.response2}
+                  
     def selfie(self):
         for record5 in self:
             if record5.ine_foto is False:
