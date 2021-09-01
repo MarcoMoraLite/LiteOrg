@@ -91,7 +91,6 @@ class ValidaCurp(models.Model):
 
                         if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                            record.response = "Cédula encontrada y coincidencia en nombre"
-                           record.bool_ced = True
                         else:
                             record.response = "Cédula encontrada pero no existe coincidencia en nombre"
                         
