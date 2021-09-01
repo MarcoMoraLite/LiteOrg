@@ -4,11 +4,12 @@
          <field name="name">dashboard.report</field>
          <field name="model">valida_curp.report</field>
          <field name="arch" type="xml">
-             <pivot string="Panel informativo" disable_linking="True">
-                 <field name="ine_count" type="col"/>
-                 <field name="ced_count" type="col"/>
-                 <field name="selfie_count" type="col"/>
-             </pivot>
+             <graph string="Sales Order Lines" type="bar">
+                  <field name="curp" type="row"/>
+                  <field name="ine_count"/>
+                  <field name="ced_count"/>
+                  <field name="selfie_count"/>
+             </graph>
          </field>
     </record>
     
