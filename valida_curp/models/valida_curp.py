@@ -277,17 +277,8 @@ class ValidaCurp(models.Model):
     def selfie(self):
         for record5 in self:
             if record5.ine_foto is False:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': ('Atención!'),
-                        'message': 'Antes de validar debes subir tu foto/selfie. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx ',
-                        'type': 'info',
-                        'sticky': True,
-                        }
-                    }
-                return notification
+                record5.noti_foto = "Antes de validar debes subir tu foto/selfie. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record5.intentos,"respuesta":record5.noti_foto,"bool_ine":record5.bool_foto,"api":record5.response3}
             else:
                 
                 if(record5.intentos > 0):
@@ -309,36 +300,17 @@ class ValidaCurp(models.Model):
                         record5.intentos = record5.intentos - 1
 
                 elif(record5.intentos == 0):
-                    notification = {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': 'Atención!',
-                            'message': 'Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. Por lo pronto podrás hacer uso de la tienda Zélé y en el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro',
-                            'type': 'info',
-                            'sticky': False,
-                            }
-                        }
-                    return notification
-
+                    record5.noti_foto = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. Por lo pronto podrás hacer uso de la tienda Zélé y en el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
+                    return {"intentos":record5.intentos,"respuesta":record5.noti_foto,"bool_ine":record5.bool_foto,"api":record5.response3}
+                    
     
     def confirmarSelfie(self):
         for record6 in self:
             if(record6.response3 == "Similitud de rostros encontrada" or record6.intentos == 0):
                 record6.write({'state': 'guardar'})
             else:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Atención!',
-                        'message': 'Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-                return notification
-                
+                record6.noti_foto = "Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
+                return {"intentos":record5.intentos,"respuesta":record5.noti_foto,"bool_ine":record5.bool_foto,"api":record5.response3}
                 
     def guardaContacto(self):
         for record7 in self:
