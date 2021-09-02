@@ -227,7 +227,7 @@ class ValidaCurp(models.Model):
             #record3.id_contacto = nuevo_contacto.id
                 
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
-                fecha = record4.fechaNacimiento
+                fecha = record3.fechaNacimiento
                 lista_date = fecha.split("/")
                 dia = lista_date[0].replace("0","")
                 mes = lista_date[1].replace("0","")
