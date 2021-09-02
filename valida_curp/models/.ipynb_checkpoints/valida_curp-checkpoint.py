@@ -56,6 +56,7 @@ class ValidaCurp(models.Model):
     
     def comprobar(self):
         for record in self:
+            record.estatus_cedula = "Sin validar"
             if record.cedula is False:
                 record.noti_ced = "Antes de validar debes subir tu cédula. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
                 return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response,"estatus_cedula":record.estatus_cedula}
