@@ -58,7 +58,7 @@ class ValidaCurp(models.Model):
         for record in self:
             if record.cedula is False:
                 record.noti_ced = "Antes de validar debes subir tu cédula. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response,"estatus_cedula":record.estatus_cedula}
                 
             else:
                 if(record.intentos_cedula > 0):
@@ -74,7 +74,7 @@ class ValidaCurp(models.Model):
                     if(status == 'ERROR'):
                         record.response = cedu['mensaje']
                         record.noti_ced = "El formato de la cédula no ha sido identificado o tienes que tener una cédula relacionada a una licenciatura con las carreras autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                        return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                        return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response,"estatus_cedula":record.estatus_cedula}
                         
                     else:
                         record.primerApellidoCedula = cedu['cedulas'][0]['apellidoPaterno']
@@ -87,7 +87,7 @@ class ValidaCurp(models.Model):
                         if((titulo_lower.find('nutrición') != -1) or (titulo_lower.find('medicina') != -1) or (titulo_lower.find('médico') != -1)):
                             record.estatus_cedula = "Cédula relacionada"
                         else:
-                            record.estatus_cedula = "Cédula no relacionada"
+                            record.estatus_cedula = "La licenciatura de la cédula no esta autorizada para prescribir Zélé"
 
                         if((record.primerApellidoCedula == record.primerApellido) and (record.segundoApellidoCedula == record.segundoApellido) and (record.nombresCedula == record.nombres)):
                            record.response = "Cédula encontrada y coincidencia en nombre"
@@ -99,7 +99,7 @@ class ValidaCurp(models.Model):
 
                 elif(record.intentos_cedula == 0):
                     record.noti_ced = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
-                    return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response}
+                    return {"intentos":record.intentos_cedula,"respuesta":record.noti_ced,"bool_ine":record.bool_ced,"api":record.response,"estatus_cedula":record.estatus_cedula}
                 
                 
     def comprobar2(self):
@@ -257,16 +257,17 @@ class ValidaCurp(models.Model):
                     'client_type': 'specialist',
                     'is_specialist': True
                 })
-            elif(record3.estatus_cedula == "Cédula no relacionada"):
+            elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response,"estatus_cedula":record3.estatus_cedula}
             
             elif(record3.response == "Cédula encontrada pero no existe coincidencia en nombre"):
                 record3.noti_ced = "Los datos relacionados a la cédula no concuerdan con los datos leídos de tu INE/IFE, favor de ingresar una cédula relacionada a los datos leídos de tu INE/IFE. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response,"estatus_cedula":record3.estatus_cedula}
             else:
                 record3.noti_ced = "Debes de ingresar tu cédula antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response}           
+                return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response,"estatus_cedula":record3.estatus_cedula}  
+            
     def confirmarIne(self):
         for record4 in self:
             if(record4.response2 == "OK"):
