@@ -6,9 +6,8 @@
          <field name="arch" type="xml">
              <graph string="Sales Order Lines" type="bar">
                   <field name="curp" type="row"/>
-                  <field name="ine_count"/>
-                  <field name="ced_count"/>
-                  <field name="selfie_count"/>
+                  <field name="ine_count" type="measure"/>
+                
              </graph>
          </field>
     </record>
