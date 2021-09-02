@@ -5,7 +5,7 @@
          <field name="model">valida_curp.report</field>
          <field name="arch" type="xml">
              <graph string="Sales Order Lines" type="bar">
-                  <field name="curp" group="True"/>
+                  <field name="curp" type="measure"/>
                   <field name="ine_count" type="measure"/>
              </graph>
          </field>
