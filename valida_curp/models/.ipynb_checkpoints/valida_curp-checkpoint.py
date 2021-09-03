@@ -185,7 +185,71 @@ class ValidaCurp(models.Model):
                             record2.response2 = "Faltan datos"
 
                         if 'estado' in json_response:
-                            record2.estado = res['estado']
+                            if (res['estado'] == "01"):
+                                record2.estado = "AGUASCALIENTES"
+                            elif (res['estado'] == "02"):
+                                record2.estado = "BAJA CALIFORNIA"
+                            elif (res['estado'] == "03"):
+                                record2.estado = "BAJA CALIFORNIA SUR"
+                            elif (res['estado'] == "04"):
+                                record2.estado = "CAMPECHE"
+                            elif (res['estado'] == "05"):
+                                record2.estado = "COAHUILA"
+                            elif (res['estado'] == "06"):
+                                record2.estado = "COLIMA"
+                            elif (res['estado'] == "07"):
+                                record2.estado = "CHIAPAS"
+                            elif (res['estado'] == "08"):
+                                record2.estado = "CHIHUAHUA"
+                            elif (res['estado'] == "09"):
+                                record2.estado = "CIUDAD DE MEXICO"
+                            elif (res['estado'] == "10"):
+                                record2.estado = "DURANGO"
+                            elif (res['estado'] == "11"):
+                                record2.estado = "GUANAJUATO"
+                            elif (res['estado'] == "12"):
+                                record2.estado = "GUERRERO"
+                            elif (res['estado'] == "13"):
+                                record2.estado = "HIDALGO"
+                            elif (res['estado'] == "14"):
+                                record2.estado = "JALISCO"
+                            elif (res['estado'] == "15"):
+                                record2.estado = "MEXICO"
+                            elif (res['estado'] == "16"):
+                                record2.estado = "MICHOACAN"
+                            elif (res['estado'] == "17"):
+                                record2.estado = "MORELOS"
+                            elif (res['estado'] == "18"):
+                                record2.estado = "NAYARIT"
+                            elif (res['estado'] == "19"):
+                                record2.estado = "NUEVO LEON"
+                            elif (res['estado'] == "20"):
+                                record2.estado = "OAXACA"
+                            elif (res['estado'] == "21"):
+                                record2.estado = "PUEBLA"
+                            elif (res['estado'] == "22"):
+                                record2.estado = "QUERETARO"
+                            elif (res['estado'] == "23"):
+                                record2.estado = "QUINTANA ROO"
+                            elif (res['estado'] == "24"):
+                                record2.estado = "SAN LUIS POTOSI"
+                            elif (res['estado'] == "25"):
+                                record2.estado = "SINALOA"
+                            elif (res['estado'] == "26"):
+                                record2.estado = "SONORA"
+                            elif (res['estado'] == "27"):
+                                record2.estado = "TABASCO"
+                            elif (res['estado'] == "28"):
+                                record2.estado = "TAMAULIPAS"
+                            elif (res['estado'] == "29"):
+                                record2.estado = "TLAXCALA"
+                            elif (res['estado'] == "30"):
+                                record2.estado = "VERACRUZ"
+                            elif (res['estado'] == "31"):
+                                record2.estado = "YUCATAN"
+                            elif (res['estado'] == "32"):
+                                record2.estado = "ZACATECAS"
+    
                         else:
                             record2.response2 = "Faltan datos"
 
