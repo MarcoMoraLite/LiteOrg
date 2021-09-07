@@ -13,8 +13,12 @@ class SaleReport(models.Model):
     ine_count = fields.Integer('Conteno INE', readonly=True)
     ced_count = fields.Integer('Conteno cédula', readonly=True)
     selfie_count = fields.Integer('Conteno Selfie', readonly=True)
+    ine_aux = fields.Integer('Conteno ine aux', readonly=True)
+    ced_aux = fields.Integer('Conteno cédula aux', readonly=True)
+    selfie_aux = fields.Integer('Conteno foto aux', readonly=True)
     primerApellido = fields.Char('Primer apellido', readonly=True)
     curp = fields.Char('Curp', readonly=True)
+    state = fields.Char('Estatus', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
@@ -28,7 +32,11 @@ class SaleReport(models.Model):
             count((CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END)) as ine_count,
             count((CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END)) as ced_count,
             count((CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END)) as selfie_count,
-            vc.curp as curp
+            (CASE vc.state WHEN 'ine' THEN 1.0 ELSE 0 END) as ine_aux,
+            (CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END) as ced_aux,
+            (CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END) as selfie_aux,
+            vc.curp as curp,
+            vc.state as state
         """
         for field in fields.values():
             select_ += field
