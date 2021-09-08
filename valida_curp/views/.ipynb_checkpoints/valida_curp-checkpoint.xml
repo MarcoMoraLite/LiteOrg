@@ -63,14 +63,14 @@
                   <field name="noti_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                 </group>
                 <notebook>
-                    <page groups="base.group_no_one" string="INE" name="ine_view">
+                    <page string="INE" name="ine_view">
                         <group>
                             <field name="primerApellido"/>
                             <field name="primerApellido"/>
                             <field name="primerApellido"/>
                         </group>
                     </page>
-                    <page groups="base.group_no_one" string="Cédula" name="ine_view">
+                    <page string="Cédula" name="ine_view">
                         <group>
                             <field name="titulo"/>
                             <field name="institucion"/>
