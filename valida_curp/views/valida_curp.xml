@@ -62,6 +62,22 @@
                   <field name="noti_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="noti_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                 </group>
+                <notebook>
+                    <page groups="base.group_no_one" string="INE" name="ine_view">
+                        <group>
+                            <field name="primerApellido"/>
+                            <field name="primerApellido"/>
+                            <field name="primerApellido"/>
+                        </group>
+                    </page>
+                    <page groups="base.group_no_one" string="Cédula" name="ine_view">
+                        <group>
+                            <field name="titulo"/>
+                            <field name="institucion"/>
+                            <field name="nombresCedula"/>
+                        </group>
+                    </page>
+                </notebook>
             </sheet>
             
         </form>
@@ -74,8 +90,8 @@
       <field name="arch" type="xml">
         <tree>
             <field name="primerApellido"/>
-            <field name="segundoApellido"/>
-            <field name="nombres"/>
+            <field name="primerApellido"/>
+            <field name="primerApellido"/>
             <field name="titulo"/>
             <field name="institucion"/>
             <field name="ciudad"/>
