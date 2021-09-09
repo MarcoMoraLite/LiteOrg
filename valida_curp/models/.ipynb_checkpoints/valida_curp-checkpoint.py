@@ -53,7 +53,7 @@ class ValidaCurp(models.Model):
     noti_ine = fields.Char("Mensaje INE")
     noti_ced = fields.Char("Mensaje cédula")
     noti_foto = fields.Char("Mensaje foto")
-    estado_id = fields.Many2one("ID estado")
+    estado_id = fields.Many2one("ID_estado")
     
     def comprobar(self):
         for record in self:
