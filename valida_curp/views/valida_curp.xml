@@ -66,56 +66,56 @@
                 <notebook>
                     <page string="INE" name="ine_view">
                         <group>
-                            <field name="ine"/>
-                            <field name="response2"/>
-                            <field name="curp"/>
-                            <field name="fechaNacimiento"/>
-                            <field name="primerApellido"/>
-                            <field name="segundoApellido"/>
-                            <field name="nombres"/>
-                            <field name="sexo"/>
-                            <field name="calle"/>
-                            <field name="colonia"/>
-                            <field name="codigo_postal"/>
-                            <field name="ciudad"/>
-                            <field name="subTipo"/>
-                            <field name="claveElector"/>
-                            <field name="colonia"/>
-                            <field name="registro"/>
-                            <field name="estado"/>
-                            <field name="municipio"/>
-                            <field name="seccion"/>
-                            <field name="localidad"/>
-                            <field name="emision"/>
-                            <field name="vigencia"/>
-                            <field name="intentos_ine"/>
-                            <field name="bool_ine"/>
-                            <field name="noti_ine"/>
+                            <field name="ine" readonly="1"/>
+                            <field name="response2" readonly="1"/>
+                            <field name="curp" readonly="1"/>
+                            <field name="fechaNacimiento" readonly="1"/>
+                            <field name="primerApellido" readonly="1"/>
+                            <field name="segundoApellido" readonly="1"/>
+                            <field name="nombres" readonly="1"/>
+                            <field name="sexo" readonly="1"/>
+                            <field name="calle" readonly="1"/>
+                            <field name="colonia" readonly="1"/>
+                            <field name="codigo_postal" readonly="1"/>
+                            <field name="ciudad" readonly="1"/>
+                            <field name="subTipo" readonly="1"/>
+                            <field name="claveElector" readonly="1"/>
+                            <field name="colonia" readonly="1"/>
+                            <field name="registro" readonly="1"/>
+                            <field name="estado" readonly="1"/>
+                            <field name="municipio" readonly="1"/>
+                            <field name="seccion" readonly="1"/>
+                            <field name="localidad" readonly="1"/>
+                            <field name="emision" readonly="1"/>
+                            <field name="vigencia" readonly="1"/>
+                            <field name="intentos_ine" readonly="1"/>
+                            <field name="bool_ine" readonly="1"/>
+                            <field name="noti_ine" readonly="1"/>
                         </group>
                     </page>
                     <page string="Cédula" name="ced_view">
                         <group>
-                            <field name="cedula"/>
-                            <field name="response"/>
-                            <field name="primerApellidoCedula"/>
-                            <field name="segundoApellidoCedula"/>
-                            <field name="nombresCedula"/>
-                            <field name="institucion"/>
-                            <field name="tipo_cedula"/>
-                            <field name="titulo"/>
-                            <field name="estatus_cedula"/>
-                            <field name="intentos_cedula"/>
-                            <field name="bool_ced"/>
-                            <field name="noti_ced"/>
+                            <field name="cedula" readonly="1"/>
+                            <field name="response" readonly="1"/>
+                            <field name="primerApellidoCedula" readonly="1"/>
+                            <field name="segundoApellidoCedula" readonly="1"/>
+                            <field name="nombresCedula" readonly="1"/>
+                            <field name="institucion" readonly="1"/>
+                            <field name="tipo_cedula" readonly="1"/>
+                            <field name="titulo" readonly="1"/>
+                            <field name="estatus_cedula" readonly="1"/>
+                            <field name="intentos_cedula" readonly="1"/>
+                            <field name="bool_ced" readonly="1"/>
+                            <field name="noti_ced" readonly="1"/>
                         </group>
                     </page>
                     <page string="Selfie" name="foto_view">
                         <group>
-                            <field name="ine_foto"/>
-                            <field name="response3"/>
-                            <field name="intentos"/>
-                            <field name="bool_foto"/>
-                            <field name="noti_foto"/>
+                            <field name="ine_foto" readonly="1"/>
+                            <field name="response3" readonly="1"/>
+                            <field name="intentos" readonly="1"/>
+                            <field name="bool_foto" readonly="1"/>
+                            <field name="noti_foto" readonly="1"/>
                         </group>
                     </page>
                 </notebook>
