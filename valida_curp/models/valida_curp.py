@@ -53,6 +53,7 @@ class ValidaCurp(models.Model):
     noti_ine = fields.Char("Mensaje INE")
     noti_ced = fields.Char("Mensaje cédula")
     noti_foto = fields.Char("Mensaje foto")
+    estado_id = fields.Many2one("ID estado")
     
     def comprobar(self):
         for record in self:
@@ -186,69 +187,71 @@ class ValidaCurp(models.Model):
 
                         if 'estado' in json_response:
                             if (res['estado'] == "01"):
-                                record2.estado = "AGUASCALIENTES"
+                                record2.estado = "Aguascalientes"
                             elif (res['estado'] == "02"):
-                                record2.estado = "BAJA CALIFORNIA"
+                                record2.estado = "Baja California"
                             elif (res['estado'] == "03"):
-                                record2.estado = "BAJA CALIFORNIA SUR"
+                                record2.estado = "Baja California Sur"
                             elif (res['estado'] == "04"):
-                                record2.estado = "CAMPECHE"
+                                record2.estado = "Campeche"
                             elif (res['estado'] == "05"):
-                                record2.estado = "COAHUILA"
+                                record2.estado = "Coahuila"
                             elif (res['estado'] == "06"):
-                                record2.estado = "COLIMA"
+                                record2.estado = "Colima"
                             elif (res['estado'] == "07"):
-                                record2.estado = "CHIAPAS"
+                                record2.estado = "Chiapas"
                             elif (res['estado'] == "08"):
-                                record2.estado = "CHIHUAHUA"
+                                record2.estado = "Chihuahua"
                             elif (res['estado'] == "09"):
-                                record2.estado = "CIUDAD DE MEXICO"
+                                record2.estado = "Ciudad de México"
                             elif (res['estado'] == "10"):
-                                record2.estado = "DURANGO"
+                                record2.estado = "Durango"
                             elif (res['estado'] == "11"):
-                                record2.estado = "GUANAJUATO"
+                                record2.estado = "Guanajuato"
                             elif (res['estado'] == "12"):
-                                record2.estado = "GUERRERO"
+                                record2.estado = "Guerrero"
                             elif (res['estado'] == "13"):
-                                record2.estado = "HIDALGO"
+                                record2.estado = "Hidalgo"
                             elif (res['estado'] == "14"):
-                                record2.estado = "JALISCO"
+                                record2.estado = "Jalisco"
                             elif (res['estado'] == "15"):
-                                record2.estado = "MEXICO"
+                                record2.estado = "México"
                             elif (res['estado'] == "16"):
-                                record2.estado = "MICHOACAN"
+                                record2.estado = "Michoacán"
                             elif (res['estado'] == "17"):
-                                record2.estado = "MORELOS"
+                                record2.estado = "Morelos"
                             elif (res['estado'] == "18"):
-                                record2.estado = "NAYARIT"
+                                record2.estado = "Nayarit"
                             elif (res['estado'] == "19"):
-                                record2.estado = "NUEVO LEON"
+                                record2.estado = "Nuevo León"
                             elif (res['estado'] == "20"):
-                                record2.estado = "OAXACA"
+                                record2.estado = "Oaxaca"
                             elif (res['estado'] == "21"):
-                                record2.estado = "PUEBLA"
+                                record2.estado = "Puebla"
                             elif (res['estado'] == "22"):
-                                record2.estado = "QUERETARO"
+                                record2.estado = "Querétaro"
                             elif (res['estado'] == "23"):
-                                record2.estado = "QUINTANA ROO"
+                                record2.estado = "Quintana Roo"
                             elif (res['estado'] == "24"):
-                                record2.estado = "SAN LUIS POTOSI"
+                                record2.estado = "San Luis Potosí"
                             elif (res['estado'] == "25"):
-                                record2.estado = "SINALOA"
+                                record2.estado = "Sinaloa"
                             elif (res['estado'] == "26"):
-                                record2.estado = "SONORA"
+                                record2.estado = "Sonora"
                             elif (res['estado'] == "27"):
-                                record2.estado = "TABASCO"
+                                record2.estado = "Tabasco"
                             elif (res['estado'] == "28"):
-                                record2.estado = "TAMAULIPAS"
+                                record2.estado = "Tamaulipas"
                             elif (res['estado'] == "29"):
-                                record2.estado = "TLAXCALA"
+                                record2.estado = "Tlaxcala"
                             elif (res['estado'] == "30"):
-                                record2.estado = "VERACRUZ"
+                                record2.estado = "Veracruz"
                             elif (res['estado'] == "31"):
-                                record2.estado = "YUCATAN"
+                                record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
-                                record2.estado = "ZACATECAS"
+                                record2.estado = "Zacatecas"
+                            id_estado = self.env['res.country.state'].search([('name', '=', record2.estado)])
+                            record2.estado_id = id_estado.id
     
                         else:
                             record2.response2 = "Faltan datos"
@@ -314,7 +317,7 @@ class ValidaCurp(models.Model):
                     'type': 'contact',
                     'street_name': record3.calle,
                     'zip': record3.codigo_postal,
-                    'state_id': record3.estado,
+                    'state_id': record3.estado_id,
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
