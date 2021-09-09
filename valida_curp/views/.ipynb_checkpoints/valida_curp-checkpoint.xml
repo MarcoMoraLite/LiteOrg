@@ -61,6 +61,7 @@
                   <field name="noti_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                   <field name="noti_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="noti_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
+                  <field name="estado_id" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                 </group>
                 <notebook>
                     <page string="INE" name="ine_view">
