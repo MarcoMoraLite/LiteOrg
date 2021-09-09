@@ -127,13 +127,18 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="nombres"/>
             <field name="primerApellido"/>
-            <field name="primerApellido"/>
-            <field name="primerApellido"/>
-            <field name="titulo"/>
-            <field name="institucion"/>
+            <field name="segundoApellido"/>
+            <field name="estado"/>
             <field name="ciudad"/>
             <field name="codigo_postal"/>
+            <field name="sexo"/>
+            <field name="titulo"/>
+            <field name="institucion"/>
+            <field name="primerApellidoCedula"/>
+            <field name="segundoApellidoCedula"/>
+            <field name="state"/>
         </tree>
       </field>
     </record>
@@ -143,11 +148,11 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="ine"/>
-            <field name="ine_foto"/>
-            <field name="cedula"/>
             <field name="nombres"/>
-            <field name="state"/>
+            <field name="primerApellido"/>
+            <field name="ine"/>
+            <field name="cedula"/>
+            <field name="ine_foto"/>
         </tree>
       </field>
     </record>
