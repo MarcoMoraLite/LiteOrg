@@ -250,8 +250,8 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
                                 record2.estado = "Zacatecas"
-                            id_estado = self.env['res.country.state'].search([('name', '=', record2.estado)])
-                            record2.estado_id = id_estado.id
+                            record2.estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1).id
+                            
     
                         else:
                             record2.response2 = "Faltan datos"
