@@ -66,7 +66,6 @@
                 <notebook>
                     <page string="INE" name="ine_view">
                         <group>
-                            <field name="ine" readonly="1"/>
                             <field name="response2" readonly="1"/>
                             <field name="curp" readonly="1"/>
                             <field name="fechaNacimiento" readonly="1"/>
@@ -95,7 +94,6 @@
                     </page>
                     <page string="Cédula" name="ced_view">
                         <group>
-                            <field name="cedula" readonly="1"/>
                             <field name="response" readonly="1"/>
                             <field name="primerApellidoCedula" readonly="1"/>
                             <field name="segundoApellidoCedula" readonly="1"/>
@@ -111,7 +109,6 @@
                     </page>
                     <page string="Selfie" name="foto_view">
                         <group>
-                            <field name="ine_foto" readonly="1"/>
                             <field name="response3" readonly="1"/>
                             <field name="intentos" readonly="1"/>
                             <field name="bool_foto" readonly="1"/>
