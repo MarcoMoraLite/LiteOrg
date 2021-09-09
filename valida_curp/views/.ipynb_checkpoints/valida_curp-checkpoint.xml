@@ -39,7 +39,7 @@
                   <field name="claveElector" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
                   <field name="registro" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
                   <field name="estado" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
-                  <field name="estado_id" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
+                  <field name="id_state" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
                   <field name="municipio" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
                   <field name="seccion" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>
                   <field name="localidad" attrs="{'invisible':[['state','not in',['ine','guardar']]]}" colspam="2" readonly="1"/>

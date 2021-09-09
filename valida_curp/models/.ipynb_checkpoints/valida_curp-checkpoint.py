@@ -53,7 +53,7 @@ class ValidaCurp(models.Model):
     noti_ine = fields.Char("Mensaje INE")
     noti_ced = fields.Char("Mensaje cédula")
     noti_foto = fields.Char("Mensaje foto")
-    estado_id = fields.Many2one("Id_estado")
+    id_state = fields.Many2one("Id_estado")
     
     def comprobar(self):
         for record in self:
@@ -250,7 +250,7 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
                                 record2.estado = "Zacatecas"
-                            record2.estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1).id
+                            record2.id_state = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1).id
                             
     
                         else:
@@ -317,7 +317,7 @@ class ValidaCurp(models.Model):
                     'type': 'contact',
                     'street_name': record3.calle,
                     'zip': record3.codigo_postal,
-                    'state_id': record3.estado_id,
+                    'state_id': record3.id_state,
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
