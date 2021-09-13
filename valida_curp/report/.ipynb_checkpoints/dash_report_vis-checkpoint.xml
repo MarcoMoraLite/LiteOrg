@@ -1,33 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="dashboard_report" model="ir.ui.view">
-         <field name="name">dashboard.report</field>
-         <field name="model">valida_curp.report</field>
-         <field name="arch" type="xml">
-             <graph string="Sales Order Lines" type="bar">
-                  <field name="state"/>
-                  <field name="ine_aux" type="measure"/>
-             </graph>
-         </field>
-    </record>
-    
-    <record id="action_dashboard" model="ir.actions.act_window">
-        <field name="name">Dashboard</field>
-        <field name="res_model">valida_curp.report</field>
-        <field name="view_mode">pivot,graph</field>
-        <field name="view_id"></field> 
-        <field name="help">Panel....</field>
-    </record>
-    
-        <menuitem id="menu_report_dashboard"
-        name="Report Teams"
-        parent="valida_curp.menu_root"
-        sequence="5"/>
-    
-        <menuitem id="submenu_report_team_goals"
-        name="Dashboard"
-        action="action_dashboard"
-        parent="menu_report_dashboard"
-        sequence="1"/>
+    <data>
 
+        <record id="dashboard_report" model="ir.ui.view">
+             <field name="name">dashboard.report</field>
+             <field name="model">valida_curp.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Sales Order Lines" type="bar">
+                     <field name="state"/>
+                     <field name="ine_aux" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record id="dashboard_view" model="ir.ui.view">
+            <field name="name">dashboard.view</field>
+            <field name="model">valida_curp.report</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <dashboard sample="1">
+                    <view type="graph" ref="dashboard.report"/>
+                    <group>
+                        <group>
+                            <aggregate name="price_subtotal_confirmed_orders" string="Total Sales" field="ine_count"/>
+                            <aggregate name="price_subtotal_all_orders" string="Untaxed Total" field="ine_count"/>
+                        </group>
+                    </group>
+                    <view type="pivot" ref="dashboard.report"/>
+                </dashboard>
+            </field>
+        </record>
+
+        <record id="sale.action_order_report_so_salesteam" model="ir.actions.act_window">
+            <field name="view_mode">dashboard</field>
+            <field name ="view_id" ref="dashboard.view"/>
+        </record>
+
+        <record id="sale_report_action_dashboard" model="ir.actions.act_window">
+            <field name="name">Sales Analysis</field>
+            <field name="res_model">sale.report</field>
+            <field name="view_mode">dashboard,pivot,graph</field>
+            <field name="search_view_id" ref="sale.view_order_product_search"/>
+        </record>
+
+        <record id="sale_report_action_dashboard_dashboard" model="ir.actions.act_window.view">
+        	<field name="sequence" eval="1"/>
+        	<field name="view_mode">dashboard</field>
+        	<field name="view_id" ref="sale_report_view_dashboard"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        </record>
+
+        <record id="sale_report_action_dashboard_pivot" model="ir.actions.act_window.view">
+        	<field name="sequence" eval="2"/>
+        	<field name="view_mode">pivot</field>
+        	<field name="view_id" ref="sale_enterprise.sale_report_view_pivot"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        </record>
+
+        <record id="sale_report_action_dashboard_graph" model="ir.actions.act_window.view">
+        	<field name="sequence" eval="3"/>
+        	<field name="view_mode">graph</field>
+        	<field name="view_id" ref="sale.view_order_product_graph"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        </record>
+
+        <record id="sale.menu_report_product_all" model="ir.ui.menu">
+            <field name="action" ref="sale_report_action_dashboard"/>
+        </record>
+
+    </data>
 </odoo>
+
