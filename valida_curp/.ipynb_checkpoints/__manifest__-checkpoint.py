@@ -27,7 +27,7 @@
         'security/ir.model.access.csv',
         'views/valida_curp.xml',
         'report/dash_report_vis.xml',
-        #'data/template_contrato.xml',
+        'report/dashboard_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
