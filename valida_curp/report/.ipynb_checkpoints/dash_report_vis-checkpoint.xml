@@ -11,6 +11,23 @@
          </field>
     </record>
     
+    <record id="sale_report_view_dashboard" model="ir.ui.view">
+            <field name="name">dashboard.report.view</field>
+            <field name="model">valida_curp.report</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <dashboard sample="1">
+                    <view type="graph" ref="valida_curp.report"/>
+                    <group>
+                        <group>
+                            <aggregate name="price_subtotal_confirmed_orders" string="Total Sales" field="ine_aux" help="Total, Tax Included" widget="monetary"/>
+                            <aggregate name="price_subtotal_all_orders" string="Untaxed Total" field="ine_aux" widget="monetary"/>
+                        </group>
+                    </group>
+                </dashboard>
+            </field>
+        </record>
+    
     <record id="action_dashboard" model="ir.actions.act_window">
         <field name="name">Dashboard</field>
         <field name="res_model">valida_curp.report</field>
