@@ -14,7 +14,7 @@
     <record id="action_dashboard" model="ir.actions.act_window">
         <field name="name">Dashboard</field>
         <field name="res_model">valida_curp.report</field>
-        <field name="view_mode">pivot,graph</field>
+        <field name="view_mode">pivot,graph,dashboard</field>
         <field name="view_id"></field> 
         <field name="help">Panel....</field>
     </record>
