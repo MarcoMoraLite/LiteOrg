@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
+<!--
         <record id="dashboard_report" model="ir.ui.view">
              <field name="name">dashboard.report</field>
              <field name="model">valida_curp.report</field>
@@ -12,6 +12,7 @@
                  </graph>
              </field>
         </record>
+-->
 
         <record id="dashboard_view_report" model="ir.ui.view">
             <field name="name">dashboard.view</field>
