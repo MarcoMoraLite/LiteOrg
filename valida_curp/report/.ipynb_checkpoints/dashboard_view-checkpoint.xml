@@ -16,7 +16,7 @@
 
         <record id="dashboard_view_report" model="ir.ui.view">
             <field name="name">dashboard.view</field>
-            <field name="model">valida.view.report</field>
+            <field name="model">valida_curp.report</field>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <form>
