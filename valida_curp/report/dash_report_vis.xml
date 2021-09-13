@@ -16,7 +16,7 @@
             <field name="model">valida_curp.report</field>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <dashboard sample="1">
+                <form sample="1">
                     <view type="graph" ref="valida_curp.report"/>
                     <group>
                         <group>
@@ -24,7 +24,7 @@
                             <aggregate name="price_subtotal_all_orders" string="Untaxed Total" field="ine_aux" widget="monetary"/>
                         </group>
                     </group>
-                </dashboard>
+                </form>
             </field>
         </record>
     
