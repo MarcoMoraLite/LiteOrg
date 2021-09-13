@@ -16,7 +16,7 @@
 
         <record id="dashboard_view_report" model="ir.ui.view">
             <field name="name">dashboard.view</field>
-            <field name="model">valida_curp.report</field>
+            <field name="model">valida.view.report</field>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <form>
@@ -34,34 +34,34 @@
 
         <record id="sale.action_order_report_so_salesteam" model="ir.actions.act_window">
             <field name="view_mode">dashboard</field>
-            <field name ="view_id" ref="dashboard.view"/>
+            <field name ="view_id" ref="dashboard_view"/>
         </record>
 
         <record id="sale_report_action_dashboard" model="ir.actions.act_window">
             <field name="name">Sales Analysis</field>
-            <field name="res_model">sale.report</field>
+            <field name="res_model">valida.view.report</field>
             <field name="view_mode">dashboard,pivot,graph</field>
-            <field name="search_view_id" ref="sale.view_order_product_search"/>
+            <field name="search_view_id" ref="valida_curp.report"/>
         </record>
 
         <record id="sale_report_action_dashboard_dashboard" model="ir.actions.act_window.view">
         	<field name="sequence" eval="1"/>
         	<field name="view_mode">dashboard</field>
-        	<field name="view_id" ref="sale_report_view_dashboard"/>
+        	<field name="view_id" ref="dashboard_view"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
 
         <record id="sale_report_action_dashboard_pivot" model="ir.actions.act_window.view">
         	<field name="sequence" eval="2"/>
         	<field name="view_mode">pivot</field>
-        	<field name="view_id" ref="sale_enterprise.sale_report_view_pivot"/>
+        	<field name="view_id" ref="dashboard_view"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
 
         <record id="sale_report_action_dashboard_graph" model="ir.actions.act_window.view">
         	<field name="sequence" eval="3"/>
         	<field name="view_mode">graph</field>
-        	<field name="view_id" ref="sale.view_order_product_graph"/>
+        	<field name="view_id" ref="dashboard_view"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
 
