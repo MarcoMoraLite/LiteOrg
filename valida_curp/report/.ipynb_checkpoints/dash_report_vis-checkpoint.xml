@@ -87,7 +87,7 @@
     
         <menuitem id="submenu_report_team_goals"
         name="Dashboard"
-        action="sale.menu_report_product_all"
+        action="sale_report_view_dashboard"
         parent="menu_report_dashboard"
         sequence="1"/>
     </data>
