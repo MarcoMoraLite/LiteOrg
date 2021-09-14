@@ -381,7 +381,7 @@ class ValidaCurp(models.Model):
                 record6.write({'state': 'guardar'})
             else:
                 record6.noti_foto = "Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record5.intentos,"respuesta":record5.noti_foto,"bool_ine":record5.bool_foto,"api":record5.response3}
+                return {"intentos":record6.intentos,"respuesta":record6.noti_foto,"bool_ine":record6.bool_foto,"api":record6.response3}
                 
     def guardaContacto(self):
         for record7 in self:
