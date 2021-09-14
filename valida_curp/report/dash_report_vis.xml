@@ -45,7 +45,7 @@
         </record>
 
         <record id="sale.action_order_report_so_salesteam" model="ir.actions.act_window">
-            <field name="view_mode">dashboard</field>
+            <field name="view_mode">form</field>
             <field name ="view_id" ref="sale_report_view_dashboard"/>
         </record>
 
