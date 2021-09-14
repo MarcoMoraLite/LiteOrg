@@ -126,36 +126,43 @@ class ValidaCurp(models.Model):
                             record2.curp = res['curp']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el CURP no se pudo leer de manera correcta"
 
                         if 'fechaNacimiento' in json_response:
                             record2.fechaNacimiento = res['fechaNacimiento']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la FECHA DE NACIMIENTO no se pudo leer de manera correcta"
 
                         if 'primerApellido' in json_response:
                             record2.primerApellido = res['primerApellido']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el PRIMER APELLIDO no se pudo leer de manera correcta"
 
                         if 'segundoApellido' in json_response:
                             record2.segundoApellido = res['segundoApellido']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el SEGUNDO APELLIDO no se pudo leer de manera correcta"
 
                         if 'nombres' in json_response:
                             record2.nombres = res['nombres']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el NOMBRE no se pudo leer de manera correcta"
 
                         if 'sexo' in json_response:
                             record2.sexo = res['sexo']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el SEXO no se pudo leer de manera correcta"
 
                         if 'calle' in json_response:
                             record2.calle = res['calle']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la CALLE no se pudo leer de manera correcta"
 
                         if 'colonia' in json_response:
                             record2.colonia = res['colonia']
@@ -163,27 +170,32 @@ class ValidaCurp(models.Model):
                             record2.codigo_postal = record2.colonia[longitud-5:]
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la COLONIA no se pudo leer de manera correcta"
 
                         if 'ciudad' in json_response:
                             record2.ciudad = res['ciudad']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la CIUDAD no se pudo leer de manera correcta"
 
                         if 'subTipo' in json_response:
                             record2.subTipo = res['subTipo']
                             record2.response2 = 'OK'
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el SUBTIPO no se pudo leer de manera correcta"
 
                         if 'claveElector' in json_response:
                             record2.claveElector = res['claveElector']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la CLAVE-ELECTOR no se pudo leer de manera correcta"
 
                         if 'registro' in json_response:
                             record2.registro = res['registro']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el AÑO DE REGISTRO no se pudo leer de manera correcta"
 
                         if 'estado' in json_response:
                             if (res['estado'] == "01"):
@@ -255,31 +267,37 @@ class ValidaCurp(models.Model):
     
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el ESTADO no se pudo leer de manera correcta"
 
                         if 'municipio' in json_response:    
                             record2.municipio = res['municipio']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el MUNICIPIO no se pudo leer de manera correcta"
 
                         if 'seccion' in json_response:    
                             record2.seccion = res['seccion']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la SECCIÓN no se pudo leer de manera correcta"
 
                         if 'localidad' in json_response:     
                             record2.localidad = res['localidad']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la LOCALIDAD no se pudo leer de manera correcta"
 
                         if 'emision' in json_response:     
                             record2.emision = res['emision']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, el AÑO DE EMISIÓN no se pudo leer de manera correcta"
 
                         if 'vigencia' in json_response:     
                             record2.vigencia = res['vigencia']
                         else:
                             record2.response2 = "Faltan datos"
+                            record2.noti_ine = "Por favor intenta subir otra foto, la VIGENCIA no se pudo leer de manera correcta"
 
                         if record2.response2 != "Faltan datos":
                             record2.response2 = 'OK'
