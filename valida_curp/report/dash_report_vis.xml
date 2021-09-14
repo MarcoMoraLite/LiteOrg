@@ -31,7 +31,7 @@
             <field name="model">valida_curp.report</field>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <dashboard sample="1">
+                <form sample="1">
                     <view type="graph" ref="sale_report_view_graph"/>
                     <group>
                         <group>
@@ -40,7 +40,7 @@
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>
-                </dashboard>
+                </form>
             </field>
         </record>
 
@@ -87,7 +87,7 @@
     
         <menuitem id="submenu_report_team_goals"
         name="Dashboard"
-        action="action_dashboard"
+        action="sale_report_action_dashboard"
         parent="menu_report_dashboard"
         sequence="1"/>
     </data>
