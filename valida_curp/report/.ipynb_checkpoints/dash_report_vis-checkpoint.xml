@@ -53,6 +53,7 @@
             <field name="name">Sales Analysis</field>
             <field name="res_model">valida_curp.report</field>
             <field name="view_mode">dashboard,pivot,graph</field>
+            <field name="view_id"></field> 
         </record>
 
         <record id="sale_report_action_dashboard_dashboard" model="ir.actions.act_window.view">
@@ -87,7 +88,7 @@
     
         <menuitem id="submenu_report_team_goals"
         name="Dashboard"
-        action="sale_report_view_dashboard"
+        action="sale_report_action_dashboard"
         parent="menu_report_dashboard"
         sequence="1"/>
     </data>
