@@ -77,9 +77,9 @@
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
 
-        <record id="sale.menu_report_product_all" model="ir.ui.menu">
+        <!--<record id="sale.menu_report_product_all" model="ir.ui.menu">
             <field name="action" ref="sale_report_action_dashboard"/>
-        </record>
+        </record> -->
 
         <menuitem id="menu_report_dashboard"
         name="Report Teams"
