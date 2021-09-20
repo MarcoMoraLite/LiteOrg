@@ -36,7 +36,7 @@
                     <group>
                         <group>
                             <aggregate name="price_subtotal_confirmed_orders" string="INE AUX" field="ine_aux" help="Total, Tax Included" widget="monetary"/>
-                            <aggregate name="price_subtotal_all_orders" string="Untaxed Total" field="ine_aux" widget="monetary"/>
+                            <aggregate name="price_subtotal_all_orders" string="Total" field="ine_aux" widget="monetary"/>
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>
