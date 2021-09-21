@@ -47,7 +47,7 @@ class ValidaCurp(models.Model):
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
-    estatus_gen = fields.Char("Estatus general")
+    estatus_gen = fields.Char("Estatus general", default="Faltan datos")
     banco = fields.Char("Banco")
     cuenta = fields.Char("Cuenta bancaria")
     clabe = fields.Char("CLABE")

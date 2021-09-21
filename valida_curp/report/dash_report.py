@@ -16,10 +16,11 @@ class SaleReport(models.Model):
     ine_aux = fields.Integer('Conteno ine aux', readonly=True)
     ced_aux = fields.Integer('Conteno cédula aux', readonly=True)
     selfie_aux = fields.Integer('Conteno foto aux', readonly=True)
-    primerApellido = fields.Char('Primer apellido', readonly=True)
     curp = fields.Char('Curp', readonly=True)
     state = fields.Char('Estatus', readonly=True)
     nombres = fields.Char('Nombres', readonly=True)
+    faltan_datos = fields.Integer('Estatus general', readonly=True)
+    faltan_datos_aux = fields.Integer('Estatus general', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
@@ -38,7 +39,9 @@ class SaleReport(models.Model):
             (CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END) as selfie_aux,
             vc.curp as curp,
             vc.state as state,
-            vc.nombres as nombres
+            vc.nombres as nombres,
+            count((CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END)) as faltan_datos,
+            (CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END) as faltan_datos_aux
         """
         for field in fields.values():
             select_ += field
