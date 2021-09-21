@@ -39,8 +39,8 @@
                             <aggregate name="registros_week" string="Registros esta semana" field="selfie_aux"/>
                             <aggregate name="registros_month" string="Registros este mes" field="selfie_aux"/>
                             <aggregate name="faltan_datos" string="Registros faltantes de datos" field="faltan_datos_aux"/>
-                            <aggregate name="registros_exitosos" string="Registros exitosos" field="ced_aux"/>
-                            <aggregate name="total_regis" string="Registros exitosos" field="total_registros"/>
+                            <aggregate name="registros_exitosos" string="Registros exitosos" field="exitoso_registro_aux"/>
+                            <aggregate name="total_regis" string="Total registros" field="total_registros"/>
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>

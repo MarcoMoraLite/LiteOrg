@@ -22,7 +22,8 @@ class SaleReport(models.Model):
     faltan_datos = fields.Integer('Estatus general', readonly=True)
     faltan_datos_aux = fields.Integer('Estatus general aux', readonly=True)
     total_registros = fields.Integer('Total registros', readonly=True)
-    
+    exitoso_registro = fields.Integer('Registros completos', readonly=True)
+    exitoso_registro_aux = fields.Integer('Registros completos', readonly=True)
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
 
@@ -43,6 +44,8 @@ class SaleReport(models.Model):
             vc.nombres as nombres,
             count((CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END)) as faltan_datos,
             (CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END) as faltan_datos_aux,
+            count((CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END)) as exitoso_registro,
+            (CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END) as exitoso_registro_aux,
             count(*) as total_registros
         """
         for field in fields.values():
