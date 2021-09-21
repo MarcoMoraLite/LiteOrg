@@ -20,7 +20,7 @@ class SaleReport(models.Model):
     state = fields.Char('Estatus', readonly=True)
     nombres = fields.Char('Nombres', readonly=True)
     faltan_datos = fields.Integer('Estatus general', readonly=True)
-    faltan_datos_aux = fields.Integer('Estatus general', readonly=True)
+    faltan_datos_aux = fields.Integer('Estatus general aux', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
