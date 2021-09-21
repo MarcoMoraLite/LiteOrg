@@ -24,8 +24,7 @@ class SaleReport(models.Model):
     total_registros = fields.Integer('Total registros', readonly=True)
     exitoso_registro = fields.Integer('Registros completos', readonly=True)
     exitoso_registro_aux = fields.Integer('Registros completos', readonly=True)
-    #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
-    #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
+    fecha = fields.Datetime('Fecha de registro',readonly=True)
 
     
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
@@ -46,7 +45,8 @@ class SaleReport(models.Model):
             (CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END) as faltan_datos_aux,
             count((CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END)) as exitoso_registro,
             (CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END) as exitoso_registro_aux,
-            count(*) as total_registros
+            count(*) as total_registros,
+            vc.create_date as fecha
         """
         for field in fields.values():
             select_ += field
@@ -60,6 +60,7 @@ class SaleReport(models.Model):
         groupby_ = """
             vc.state,
             vc.nombres,
+            vc.create_date,
             vc.curp,
             vc.id %s
         """ % (groupby)
