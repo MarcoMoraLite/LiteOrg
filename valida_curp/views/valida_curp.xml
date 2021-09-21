@@ -6,15 +6,15 @@
       <field name="arch" type="xml">
         <form string="Validador de cedula">
             <header >
-                <button name="send_email_template" type="object" string="Enviar Contrato" />
+                <button name="send_email_template" type="object" string="Enviar Correo" />
                 <button name="comprobar" type="object" states="cedula" string="Validar Cedula" />
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
                 <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
                 <button name="selfie" type="object" states="foto" string="Validar Foto"/>
                 <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
-                <button name="guardaContacto" type="object" states="bancarios" string="Guardar datos"/>
-                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,bancarios"/>
+                <button name="guardaContacto" type="object" states="guardar" string="Guardar Contacto"/>
+                <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
             </header>
             <sheet>
                 <group col="4">
@@ -25,45 +25,61 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="ine_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
-                  <field name="curp" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="fechaNacimiento" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="primerApellido" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="segundoApellido" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="nombres" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="sexo" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="calle" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="colonia" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="codigo_postal" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="ciudad" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="subTipo" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="claveElector" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="registro" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="estado" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="municipio" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="seccion" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="localidad" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="emision" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="vigencia" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="primerApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="segundoApellidoCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="nombresCedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="institucion" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="tipo_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="titulo" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="estatus_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="id_contacto" colspam="2" readonly="1"/>
-                  <field name="intentos" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
-                  <field name="intentos_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="estatus_gen" colspam="2" readonly="1"/>
-                  <field name="intentos_cedula" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="banco" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
-                  <field name="cuenta" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
-                  <field name="clabe" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
-                  <field name="rfc" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
-                  <field name="noti_ine" attrs="{'invisible':[['state','not in',['ine']]]}" colspam="2" readonly="1"/>
-                  <field name="noti_ced" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
-                  <field name="noti_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
+
                 </group>
+                <notebook>
+                    <page string="INE" name="ine_view">
+                        <group>
+                            <field name="response2" readonly="1"/>
+                            <field name="curp" readonly="1"/>
+                            <field name="fechaNacimiento" readonly="1"/>
+                            <field name="primerApellido" readonly="1"/>
+                            <field name="segundoApellido" readonly="1"/>
+                            <field name="nombres" readonly="1"/>
+                            <field name="sexo" readonly="1"/>
+                            <field name="calle" readonly="1"/>
+                            <field name="colonia" readonly="1"/>
+                            <field name="codigo_postal" readonly="1"/>
+                            <field name="ciudad" readonly="1"/>
+                            <field name="subTipo" readonly="1"/>
+                            <field name="claveElector" readonly="1"/>
+                            <field name="colonia" readonly="1"/>
+                            <field name="registro" readonly="1"/>
+                            <field name="estado" readonly="1"/>
+                            <field name="municipio" readonly="1"/>
+                            <field name="seccion" readonly="1"/>
+                            <field name="localidad" readonly="1"/>
+                            <field name="emision" readonly="1"/>
+                            <field name="vigencia" readonly="1"/>
+                            <field name="intentos_ine" readonly="1"/>
+                            <field name="bool_ine" readonly="1"/>
+                            <field name="noti_ine" readonly="1"/>
+                        </group>
+                    </page>
+                    <page string="Cédula" name="ced_view">
+                        <group>
+                            <field name="response" readonly="1"/>
+                            <field name="primerApellidoCedula" readonly="1"/>
+                            <field name="segundoApellidoCedula" readonly="1"/>
+                            <field name="nombresCedula" readonly="1"/>
+                            <field name="institucion" readonly="1"/>
+                            <field name="tipo_cedula" readonly="1"/>
+                            <field name="titulo" readonly="1"/>
+                            <field name="estatus_cedula" readonly="1"/>
+                            <field name="intentos_cedula" readonly="1"/>
+                            <field name="bool_ced" readonly="1"/>
+                            <field name="noti_ced" readonly="1"/>
+                        </group>
+                    </page>
+                    <page string="Selfie" name="foto_view">
+                        <group>
+                            <field name="response3" readonly="1"/>
+                            <field name="intentos" readonly="1"/>
+                            <field name="bool_foto" readonly="1"/>
+                            <field name="noti_foto" readonly="1"/>
+                        </group>
+                    </page>
+                </notebook>
             </sheet>
             
         </form>
@@ -75,13 +91,18 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="nombres"/>
             <field name="primerApellido"/>
             <field name="segundoApellido"/>
-            <field name="nombres"/>
-            <field name="titulo"/>
-            <field name="institucion"/>
+            <field name="estado"/>
             <field name="ciudad"/>
             <field name="codigo_postal"/>
+            <field name="sexo"/>
+            <field name="titulo"/>
+            <field name="institucion"/>
+            <field name="primerApellidoCedula"/>
+            <field name="segundoApellidoCedula"/>
+            <field name="state"/>
         </tree>
       </field>
     </record>
@@ -91,11 +112,11 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="ine"/>
-            <field name="ine_foto"/>
-            <field name="cedula"/>
             <field name="nombres"/>
-            <field name="state"/>
+            <field name="primerApellido"/>
+            <field name="ine"/>
+            <field name="cedula"/>
+            <field name="ine_foto"/>
         </tree>
       </field>
     </record>
