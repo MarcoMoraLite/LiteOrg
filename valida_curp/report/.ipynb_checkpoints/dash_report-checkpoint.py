@@ -21,6 +21,8 @@ class SaleReport(models.Model):
     nombres = fields.Char('Nombres', readonly=True)
     faltan_datos = fields.Integer('Estatus general', readonly=True)
     faltan_datos_aux = fields.Integer('Estatus general aux', readonly=True)
+    total_registros = fields.Integer('Estatus general aux', readonly=True)
+    total_registros = self.env['valida_curp.valida_curp'].search_count()
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
