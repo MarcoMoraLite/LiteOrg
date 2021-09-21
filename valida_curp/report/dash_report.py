@@ -19,6 +19,7 @@ class SaleReport(models.Model):
     primerApellido = fields.Char('Primer apellido', readonly=True)
     curp = fields.Char('Curp', readonly=True)
     state = fields.Char('Estatus', readonly=True)
+    nombres = fields.Char('Nombres', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
@@ -36,7 +37,8 @@ class SaleReport(models.Model):
             (CASE vc.state WHEN 'cedula' THEN 1.0 ELSE 0 END) as ced_aux,
             (CASE vc.state WHEN 'foto' THEN 1.0 ELSE 0 END) as selfie_aux,
             vc.curp as curp,
-            vc.state as state
+            vc.state as state,
+            vc.nombres as nombres
         """
         for field in fields.values():
             select_ += field
@@ -49,6 +51,7 @@ class SaleReport(models.Model):
         
         groupby_ = """
             vc.state,
+            vc.nombres,
             vc.curp,
             vc.id %s
         """ % (groupby)
