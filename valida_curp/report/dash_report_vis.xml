@@ -40,7 +40,7 @@
                             <aggregate name="registros_month" string="Registros este mes" field="selfie_aux"/>
                             <aggregate name="faltan_datos" string="Registros faltantes de datos" field="faltan_datos_aux"/>
                             <aggregate name="registros_exitosos" string="Registros exitosos" field="ced_aux"/>
-                            <formula name="total_registros" string="Total de registros" value="record.ine_aux + record.ced_aux + record.selfie_aux" widget="float"/>
+                            <aggregate name="total_regis" string="Registros exitosos" field="total_registros"/>
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>

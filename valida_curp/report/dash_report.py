@@ -21,6 +21,7 @@ class SaleReport(models.Model):
     nombres = fields.Char('Nombres', readonly=True)
     faltan_datos = fields.Integer('Estatus general', readonly=True)
     faltan_datos_aux = fields.Integer('Estatus general aux', readonly=True)
+    total_registros = fields.Integer('Total registros', readonly=True)
     
     #happy_count = fields.Integer('Conteno registro exitoso', readonly=True)
     #fd_count = fields.Integer('Conteno registros incompletos', readonly=True)
@@ -41,7 +42,8 @@ class SaleReport(models.Model):
             vc.state as state,
             vc.nombres as nombres,
             count((CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END)) as faltan_datos,
-            (CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END) as faltan_datos_aux
+            (CASE vc.estatus_gen WHEN 'Faltan datos' THEN 1.0 ELSE 0 END) as faltan_datos_aux,
+            count(*) as total_registros
         """
         for field in fields.values():
             select_ += field
