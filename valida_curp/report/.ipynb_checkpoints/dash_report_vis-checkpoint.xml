@@ -25,17 +25,6 @@
                  </graph>
              </field>
         </record>
-        
-        <record id="sale_report_view_list" model="ir.ui.view">
-             <field name="name">sale.report.list</field>
-             <field name="model">valida_curp.report</field>
-             <field name="arch" type="xml">
-                 <graph string="Fechas de registro" type="line">
-                     <field name="state"/>
-                     <field name="fecha" type="measure"/>
-                 </graph>
-             </field>
-        </record>
 
         <record id="sale_report_view_dashboard" model="ir.ui.view">
             <field name="name">sale.report.view.dashboard</field>
@@ -43,7 +32,7 @@
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <dashboard sample="1">
-                    <view type="graph" ref="sale_report_view_list"/>
+                    <view type="graph" ref="sale_report_view_graph"/>
                     <group>
                         <group>
                             <aggregate name="registros_today" string="Registros hoy" field="selfie_aux"/>
