@@ -18,6 +18,12 @@
             <field name="view_mode">graph</field>
             <field name="view_id"></field> 
         </record>
+        
+        <record id="sale_report_action_dash_list" model="ir.actions.act_window.view">
+        	<field name="view_mode">graph</field>
+        	<field name="view_id" ref="sale_report_view_list"/>
+        	<field name="act_window_id" ref="sale_report_action_list"/>
+        </record>
 
         <menuitem id="menu_report_list"
         name="Panel de fechas"
