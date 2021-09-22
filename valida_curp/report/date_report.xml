@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="sale_report_view_list" model="ir.ui.view">
+             <field name="name">sale.report.graph</field>
+             <field name="model">valida_curp.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Fechas de registros" type="line">
+                     <field name="fecha"/>
+                     <field name="count" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record id="sale_report_action_list" model="ir.actions.act_window">
+            <field name="name">Analisis por fecha</field>
+            <field name="res_model">valida_curp.report</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id"></field> 
+        </record>
+
+        <menuitem id="menu_report_list"
+        name="Panel de fechas"
+        parent="valida_curp.menu_root"
+        sequence="5"/>
+    
+        <menuitem id="submenu_report_team_goals"
+        name="Panel de fechas"
+        action="sale_report_action_list"
+        parent="menu_report_list"
+        sequence="1"/>
+    </data>
+</odoo>
+
+
+
+
