@@ -25,6 +25,17 @@
                  </graph>
              </field>
         </record>
+        
+        <record id="sale_report_view_list" model="ir.ui.view">
+             <field name="name">sale.report.list</field>
+             <field name="model">valida_curp.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Fechas de registro" type="line">
+                     <field name="state"/>
+                     <field name="fecha" type="measure"/>
+                 </graph>
+             </field>
+        </record>
 
         <record id="sale_report_view_dashboard" model="ir.ui.view">
             <field name="name">sale.report.view.dashboard</field>
@@ -44,6 +55,7 @@
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>
+                    <view type="graph" ref="sale_report_view_list"/>
                 </dashboard>
             </field>
         </record>
@@ -78,6 +90,13 @@
         	<field name="sequence" eval="3"/>
         	<field name="view_mode">graph</field>
         	<field name="view_id" ref="sale_report_view_graph"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        </record>
+        
+        <record id="sale_report_action_dashboard_list" model="ir.actions.act_window.view">
+        	<field name="sequence" eval="4"/>
+        	<field name="view_mode">graph</field>
+        	<field name="view_id" ref="sale_report_view_list"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
 

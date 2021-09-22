@@ -46,7 +46,7 @@ class SaleReport(models.Model):
             count((CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END)) as exitoso_registro,
             (CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END) as exitoso_registro_aux,
             count(*) as total_registros,
-            vc.create_date as fecha
+            vc.create_date as fecha 
         """
         for field in fields.values():
             select_ += field
