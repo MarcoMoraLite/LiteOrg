@@ -43,7 +43,7 @@
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <dashboard sample="1">
-                    <view type="graph" ref="sale_report_view_graph"/>
+                    <view type="graph" ref="sale_report_view_list"/>
                     <group>
                         <group>
                             <aggregate name="registros_today" string="Registros hoy" field="selfie_aux"/>
@@ -55,7 +55,6 @@
                         </group>
                     </group>
                     <view type="pivot" ref="sale_report_view_pivot"/>
-                    <view type="graph" ref="sale_report_view_list"/>
                 </dashboard>
             </field>
         </record>
