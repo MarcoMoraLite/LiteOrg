@@ -24,7 +24,7 @@
         parent="valida_curp.menu_root"
         sequence="5"/>
     
-        <menuitem id="submenu_report_team_goals"
+        <menuitem id="submenu_report"
         name="Panel de fechas"
         action="sale_report_action_list"
         parent="menu_report_list"
