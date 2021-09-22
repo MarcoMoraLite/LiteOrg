@@ -24,6 +24,8 @@ class SaleReport(models.Model):
     total_registros = fields.Integer('Total registros', readonly=True)
     exitoso_registro = fields.Integer('Registros completos', readonly=True)
     exitoso_registro_aux = fields.Integer('Registros completos', readonly=True)
+    rechazo_registro = fields.Integer('Registros rechazados', readonly=True)
+    rechazo_registro_aux = fields.Integer('Registros rechazados', readonly=True)
     fecha = fields.Datetime('Fecha de registro',readonly=True)
 
     
@@ -46,7 +48,9 @@ class SaleReport(models.Model):
             count((CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END)) as exitoso_registro,
             (CASE vc.estatus_gen WHEN 'Completo' THEN 1.0 ELSE 0 END) as exitoso_registro_aux,
             count(*) as total_registros,
-            vc.create_date as fecha 
+            vc.create_date as fecha,
+            count((CASE vc.estatus_gen WHEN 'Rechazado' THEN 1.0 ELSE 0 END)) as rechazo_registro,
+            (CASE vc.estatus_gen WHEN 'Rechazado' THEN 1.0 ELSE 0 END) as rechazo_registro_aux
         """
         for field in fields.values():
             select_ += field

@@ -21,7 +21,6 @@
              <field name="arch" type="xml">
                  <graph string="Datos" type="bar">
                      <field name="state"/>
-                     <field name="ine_aux" type="measure"/>
                  </graph>
              </field>
         </record>
@@ -35,9 +34,7 @@
                     <view type="graph" ref="sale_report_view_graph"/>
                     <group>
                         <group>
-                            <aggregate name="registros_today" string="Registros hoy" field="selfie_aux"/>
-                            <aggregate name="registros_week" string="Registros esta semana" field="selfie_aux"/>
-                            <aggregate name="registros_month" string="Registros este mes" field="selfie_aux"/>
+                            <aggregate name="rechazados_reg" string="Registros rechazados" field="rechazo_registro_aux"/>
                             <aggregate name="faltan_datos" string="Registros faltantes de datos" field="faltan_datos_aux"/>
                             <aggregate name="registros_exitosos" string="Registros exitosos" field="exitoso_registro_aux"/>
                             <aggregate name="total_regis" string="Total registros" field="total_registros"/>

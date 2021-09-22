@@ -419,6 +419,10 @@ class ValidaCurp(models.Model):
                         }
                     }
             return notification
+        
+    def rechazarContacto(self):
+        for record8 in self:
+            record8.estatus_gen = "Rechazado"
     
     def send_email_template(self):
         for record7 in self:
