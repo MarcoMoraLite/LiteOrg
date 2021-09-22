@@ -7,8 +7,7 @@
              <field name="model">valida_curp.report</field>
              <field name="arch" type="xml">
                  <graph string="Fechas de registros" type="line">
-                     <field name="fecha"/>
-                     <field name="count" type="measure"/>
+                     <field name="fecha" type="row" interval="day"/>
                  </graph>
              </field>
         </record>
