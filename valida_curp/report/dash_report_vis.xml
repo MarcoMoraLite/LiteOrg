@@ -92,13 +92,6 @@
         	<field name="view_id" ref="sale_report_view_graph"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard"/>
         </record>
-        
-        <record id="sale_report_action_dashboard_list" model="ir.actions.act_window.view">
-        	<field name="sequence" eval="4"/>
-        	<field name="view_mode">graph</field>
-        	<field name="view_id" ref="sale_report_view_list"/>
-        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
-        </record>
 
         <!--<record id="sale.menu_report_product_all" model="ir.ui.menu">
             <field name="action" ref="sale_report_action_dashboard"/>
