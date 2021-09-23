@@ -33,7 +33,7 @@
         <menuitem id="submenu_report"
         name="Panel de fechas"
         action="sale_report_action_list"
-        parent="menu_report_list"
+        parent="menu_report_dashboard"
         sequence="1"/>
     </data>
 </odoo>
