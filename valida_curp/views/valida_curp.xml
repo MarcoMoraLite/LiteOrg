@@ -115,11 +115,10 @@
         <tree>
             <field name="nombres"/>
             <field name="primerApellido"/>
-            <field name="ine"/>
-            <field name="cedula"/>
-            <field name="ine_foto"/>
+            <field name="state"/>
             <field name="ine_fname" invisible="1" />
             <field name="ine" widget="binary" filename="ine_fname" />
+            <field name="cedula"/>
             <field name="selfie_fname" invisible="1" />
             <field name="ine_foto" widget="binary" filename="selfie_fname" />
         </tree>
