@@ -428,7 +428,7 @@ class ValidaCurp(models.Model):
         for record9 in self:
             return {
              'type' : 'ir.actions.act_url',
-             'url': '/web/binary/download_document?model=valida_curp.valida_curp&field=ine&id=%s&filename=ine.png'%(self.id),
+             'url': '/web/binary/download_document?model=valida_curp.report&field=ine&id=%s&filename=ine.png'%(self.id),
              'target': 'self',
              }
     
