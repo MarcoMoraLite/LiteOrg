@@ -67,6 +67,7 @@ class SaleReport(models.Model):
             vc.state,
             vc.nombres,
             vc.create_date,
+            vc.ine,
             vc.curp,
             vc.id %s
         """ % (groupby)
