@@ -27,7 +27,6 @@ class SaleReport(models.Model):
     rechazo_registro = fields.Integer('Registros rechazados', readonly=True)
     rechazo_registro_aux = fields.Integer('Registros rechazados', readonly=True)
     fecha = fields.Datetime('Fecha de registro',readonly=True)
-    ine_doc = fields.Binary("INE delantera")
 
     
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
@@ -51,8 +50,7 @@ class SaleReport(models.Model):
             count(*) as total_registros,
             vc.create_date as fecha,
             count((CASE vc.estatus_gen WHEN 'Rechazado' THEN 1.0 ELSE 0 END)) as rechazo_registro,
-            (CASE vc.estatus_gen WHEN 'Rechazado' THEN 1.0 ELSE 0 END) as rechazo_registro_aux,
-            vc.ine as ine_doc
+            (CASE vc.estatus_gen WHEN 'Rechazado' THEN 1.0 ELSE 0 END) as rechazo_registro_aux
         """
         for field in fields.values():
             select_ += field
@@ -67,7 +65,6 @@ class SaleReport(models.Model):
             vc.state,
             vc.nombres,
             vc.create_date,
-            vc.ine,
             vc.curp,
             vc.id %s
         """ % (groupby)
