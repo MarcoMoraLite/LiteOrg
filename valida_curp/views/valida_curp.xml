@@ -118,7 +118,8 @@
             <field name="ine"/>
             <field name="cedula"/>
             <field name="ine_foto"/>
-            <button name="descarga_ine" string="Descarga INE" type="object" />
+            <field name="datas_fname" />
+            <field name="datas" widget="binary" filename="datas_fname" />
         </tree>
       </field>
     </record>
