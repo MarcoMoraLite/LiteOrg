@@ -10,7 +10,7 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
     
-    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('bancarios','DOC BANCARIOS')],'estatus', default='ine')
+    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('bancarios','DOC BANCARIOS')],'Estatus', default='ine')
     cedula = fields.Char("Cédula")
     response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
@@ -20,16 +20,16 @@ class ValidaCurp(models.Model):
     selfie_fname = fields.Char("Nombre de foto")
     response3 = fields.Text("Respuesta foto")
     curp = fields.Char("Curp")
-    fechaNacimiento = fields.Char("Fecha de Nacimiento")
-    primerApellido = fields.Char("Primer Apellido")
-    segundoApellido = fields.Char("Segundo Apellido")
+    fechaNacimiento = fields.Char("Fecha de nacimiento")
+    primerApellido = fields.Char("Primer apellido")
+    segundoApellido = fields.Char("Segundo apellido")
     nombres = fields.Char("Nombres")
     sexo = fields.Char("Sexo")
     calle = fields.Char("Calle")
     colonia = fields.Char("Colonia")
     ciudad = fields.Char("Ciudad")
     subTipo = fields.Char("Sub Tipo")
-    claveElector = fields.Char("Clave Elector")
+    claveElector = fields.Char("Clave elector")
     registro = fields.Char("Registro")
     estado = fields.Char("Estado")
     municipio = fields.Char("Municipio")
@@ -37,14 +37,14 @@ class ValidaCurp(models.Model):
     localidad = fields.Char("Localidad")
     emision = fields.Char("Emisión")
     vigencia = fields.Char("Vigencia")
-    primerApellidoCedula = fields.Char("Primer Apellido Cedula")
-    segundoApellidoCedula = fields.Char("Segundo Apellido Cedula")
-    nombresCedula = fields.Char("Nombres Cedula")
+    primerApellidoCedula = fields.Char("Primer apellido cédula")
+    segundoApellidoCedula = fields.Char("Segundo Apellido cédula")
+    nombresCedula = fields.Char("Nombres cédula")
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
-    titulo = fields.Char("Titulo")
+    titulo = fields.Char("Título")
     estatus_cedula = fields.Char("Estatus cedula")
-    codigo_postal = fields.Char("Codigo Postal")
+    codigo_postal = fields.Char("Codigo postal")
     intentos = fields.Integer("Intentos",default=3)
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
@@ -155,7 +155,7 @@ class ValidaCurp(models.Model):
 
                         if 'nombres' in json_response:
                             record2.nombres = res['nombres']
-                            record2.ine_fname = res['nombres']
+                            record2.ine_fname = "INE_" + str(record2.nombres)
                         else:
                             record2.response2 = "Faltan datos"
                             record2.noti_ine = "Por favor intenta subir otra foto, el NOMBRE no se pudo leer de manera correcta"
@@ -392,7 +392,7 @@ class ValidaCurp(models.Model):
                         mensaje = str(men) + str(' ') + str(por)
                         record5.response3 = mensaje
                         record5.intentos = record5.intentos - 1
-                        record5.selfie_fname = record5.nombres
+                        record5.selfie_fname = "SELFIE_" + str(record5.nombres)
                     elif(status == 'ERROR'):
                         record5.response3 = res3['mensaje']
                         record5.intentos = record5.intentos - 1

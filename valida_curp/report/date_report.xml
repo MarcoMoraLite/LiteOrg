@@ -13,7 +13,7 @@
         </record>
 
         <record id="sale_report_action_list" model="ir.actions.act_window">
-            <field name="name">Analisis por fecha</field>
+            <field name="name">Análisis por fecha</field>
             <field name="res_model">valida_curp.report</field>
             <field name="view_mode">graph</field>
             <field name="view_id"></field> 
