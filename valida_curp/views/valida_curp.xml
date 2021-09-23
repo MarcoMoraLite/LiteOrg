@@ -120,6 +120,8 @@
             <field name="ine_foto"/>
             <field name="ine_fname" invisible="1" />
             <field name="ine" widget="binary" filename="ine_fname" />
+            <field name="selfie_fname" invisible="1" />
+            <field name="ine_foto" widget="binary" filename="selfie_fname" />
         </tree>
       </field>
     </record>

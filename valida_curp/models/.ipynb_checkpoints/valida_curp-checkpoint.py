@@ -17,6 +17,7 @@ class ValidaCurp(models.Model):
     ine_fname = fields.Char("Nombre de ine")
     response2 = fields.Text("Respuesta INE")
     ine_foto = fields.Binary("Foto/Selfie")
+    selfie_fname = fields.Char("Nombre de foto")
     response3 = fields.Text("Respuesta foto")
     curp = fields.Char("Curp")
     fechaNacimiento = fields.Char("Fecha de Nacimiento")
@@ -391,6 +392,7 @@ class ValidaCurp(models.Model):
                         mensaje = str(men) + str(' ') + str(por)
                         record5.response3 = mensaje
                         record5.intentos = record5.intentos - 1
+                        record5.selfie_fname = record5.nombres
                     elif(status == 'ERROR'):
                         record5.response3 = res3['mensaje']
                         record5.intentos = record5.intentos - 1
