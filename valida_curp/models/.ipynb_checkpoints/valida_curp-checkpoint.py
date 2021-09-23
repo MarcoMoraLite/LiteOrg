@@ -14,6 +14,7 @@ class ValidaCurp(models.Model):
     cedula = fields.Char("Cédula")
     response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
+    datas_fname = fields.Char("Nombre de ine")
     response2 = fields.Text("Respuesta INE")
     ine_foto = fields.Binary("Foto/Selfie")
     response3 = fields.Text("Respuesta foto")
