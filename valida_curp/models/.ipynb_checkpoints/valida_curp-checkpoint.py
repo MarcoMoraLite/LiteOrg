@@ -14,7 +14,7 @@ class ValidaCurp(models.Model):
     cedula = fields.Char("Cédula")
     response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
-    datas_fname = fields.Char("Nombre de ine")
+    ine_fname = fields.Char("Nombre de ine")
     response2 = fields.Text("Respuesta INE")
     ine_foto = fields.Binary("Foto/Selfie")
     response3 = fields.Text("Respuesta foto")
@@ -154,6 +154,7 @@ class ValidaCurp(models.Model):
 
                         if 'nombres' in json_response:
                             record2.nombres = res['nombres']
+                            record2.ine_fname = res['nombres']
                         else:
                             record2.response2 = "Faltan datos"
                             record2.noti_ine = "Por favor intenta subir otra foto, el NOMBRE no se pudo leer de manera correcta"

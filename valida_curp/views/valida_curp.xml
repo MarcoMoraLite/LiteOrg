@@ -118,8 +118,8 @@
             <field name="ine"/>
             <field name="cedula"/>
             <field name="ine_foto"/>
-            <field name="datas_fname" />
-            <field name="ine" widget="binary" filename="datas_fname" />
+            <field name="ine_fname" invisible="1" />
+            <field name="ine" widget="binary" filename="ine_fname" />
         </tree>
       </field>
     </record>
