@@ -423,6 +423,14 @@ class ValidaCurp(models.Model):
     def rechazarContacto(self):
         for record8 in self:
             record8.estatus_gen = "Rechazado"
+            
+    def descarga_ine(self):
+        for record9 in self:
+            return {
+             'type' : 'ir.actions.act_url',
+             'url': '/web/binary/download_document?model=valida_curp.valida_curp&field=ine&id=%s&filename=ine.png'%(self.id),
+             'target': 'self',
+             }
     
     def send_email_template(self):
         for record7 in self:
