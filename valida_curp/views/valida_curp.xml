@@ -141,10 +141,10 @@
       
 
        <!-- Aqui van los modulos-->    
-    <menuitem name="valida_curp" id="valida_curp.menu_root"/>
+    <menuitem name="Validación Especialistas" id="valida_curp.menu_root"/>
 
 
-    <menuitem name="CEDULA" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
+    <menuitem name="Reportes" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
       
 
     <menuitem name="Datos especialistas" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"

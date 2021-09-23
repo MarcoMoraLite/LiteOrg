@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Validación Especialistas",
+    'name': "valida_cedula",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
