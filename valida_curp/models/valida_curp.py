@@ -38,7 +38,7 @@ class ValidaCurp(models.Model):
     emision = fields.Char("Emisión")
     vigencia = fields.Char("Vigencia")
     primerApellidoCedula = fields.Char("Primer apellido cédula")
-    segundoApellidoCedula = fields.Char("Segundo Apellido cédula")
+    segundoApellidoCedula = fields.Char("Segundo apellido cédula")
     nombresCedula = fields.Char("Nombres cédula")
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
