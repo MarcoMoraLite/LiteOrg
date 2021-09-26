@@ -8,6 +8,7 @@
              <field name="arch" type="xml">
                  <pivot string="Analisis de datos" disable_linking="True" display_quantity="true" sample="1">
                      <field name="state" type="row"/>
+                     <field name="nombres" type="row"/>
                      <field name="ine_aux" type="measure"/>
                      <field name="ced_aux" type="measure"/>
                      <field name="selfie_aux" type="measure"/>
