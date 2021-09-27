@@ -14,6 +14,7 @@
                 <button name="selfie" type="object" states="foto" string="Validar Foto"/>
                 <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
                 <button name="guardaContacto" type="object" states="guardar" string="Guardar Contacto"/>
+                <button name="rechazarContacto" type="object" string="Rechazar"/>
                 <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
             </header>
             <sheet>
@@ -25,7 +26,7 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="ine_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
-
+                  <field name="estatus_gen" colspam="2" readonly="1"/>
                 </group>
                 <notebook>
                     <page string="INE" name="ine_view">
@@ -114,9 +115,12 @@
         <tree>
             <field name="nombres"/>
             <field name="primerApellido"/>
-            <field name="ine"/>
+            <field name="state"/>
+            <field name="ine_fname" invisible="1" />
+            <field name="ine" widget="binary" filename="ine_fname" />
             <field name="cedula"/>
-            <field name="ine_foto"/>
+            <field name="selfie_fname" invisible="1" />
+            <field name="ine_foto" widget="binary" filename="selfie_fname" />
         </tree>
       </field>
     </record>
@@ -137,10 +141,10 @@
       
 
        <!-- Aqui van los modulos-->    
-    <menuitem name="valida_curp" id="valida_curp.menu_root"/>
+    <menuitem name="Validación Especialistas" id="valida_curp.menu_root"/>
 
 
-    <menuitem name="CEDULA" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
+    <menuitem name="Reportes" id="valida_curp.menu_1" parent="valida_curp.menu_root"/>
       
 
     <menuitem name="Datos especialistas" id="valida_curp.menu_1_list" parent="valida_curp.menu_1"

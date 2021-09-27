@@ -10,24 +10,26 @@ class ValidaCurp(models.Model):
     _name = 'valida_curp.valida_curp'
     _description = 'valida_curp.valida_curp'
     
-    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('guardar','GUARDAR')],'estatus', default='ine')
+    state = fields.Selection([('ine','INE'),('cedula','CEDULA'),('foto','FOTO'),('bancarios','DOC BANCARIOS')],'Estatus', default='ine')
     cedula = fields.Char("Cédula")
     response = fields.Char("Respuesta")
     ine = fields.Binary("INE parte delantera")
+    ine_fname = fields.Char("Nombre de ine")
     response2 = fields.Text("Respuesta INE")
     ine_foto = fields.Binary("Foto/Selfie")
+    selfie_fname = fields.Char("Nombre de foto")
     response3 = fields.Text("Respuesta foto")
     curp = fields.Char("Curp")
-    fechaNacimiento = fields.Char("Fecha de Nacimiento")
-    primerApellido = fields.Char("Primer Apellido")
-    segundoApellido = fields.Char("Segundo Apellido")
+    fechaNacimiento = fields.Char("Fecha de nacimiento")
+    primerApellido = fields.Char("Primer apellido")
+    segundoApellido = fields.Char("Segundo apellido")
     nombres = fields.Char("Nombres")
     sexo = fields.Char("Sexo")
     calle = fields.Char("Calle")
     colonia = fields.Char("Colonia")
     ciudad = fields.Char("Ciudad")
     subTipo = fields.Char("Sub Tipo")
-    claveElector = fields.Char("Clave Elector")
+    claveElector = fields.Char("Clave elector")
     registro = fields.Char("Registro")
     estado = fields.Char("Estado")
     municipio = fields.Char("Municipio")
@@ -35,24 +37,29 @@ class ValidaCurp(models.Model):
     localidad = fields.Char("Localidad")
     emision = fields.Char("Emisión")
     vigencia = fields.Char("Vigencia")
-    primerApellidoCedula = fields.Char("Primer Apellido Cedula")
-    segundoApellidoCedula = fields.Char("Segundo Apellido Cedula")
-    nombresCedula = fields.Char("Nombres Cedula")
+    primerApellidoCedula = fields.Char("Primer apellido cédula")
+    segundoApellidoCedula = fields.Char("Segundo apellido cédula")
+    nombresCedula = fields.Char("Nombres cédula")
     institucion = fields.Char("Institución")
     tipo_cedula = fields.Char("Tipo")
-    titulo = fields.Char("Titulo")
-    estatus_cedula = fields.Char("Estatus")
-    codigo_postal = fields.Char("Codigo Postal")
+    titulo = fields.Char("Título")
+    estatus_cedula = fields.Char("Estatus cedula")
+    codigo_postal = fields.Char("Codigo postal")
     intentos = fields.Integer("Intentos",default=3)
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
-    bool_ine = fields.Boolean("bool_ine")
-    bool_ced = fields.Boolean("bool_ced")
-    bool_foto = fields.Boolean("bool_foto")
+    estatus_gen = fields.Char("Estatus general", default="Faltan datos")
+    banco = fields.Char("Banco")
+    cuenta = fields.Char("Cuenta bancaria")
+    clabe = fields.Char("CLABE")
+    rfc = fields.Char("RFC")
     noti_ine = fields.Char("Mensaje INE")
     noti_ced = fields.Char("Mensaje cédula")
     noti_foto = fields.Char("Mensaje foto")
+    bool_ine = fields.Boolean("bool_ine")
+    bool_ced = fields.Boolean("bool_ced")
+    bool_foto = fields.Boolean("bool_foto")
     id_state = fields.Many2one("Id_estado")
     
     def comprobar(self):
@@ -148,6 +155,7 @@ class ValidaCurp(models.Model):
 
                         if 'nombres' in json_response:
                             record2.nombres = res['nombres']
+                            record2.ine_fname = "INE_" + str(record2.nombres)
                         else:
                             record2.response2 = "Faltan datos"
                             record2.noti_ine = "Por favor intenta subir otra foto, el NOMBRE no se pudo leer de manera correcta"
@@ -384,6 +392,7 @@ class ValidaCurp(models.Model):
                         mensaje = str(men) + str(' ') + str(por)
                         record5.response3 = mensaje
                         record5.intentos = record5.intentos - 1
+                        record5.selfie_fname = "SELFIE_" + str(record5.nombres)
                     elif(status == 'ERROR'):
                         record5.response3 = res3['mensaje']
                         record5.intentos = record5.intentos - 1
@@ -399,7 +408,7 @@ class ValidaCurp(models.Model):
                 record6.write({'state': 'guardar'})
             else:
                 record6.noti_foto = "Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
-                return {"intentos":record6.intentos,"respuesta":record6.noti_foto,"bool_ine":record6.bool_foto,"api":record6.response3}
+                return {"intentos":record6.intentos,"respuesta":record6.noti_foto,"bool_ine":record6.bool_foto,"api":record6.response3}            
                 
     def guardaContacto(self):
         for record7 in self:
@@ -414,17 +423,33 @@ class ValidaCurp(models.Model):
                         }
                     }
             return notification
+        
+    def rechazarContacto(self):
+        for record8 in self:
+            record8.estatus_gen = "Rechazado"
+            
     
     def send_email_template(self):
-        # Find the e-mail template
-        template = self.env.ref('valida_curp.template_contrato')
-        #body = template.body_html
-        correo = 'marcoamora98@gmail.com'
-        template.write({'email_to': correo}) #'toh@tohsoluciones.com'})
-        template.send_mail(self.id, force_send=True)
+        for record7 in self:
+            if(record7.estatus_gen == "Completo"):
+                template = self.env['mail.template'].search([('id', '=', '17')])
+                correo = 'marcoamora98@gmail.com'
+                template.write({'email_to': correo})
+                template.send_mail(self.id, force_send=True)
+            else:
+                notification = {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Atención!',
+                        'message': 'Antes de enviar el contrato se deben validar los datos',
+                        'type': 'info',
+                        'sticky': False,
+                        }
+                    }
+                return notification
+                
+            
 
-            
-            
-       
-            
+
 
