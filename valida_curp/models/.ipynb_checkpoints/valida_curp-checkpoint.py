@@ -50,17 +50,18 @@ class ValidaCurp(models.Model):
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
     id_contacto = fields.Many2one("Current User")
     estatus_gen = fields.Char("Estatus general", default="Faltan datos")
-    banco = fields.Char("Banco")
-    cuenta = fields.Char("Cuenta bancaria")
-    clabe = fields.Char("CLABE")
-    rfc = fields.Char("RFC")
     noti_ine = fields.Char("Mensaje INE")
     noti_ced = fields.Char("Mensaje cédula")
     noti_foto = fields.Char("Mensaje foto")
+    noti_cont = fields.Char("Mensaje Contrato")
     bool_ine = fields.Boolean("bool_ine")
     bool_ced = fields.Boolean("bool_ced")
     bool_foto = fields.Boolean("bool_foto")
     id_state = fields.Many2one("Id_estado")
+    banco = fields.Char("Banco")
+    cuenta = fields.Char("Cuenta bancaria")
+    clabe = fields.Char("CLABE")
+    rfc = fields.Char("RFC")
     
     def comprobar(self):
         for record in self:
@@ -449,6 +450,10 @@ class ValidaCurp(models.Model):
                     }
                 return notification
                 
+    def go_documentos(self):
+        for record9 in self:
+            record9.write({'state': 'bancarios'})
+        
             
        
             

@@ -7,6 +7,7 @@
         <form string="Validador de cedula">
             <header >
                 <button name="send_email_template" type="object" string="Enviar Correo" />
+                <button name="go_documentos" type="object" string="Banco" />
                 <button name="comprobar" type="object" states="cedula" string="Validar Cedula" />
                 <button name="confirmarCed" type="object" states="cedula" string="Confirmar Cédula"/>
                 <button name="comprobar2" type="object" states="ine" string="Validar INE"/>
@@ -78,6 +79,15 @@
                             <field name="intentos" readonly="1"/>
                             <field name="bool_foto" readonly="1"/>
                             <field name="noti_foto" readonly="1"/>
+                        </group>
+                    </page>
+                     <page string="Contrato" name="cont_view">
+                        <group>
+                            <field name="noti_cont" readonly="1"/>
+                            <field name="banco" readonly="1"/>
+                            <field name="cuenta" readonly="1"/>
+                            <field name="clabe" readonly="1"/>
+                            <field name="rfc" readonly="1"/>
                         </group>
                     </page>
                 </notebook>
