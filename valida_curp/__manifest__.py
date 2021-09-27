@@ -26,8 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/valida_curp.xml',
-        #'report/dash_report_vis.xml',
-        #'report/date_report.xml',
+        'report/dash_report_vis.xml',
+        'report/date_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

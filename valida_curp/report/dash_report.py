@@ -5,6 +5,7 @@ from odoo import tools
 class SaleReport(models.Model):
     _name = "valida_curp.report"
     _description = "Panel informativo"
+    _auto = False
 
     #@api.model
     #def _get_done_states(self):
