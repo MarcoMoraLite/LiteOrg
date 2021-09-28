@@ -27,6 +27,11 @@
                   <field name="response" attrs="{'invisible':[['state','not in',['cedula']]]}" colspam="2" readonly="1"/>
                   <field name="ine_foto" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2"/>
                   <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
+                  <field name="noti_cont" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2" readonly="1"/>
+                  <field name="banco" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2"/>
+                  <field name="cuenta" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2"/>
+                  <field name="clabe" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2"/>
+                  <field name="rfc" attrs="{'invisible':[['state','not in',['bancarios']]]}" colspam="2"/>
                   <field name="estatus_gen" colspam="2" readonly="1"/>
                 </group>
                 <notebook>
@@ -79,15 +84,6 @@
                             <field name="intentos" readonly="1"/>
                             <field name="bool_foto" readonly="1"/>
                             <field name="noti_foto" readonly="1"/>
-                        </group>
-                    </page>
-                     <page string="Contrato" name="cont_view">
-                        <group>
-                            <field name="noti_cont" readonly="1"/>
-                            <field name="banco" readonly="1"/>
-                            <field name="cuenta" readonly="1"/>
-                            <field name="clabe" readonly="1"/>
-                            <field name="rfc" readonly="1"/>
                         </group>
                     </page>
                 </notebook>
