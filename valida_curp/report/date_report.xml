@@ -2,9 +2,9 @@
 <odoo>
     <data>
         
-        <record id="sale_report_view_list" model="ir.ui.view">
+        <record id="sale_report_view_list_valida" model="ir.ui.view">
              <field name="name">sale.report.graph</field>
-             <field name="model">valida_curp.report</field>
+             <field name="model">valida.curp.report</field>
              <field name="arch" type="xml">
                  <graph string="Fechas de registros" type="line">
                      <field name="fecha" type="row" interval="day"/>
@@ -12,17 +12,17 @@
              </field>
         </record>
 
-        <record id="sale_report_action_list" model="ir.actions.act_window">
+        <record id="sale_report_action_list_valida" model="ir.actions.act_window">
             <field name="name">Análisis por fecha</field>
-            <field name="res_model">valida_curp.report</field>
+            <field name="res_model">valida.curp.report</field>
             <field name="view_mode">graph</field>
             <field name="view_id"></field> 
         </record>
         
         <record id="sale_report_action_dash_list" model="ir.actions.act_window.view">
         	<field name="view_mode">graph</field>
-        	<field name="view_id" ref="sale_report_view_list"/>
-        	<field name="act_window_id" ref="sale_report_action_list"/>
+        	<field name="view_id" ref="sale_report_view_list_valida"/>
+        	<field name="act_window_id" ref="sale_report_action_list_valida"/>
         </record>
 
         <menuitem id="menu_report_list"
@@ -32,7 +32,7 @@
     
         <menuitem id="submenu_report"
         name="Panel de fechas"
-        action="sale_report_action_list"
+        action="sale_report_action_list_valida"
         parent="menu_report_dashboard"
         sequence="1"/>
     </data>

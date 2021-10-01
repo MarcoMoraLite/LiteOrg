@@ -2,9 +2,9 @@
 <odoo>
     <data>
 
-        <record id="sale_report_view_pivot" model="ir.ui.view">
+        <record id="sale_report_view_pivot_valida" model="ir.ui.view">
              <field name="name">sale.report.pivot</field>
-             <field name="model">valida_curp.report</field>
+             <field name="model">valida.curp.report</field>
              <field name="arch" type="xml">
                  <pivot string="Analisis de datos" disable_linking="True" display_quantity="true" sample="1">
                      <field name="state" type="row"/>
@@ -16,9 +16,9 @@
              </field>
         </record>
         
-        <record id="sale_report_view_graph" model="ir.ui.view">
+        <record id="sale_report_view_graph_valida" model="ir.ui.view">
              <field name="name">sale.report.graph</field>
-             <field name="model">valida_curp.report</field>
+             <field name="model">valida.curp.report</field>
              <field name="arch" type="xml">
                  <graph string="Datos" type="bar">
                      <field name="state"/>
@@ -26,13 +26,13 @@
              </field>
         </record>
 
-        <record id="sale_report_view_dashboard" model="ir.ui.view">
+        <record id="sale_report_view_dashboard_valida" model="ir.ui.view">
             <field name="name">sale.report.view.dashboard</field>
-            <field name="model">valida_curp.report</field>
+            <field name="model">valida.curp.report</field>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <dashboard sample="1">
-                    <view type="graph" ref="sale_report_view_graph"/>
+                    <view type="graph" ref="sale_report_view_graph_valida"/>
                     <group>
                         <group>
                             <aggregate name="rechazados_reg" string="Registros rechazados" field="rechazo_registro_aux"/>
@@ -41,19 +41,15 @@
                             <aggregate name="total_regis" string="Total registros" field="total_registros"/>
                         </group>
                     </group>
-                    <view type="pivot" ref="sale_report_view_pivot"/>
+                    <view type="pivot" ref="sale_report_view_pivot_valida"/>
                 </dashboard>
             </field>
         </record>
 
-        <!--<record id="action_order_report_so_salesteam" model="ir.actions.act_window">
-            <field name="view_mode">dashboard</field>
-            <field name ="view_id" ref="sale_report_view_dashboard"/>
-        </record> -->
 
-        <record id="sale_report_action_dashboard" model="ir.actions.act_window">
+        <record id="sale_report_action_dashboard_valida" model="ir.actions.act_window">
             <field name="name">Panel informativo</field>
-            <field name="res_model">valida_curp.report</field>
+            <field name="res_model">valida.curp.report</field>
             <field name="view_mode">pivot,graph,dashboard</field>
             <field name="view_id"></field> 
         </record>
@@ -61,27 +57,23 @@
         <record id="sale_report_action_dashboard_dashboard" model="ir.actions.act_window.view">
         	<field name="sequence" eval="1"/>
         	<field name="view_mode">dashboard</field>
-        	<field name="view_id" ref="sale_report_view_dashboard"/>
-        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        	<field name="view_id" ref="sale_report_view_dashboard_valida"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard_valida"/>
         </record>
 
         <record id="sale_report_action_dashboard_pivot" model="ir.actions.act_window.view">
         	<field name="sequence" eval="2"/>
         	<field name="view_mode">pivot</field>
-        	<field name="view_id" ref="sale_report_view_pivot"/>
-        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        	<field name="view_id" ref="sale_report_view_pivot_valida"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard_valida"/>
         </record>
 
         <record id="sale_report_action_dashboard_graph" model="ir.actions.act_window.view">
         	<field name="sequence" eval="3"/>
         	<field name="view_mode">graph</field>
-        	<field name="view_id" ref="sale_report_view_graph"/>
-        	<field name="act_window_id" ref="sale_report_action_dashboard"/>
+        	<field name="view_id" ref="sale_report_view_graph_valida"/>
+        	<field name="act_window_id" ref="sale_report_action_dashboard_valida"/>
         </record>
-
-        <!--<record id="sale.menu_report_product_all" model="ir.ui.menu">
-            <field name="action" ref="sale_report_action_dashboard"/>
-        </record> -->
 
         <menuitem id="menu_report_dashboard"
         name="Dashboard"
@@ -90,7 +82,7 @@
     
         <menuitem id="submenu_report_team_goals"
         name="Dashboard"
-        action="sale_report_action_dashboard"
+        action="sale_report_action_dashboard_valida"
         parent="menu_report_dashboard"
         sequence="1"/>
     </data>
