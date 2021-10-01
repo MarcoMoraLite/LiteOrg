@@ -2,7 +2,7 @@
 from odoo import api, fields, models
 from odoo import tools
 
-class SaleReport(models.Model):
+class SaleReportValida(models.Model):
     _name = "valida_curp.report"
     _description = "Panel informativo"
     _auto = False
