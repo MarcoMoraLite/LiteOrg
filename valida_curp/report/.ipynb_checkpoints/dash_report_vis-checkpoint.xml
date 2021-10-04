@@ -6,7 +6,7 @@
              <field name="name">sale.report.pivot</field>
              <field name="model">valida.curp.report</field>
              <field name="arch" type="xml">
-                 <pivot string="Analisis de datos" disable_linking="True" display_quantity="true" sample="1">
+                 <pivot string="Analisis de datos" disable_linking="True">
                      <field name="state" type="row"/>
                      <field name="nombres" type="row"/>
                      <field name="ine_aux" type="measure"/>
