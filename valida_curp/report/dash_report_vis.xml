@@ -56,7 +56,7 @@
 
         <record id="sale_report_action_dashboard_dashboard" model="ir.actions.act_window.view">
         	<field name="sequence" eval="1"/>
-        	<field name="view_mode">form</field>
+        	<field name="view_mode">dashboard</field>
         	<field name="view_id" ref="sale_report_view_dashboard_valida"/>
         	<field name="act_window_id" ref="sale_report_action_dashboard_valida"/>
         </record>
