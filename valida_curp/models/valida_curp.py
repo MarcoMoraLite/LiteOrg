@@ -73,7 +73,7 @@ class ValidaCurp(models.Model):
                 if(record.intentos_cedula > 0):
                     record.intentos_cedula = record.intentos_cedula - 1
                     cedula_usuario = record.cedula
-                    header = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    header = {"Authorization": "Basic emVsZTpZbTRfOHcucFg=","Content-Type":"application/json"}
                     payload = {"numeroCedula":cedula_usuario}
                     r=requests.post("https://api.nubarium.com/sep/obtener_cedula",headers=header,data=json.dumps(payload))
                     json_cedula = r.json()
@@ -119,7 +119,7 @@ class ValidaCurp(models.Model):
             else:
                 if(record2.intentos_ine > 0):
                     record2.intentos_ine = record2.intentos_ine - 1
-                    header2 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    header2 = {"Authorization": "Basic emVsZTpZbTRfOHcucFg=","Content-Type":"application/json"}
                     r2=requests.post("https://ine.nubarium.com:443/ocr/obtener_datos",headers=header2,json={"id":record2.ine.decode('utf-8')})
                     json_response = r2.json()
                     a=json.dumps(json_response)
@@ -379,7 +379,7 @@ class ValidaCurp(models.Model):
             else:
                 
                 if(record5.intentos > 0):
-                    header3 = {"Authorization": "Basic bTJjcm93ZDpfM2U4dy4wUnMy","Content-Type":"application/json"}
+                    header3 = {"Authorization": "Basic emVsZTpZbTRfOHcucFg=","Content-Type":"application/json"}
                     r3=requests.post("https://ine.nubarium.com/antifraude/reconocimiento_facial",headers=header3,json={"credencial":record5.ine.decode('utf-8'),"captura":record5.ine_foto.decode('utf-8'),"tipo":"imagen"})
                     json_r3 = r3.json()
                     c=json.dumps(json_r3)
