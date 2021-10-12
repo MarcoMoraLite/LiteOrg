@@ -392,6 +392,7 @@ class ValidaCurp(models.Model):
                     if(status=='OK'):
                         men = res3['mensaje']
                         por = res3['similitud']
+                        record5.noti_foto = men
                         record5.bool_foto = True
                         mensaje = str(men) + str(' ') + str(por)
                         record5.response3 = mensaje
@@ -408,7 +409,7 @@ class ValidaCurp(models.Model):
     
     def confirmarSelfie(self):
         for record6 in self:
-            if(record6.response3 == "Similitud de rostros encontrada" or record6.intentos == 0):
+            if(record6.noti_foto == "Similitud de rostros encontrada" or record6.intentos == 0):
                 record6.estatus_gen = "Completo"
             else:
                 record6.noti_foto = "Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
