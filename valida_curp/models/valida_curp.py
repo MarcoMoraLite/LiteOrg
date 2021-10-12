@@ -48,7 +48,6 @@ class ValidaCurp(models.Model):
     intentos = fields.Integer("Intentos",default=3)
     intentos_ine = fields.Integer("Intentos INE",default=3)
     intentos_cedula = fields.Integer("Intentos cédula",default=3)
-    id_contacto = fields.Many2one("Current User")
     estatus_gen = fields.Char("Estatus general", default="Faltan datos")
     banco = fields.Char("Banco")
     cuenta = fields.Char("Cuenta bancaria")
@@ -321,7 +320,6 @@ class ValidaCurp(models.Model):
             
     def confirmarCed(self):
         for record3 in self:
-            #record3.id_contacto = nuevo_contacto.id
                 
             if(record3.estatus_cedula == "Cédula relacionada" and record3.response == "Cédula encontrada y coincidencia en nombre"):
                 fecha = record3.fechaNacimiento
