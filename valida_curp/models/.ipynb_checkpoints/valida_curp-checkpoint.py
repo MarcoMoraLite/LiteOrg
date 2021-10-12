@@ -332,7 +332,7 @@ class ValidaCurp(models.Model):
                 fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
                 record3.write({'state': 'foto'})
-                nuevo_contacto = self.env['res.partner'].create( {
+                record3.id_contacto = self.env['res.partner'].create( {
                     'name': nombre_completo,
                     'names': record3.nombres,
                     'father_last_name': record3.primerApellido,
@@ -351,9 +351,9 @@ class ValidaCurp(models.Model):
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
                     'ine': True,
-                    'client_type': 'specialist'
-                })
-                record3.id_contacto = nuevo_contacto.id
+                    'client_type': 'specialist',
+                    'is_specialist': True,
+                }).id
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
                 return {"intentos":record3.intentos_cedula,"respuesta":record3.noti_ced,"bool_ine":record3.bool_ced,"api":record3.response,"estatus_cedula":record3.estatus_cedula}
