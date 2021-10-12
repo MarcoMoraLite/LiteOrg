@@ -13,7 +13,7 @@
                 <button name="selfie" type="object" states="foto" string="Validar Foto"/>
                 <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
                 <button name="rechazarContacto" type="object" string="Rechazar"/>
-                <button name="aporbarContacto" type="object" string="Aprobar"/>
+                <button name="aprobarContacto" type="object" string="Aprobar"/>
                 <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
             </header>
             <sheet>
