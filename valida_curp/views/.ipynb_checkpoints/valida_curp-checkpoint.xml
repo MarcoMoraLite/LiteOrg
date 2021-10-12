@@ -12,7 +12,6 @@
                 <button name="confirmarIne" type="object" states="ine" string="Confirmar"/>
                 <button name="selfie" type="object" states="foto" string="Validar Foto"/>
                 <button name="confirmarSelfie" type="object" states="foto" string="Confirmar Foto"/>
-                <button name="guardaContacto" type="object" states="guardar" string="Guardar Contacto"/>
                 <button name="rechazarContacto" type="object" string="Rechazar"/>
                 <field name="state" widget="statusbar" statusbar_visible="ine,cedula,foto,guardar"/>
             </header>

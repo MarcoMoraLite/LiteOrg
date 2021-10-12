@@ -405,24 +405,10 @@ class ValidaCurp(models.Model):
     def confirmarSelfie(self):
         for record6 in self:
             if(record6.response3 == "Similitud de rostros encontrada" or record6.intentos == 0):
-                record6.write({'state': 'guardar'})
+                record6.estatus_gen = "Completo"
             else:
                 record6.noti_foto = "Debes ingresar y validar tu foto antes de avanzar. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
                 return {"intentos":record6.intentos,"respuesta":record6.noti_foto,"bool_ine":record6.bool_foto,"api":record6.response3}            
-                
-    def guardaContacto(self):
-        for record7 in self:
-            notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Atención!',
-                        'message': 'Contacto guardado, da clic en el botón de "Guardar" para terminar con el proceso. Cualquier pregunta o comentario, favor de contactar a soporte.comercial@zele.mx',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-            return notification
         
     def rechazarContacto(self):
         for record8 in self:
