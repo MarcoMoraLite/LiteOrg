@@ -351,7 +351,8 @@ class ValidaCurp(models.Model):
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
                     'ine': True,
-                    'client_type': 'specialist'
+                    'client_type': 'specialist',
+                    'is_specialist': True,
                 })
                 record3.id_contacto = nuevo_contacto.id
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
