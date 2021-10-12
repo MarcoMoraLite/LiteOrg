@@ -414,6 +414,10 @@ class ValidaCurp(models.Model):
         for record8 in self:
             record8.estatus_gen = "Rechazado"
             
+    def aprobarContacto(self):
+        for record9 in self:
+            record9.estatus_gen = "Completo"
+            
     
                 
             
