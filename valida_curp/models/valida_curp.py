@@ -429,25 +429,6 @@ class ValidaCurp(models.Model):
             record8.estatus_gen = "Rechazado"
             
     
-    def send_email_template(self):
-        for record7 in self:
-            if(record7.estatus_gen == "Completo"):
-                template = self.env['mail.template'].search([('id', '=', '17')])
-                correo = 'marcoamora98@gmail.com'
-                template.write({'email_to': correo})
-                template.send_mail(self.id, force_send=True)
-            else:
-                notification = {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'title': 'Atención!',
-                        'message': 'Antes de enviar el contrato se deben validar los datos',
-                        'type': 'info',
-                        'sticky': False,
-                        }
-                    }
-                return notification
                 
             
 
