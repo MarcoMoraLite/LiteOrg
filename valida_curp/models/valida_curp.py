@@ -348,9 +348,7 @@ class ValidaCurp(models.Model):
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
-                    'ine': True,
-                    'client_type': 'specialist',
-                    'is_specialist': True,
+                    'ine': True
                 })
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
