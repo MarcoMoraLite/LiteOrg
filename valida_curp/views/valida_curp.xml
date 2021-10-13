@@ -39,7 +39,6 @@
                             <field name="nombres" readonly="1"/>
                             <field name="sexo" readonly="1"/>
                             <field name="calle" readonly="1"/>
-                            <field name="colonia" readonly="1"/>
                             <field name="codigo_postal" readonly="1"/>
                             <field name="ciudad" readonly="1"/>
                             <field name="subTipo" readonly="1"/>
@@ -92,6 +91,7 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="create_date"/>
             <field name="nombres"/>
             <field name="primerApellido"/>
             <field name="segundoApellido"/>
@@ -113,6 +113,7 @@
       <field name="model">valida_curp.valida_curp</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="create_date"/>
             <field name="nombres"/>
             <field name="primerApellido"/>
             <field name="state"/>

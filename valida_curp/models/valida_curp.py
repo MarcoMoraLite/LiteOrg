@@ -418,7 +418,12 @@ class ValidaCurp(models.Model):
             
     def aprobarContacto(self):
         for record9 in self:
-            record9.estatus_gen = "Completo"
+            if(record9.state == 'ine'):
+                record9.write({'state': 'cedula'})
+            elif(record9.state == 'cedula'):
+                record9.write({'state': 'foto'})
+            else:
+                record9.estatus_gen = "Completo"
             
     
                 
