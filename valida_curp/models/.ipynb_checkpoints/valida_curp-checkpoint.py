@@ -59,8 +59,8 @@ class ValidaCurp(models.Model):
     bool_ine = fields.Boolean("bool_ine")
     bool_ced = fields.Boolean("bool_ced")
     bool_foto = fields.Boolean("bool_foto")
-    id_state = fields.Many2one("Id_estado")
-    id_contacto = fields.Many2one("ID contacto")
+    id_state = fields.Many2one('res.country.state',"Id_estado")
+    id_contacto = fields.Many2one('res.partner',"ID contacto")
     
     def comprobar(self):
         for record in self:
@@ -348,7 +348,9 @@ class ValidaCurp(models.Model):
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
-                    'ine': True
+                    'ine': True,
+                    'client_type': 'specialist',
+                    'is_specialist': True
                 })
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
