@@ -344,7 +344,7 @@ class ValidaCurp(models.Model):
                     'type': 'contact',
                     'street_name': record3.calle,
                     'zip': record3.codigo_postal,
-                    'state_id': record3.id_state,
+                    'state_id': record3.id_state.id,
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
