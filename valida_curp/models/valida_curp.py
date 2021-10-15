@@ -272,8 +272,8 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
                                 record2.estado = "Zacatecas"
-                            #estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
-                            #record2.write({'id_state':estado_id.id})
+                            estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
+                            record2.write({'id_state':estado_id.id})
     
                         else:
                             record2.response2 = "Faltan datos"
@@ -350,9 +350,10 @@ class ValidaCurp(models.Model):
                     'cedula': True,
                     'ine': True,
                     'client_type': 'specialist',
-                    'is_specialist': True
+                    'is_specialist': True,
+                    'state_id': record3.id_state.id
                 })
-                #'state_id': record3.id_state.id,
+                
                 record3.write({'id_contacto':contacto.id})
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
