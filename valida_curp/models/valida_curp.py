@@ -59,8 +59,8 @@ class ValidaCurp(models.Model):
     bool_ine = fields.Boolean("bool_ine")
     bool_ced = fields.Boolean("bool_ced")
     bool_foto = fields.Boolean("bool_foto")
-    id_state = fields.Many2one('res.country.state',"Id_estado")
-    id_contacto = fields.Many2one('res.partner',"ID contacto")
+    id_state = fields.Many2one('res.country.state', readonly=True, string='Id_estado')
+    id_contacto = fields.Many2one('res.partner', readonly=True, string='ID contacto')
     
     def comprobar(self):
         for record in self:
@@ -272,7 +272,8 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
                                 record2.estado = "Zacatecas"
-                            record2.id_state = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1).id
+                            estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
+                            record2.write({'id_state':estado_id.id})
                             
     
                         else:
