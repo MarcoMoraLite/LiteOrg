@@ -27,6 +27,8 @@
                   <field name="response3" attrs="{'invisible':[['state','not in',['foto']]]}" colspam="2" readonly="1"/>
                   <field name="estatus_gen" colspam="2" readonly="1"/>
                   <field name="id_contacto" colspam="2" readonly="1"/>
+                  <field name="telefono_esp" colspam="2"/>
+                  <field name="correo_esp" colspam="2"/>
                 </group>
                 <notebook>
                     <page string="INE" name="ine_view">

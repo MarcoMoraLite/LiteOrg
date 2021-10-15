@@ -59,6 +59,8 @@ class ValidaCurp(models.Model):
     bool_ine = fields.Boolean("bool_ine")
     bool_ced = fields.Boolean("bool_ced")
     bool_foto = fields.Boolean("bool_foto")
+    telefono_esp = fields.Char("Telefono")
+    correo_esp = fields.Char("Correo")
     id_state = fields.Many2one('res.country.state', readonly=True, string='Id_estado')
     id_contacto = fields.Many2one('res.partner', readonly=True, string='ID contacto')
     
