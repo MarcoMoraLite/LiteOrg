@@ -272,8 +272,8 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Yucatán"
                             elif (res['estado'] == "32"):
                                 record2.estado = "Zacatecas"
-                            estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
-                            record2.write({'id_state':estado_id.id})
+                            #estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
+                            #record2.write({'id_state':estado_id.id})
     
                         else:
                             record2.response2 = "Faltan datos"
@@ -317,7 +317,8 @@ class ValidaCurp(models.Model):
                     record2.noti_ine = "Has alcanzado el número máximo de intentos, todos tus datos fueron enviados al área de Soporte Comercial. En el siguiente día hábil recibirás vía e-mail la confirmación definitiva o solicitud de documentos extra para completar tu registro"
                     return {"intentos":record2.intentos_ine,"respuesta":record2.noti_ine,"bool_ine":record2.bool_ine,"api":record2.response2}
 
-            
+
+                
     def confirmarCed(self):
         for record3 in self:
                 
@@ -330,7 +331,7 @@ class ValidaCurp(models.Model):
                 fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
                 record3.write({'state': 'foto'})
-                contacto = self.env['res.partner'].create( {
+                contacto = self.env['res.partner'].create({
                     'name': nombre_completo,
                     'names': record3.nombres,
                     'father_last_name': record3.primerApellido,
@@ -344,7 +345,6 @@ class ValidaCurp(models.Model):
                     'type': 'contact',
                     'street_name': record3.calle,
                     'zip': record3.codigo_postal,
-                    'state_id': record3.id_state.id,
                     'birthdate': fecha_full,
                     'l10n_mx_edi_curp': record3.curp,
                     'cedula': True,
@@ -352,6 +352,7 @@ class ValidaCurp(models.Model):
                     'client_type': 'specialist',
                     'is_specialist': True
                 })
+                #'state_id': record3.id_state.id,
                 record3.write({'id_contacto':contacto.id})
             elif(record3.estatus_cedula == "La licenciatura de la cédula no esta autorizada para prescribir Zélé"):
                 record3.noti_ced = "La licenciatura relacionada a tu cédula no concuerda con las licenciaturas autorizadas para prescribir Zélé. Favor de ingresar cédulas profesionales de nivel licenciatura solamente. Si crees que esto es un error, favor de contactar a soporte.comercial@zele.mx"
