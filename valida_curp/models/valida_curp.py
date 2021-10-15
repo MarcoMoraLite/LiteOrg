@@ -353,7 +353,9 @@ class ValidaCurp(models.Model):
                     'ine': True,
                     'client_type': 'specialist',
                     'is_specialist': True,
-                    'state_id': record3.id_state.id
+                    'state_id': record3.id_state.id,
+                    'phone': record3.telefono_esp,
+                    'email': record3.correo_esp
                 })
                 
                 record3.write({'id_contacto':contacto.id})
