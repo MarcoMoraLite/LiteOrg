@@ -274,7 +274,6 @@ class ValidaCurp(models.Model):
                                 record2.estado = "Zacatecas"
                             estado_id = self.env['res.country.state'].search([('name', '=', record2.estado)],limit=1)
                             record2.write({'id_state':estado_id.id})
-                            
     
                         else:
                             record2.response2 = "Faltan datos"
