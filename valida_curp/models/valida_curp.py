@@ -332,6 +332,8 @@ class ValidaCurp(models.Model):
                 ano = lista_date[2].replace("0","")
                 fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
+                correo_contacto = record3.correo_esp
+                correo_contacto = correo_contacto.lower() 
                 record3.write({'state': 'foto'})
                 contacto = self.env['res.partner'].create({
                     'name': nombre_completo,
@@ -355,7 +357,7 @@ class ValidaCurp(models.Model):
                     'is_specialist': True,
                     'state_id': record3.id_state.id,
                     'phone': record3.telefono_esp,
-                    'email': record3.correo_esp
+                    'email': correo_contacto
                 })
                 
                 record3.write({'id_contacto':contacto.id})
