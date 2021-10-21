@@ -192,7 +192,6 @@ class ValidaCurp(models.Model):
 
                         if 'subTipo' in json_response:
                             record2.subTipo = res['subTipo']
-                            record2.response2 = 'OK'
                         else:
                             record2.response2 = "Faltan datos"
                             record2.noti_ine = "Por favor intenta subir otra foto, el SUBTIPO no se pudo leer de manera correcta"
@@ -333,7 +332,10 @@ class ValidaCurp(models.Model):
                 fecha_full = str(ano) + str('-') + str(mes) + str('-') + str(dia)
                 nombre_completo = str(record3.nombres) + str(' ') + str(record3.primerApellido) + str(' ') + str(record3.segundoApellido)
                 correo_contacto = record3.correo_esp
-                correo_contacto = correo_contacto.lower() 
+                if not correo_contacto:
+                    correo_contacto = " "
+                else:
+                    correo_contacto = correo_contacto.lower() 
                 record3.write({'state': 'foto'})
                 contacto = self.env['res.partner'].create({
                     'name': nombre_completo,
